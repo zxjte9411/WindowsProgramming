@@ -1,0 +1,21 @@
+ROG STRIX Z390-E GAMING,主機板,7090,ROG Strix Z390-E Gaming 具有更強大的電源輸送能力，並具備最齊全的散熱選項，能輕鬆駕馭 Intel 最新款 CPU。 ROG Strix Z390-E Gaming 搭配豐富的強化功能，包括單鍵式最佳化功能、最新的連接能力及充滿未來時尚感的內建燈效，為 ATX 遊戲效能提供更甚以往的強大基礎。,../../Resource/MotherBoard/0.jpg
+ROG STRIX Z390-I GAMING,主機板,6590,ROG Strix Z390-I Gaming 在精巧的外型下提供更高的電源輸送能力。其革命性散熱片設計可與 Intel 最新款處理器相互搭配，即使在激戰當中，電競系統依然能保持低溫。 ROG Strix Z390-I Gaming 具備獨特的雙容量 DRAM 設定、單鍵式最佳化功能，以及讓您的軍備保持在最佳狀態的完整 ROG 軟體，堪稱尺寸最精巧的指揮中心。,../../Resource/MotherBoard/1.jpg
+ROG RAMPAGE VI EXTREME OMEGA,主機板,20090,Intel Core X 系列處理器專用 Intel X299 EATX 遊戲主機板 LGA 2066 搭載 ROG DIMM.2、DDR4 4266MHz、內建 802.11ac Wi-Fi、10Gbps LAN、USB 3.1 Gen 2、SATA、四個 M.2 及 Aura Sync RGB 燈效,../../Resource/MotherBoard/2.jpg
+ROG MAXIMUS XI GENE,主機板,13090,眾所期盼已久的超小尺寸主機板，終於正式登場了。 Maximus XI Gene 以 Intel Z390 平台為基礎打造，支援極端超頻、雙容量 DIMM 及次世代儲存技術，展現可媲美高階 ATX 系統的革新效能。 Maximus XI Gene 專為讓著重電競及個人風格的狂熱玩家展示電腦配備而生，融入熱血與個人元素，將效能推向極致。,../../Resource/MotherBoard/3.jpg
+ROG Dominus Extreme,主機板,55900,相容於 ATX 安裝規則的 EEB 主機板，支援 6 c通道 DDR4 4200MHz+ (超頻)、雙 DIMM.2 含散熱器、四個 M.2、內建10G LAN、整合式 Wi-Fi、USB 3.1 及雙 U.2,../../Resource/MotherBoard/4.jpg
+ROG ZENITH EXTREME,主機板,17990,AMD X399 EATX 遊戲主機板搭載 M.2 散熱片、Aura Sync RGB LED、802.11ad Wi-Fi、DDR4 3600MHz、三個 M.2、10G 網卡、U.2 及 USB 3.1 Gen 2 連接埠,../../Resource/MotherBoard/5.jpg
+AMD Ryzen 7-3800X,CPU,14470,競爭級遊戲與直播，為嚴肅的 PC 狂熱玩家而設計，達到完美平衡。,../../Resource/CPU/0.jpg
+AMD Ryzen 7-3700X,CPU,11770,統治級遊戲與直播，為嚴肅的 PC 狂熱玩家而設計，達到完美平衡。,../../Resource/CPU/1.jpg
+AMD Ryzen 5-3600X,CPU,8970,嚴肅高畫質遊戲，每個人都值得擁有強大的處理器。,../../Resource/CPU/2.jpg
+美光 Micron Crucial Ballistix Sport LT競技版 DDR4-3200-8G(灰色散熱片)/CL16,記憶體,1099,◆記憶體容量8G◆廠牌Micron 美光◆記憶體規格DDR4◆記憶體頻率3200 MHz◆記憶體類別桌上型電腦記憶體 ,../../Resource/Memory/0.jpg
+美光 Micron Crucial Ballistix Sport LT競技版 DDR4-3200-8G(白色散熱片)/CL16,記憶體,1099,◆記憶體容量8G◆廠牌Micron 美光◆記憶體規格DDR4◆記憶體頻率3200 MHz◆記憶體類別桌上型電腦記憶體 ,../../Resource/Memory/1.jpg
+美光 Micron Crucial Ballistix Sport LT競技版 DDR4-3200-8G(紅色散熱片)/CL15,記憶體,1099,◆記憶體容量8G◆廠牌Micron 美光◆記憶體規格DDR4◆記憶體頻率3200 MHz◆記憶體類別桌上型電腦記憶體 ,../../Resource/Memory/2.jpg
+美光 Crucial MX500,硬碟,8499,美光 Crucial MX500 2TB 2.5吋SATA固態硬碟/7mm/讀:560M/寫:510M/64層3D TLC/五年保固*捷元代理商公司貨*,../../Resource/Disk/0.jpg
+Western Digital【Ultrastar DC HA210】,硬碟,3890,◆2TB 容量儲存◆7200轉．128MB快取記憶體◆24x7．全年無休運作設計◆200萬小時MTBF平均故障間隔．高耐用度◆550TB．高工作負載能力◆支援16顆以上硬碟插槽數◆原廠五年保固,../../Resource/Disk/1.jpg
+Seagate 2TB(ST2000DM008),硬碟,1750,◆容量2T◆廠牌SEAGATE 希捷◆硬碟類型3.5吋 家用型硬碟◆硬碟轉速7200 RPM,../../Resource/Disk/2.jpg
+TOSHIBA 2TB(DT01ACA200),硬碟,1890,◆容量2T◆廠牌Toshiba東芝◆硬碟類型3.5吋 家用型硬碟◆硬碟轉速7200 RPM,../../Resource/Disk/3.jpg
+華碩 STRIX-RTX2080Ti-O11G-GAMING,顯示卡,41790,華碩 STRIX-RTX2080Ti-O11G-GAMING/Std:1650MHz/三風扇/註冊五年保固(30.5cm),../../Resource/GPU/0.jpg
+技嘉 RTX2080Ti GAMING OC 11G,顯示卡,39890,技嘉 RTX2080Ti GAMING OC 11G/Std:1650MHz/三風扇/註冊五年保固(28.7cm),../../Resource/GPU/1.jpg
+微星 GeForce RTX2080Ti GAMING X TRIO,顯示卡,39990,微星 GeForce RTX2080Ti GAMING X TRIO/Std:1755MHz/三風扇/註冊四年保固(32.7cm),../../Resource/GPU/2.jpg
+惠普 HP Z4 G4,套裝電腦,55900,◆作業系統：WIN10P-WK◆處理器：Intel XeonW-2123 3.6 4C◆快取記憶體：8.25◆處理器匯流排：2666◆晶片組：Intel C422 Chipset◆主機外觀：直立式◆繪圖卡：無內建顯示卡◆記憶體：8GB (1x8GB) DDR4 2666 Registered RAM(8 DIMM slots)◆硬碟機/轉速：1TB 7200RPM SATA 3.5in◆外接硬碟支架：2 x 5.25" external drive bays◆內建硬碟托架：2 x 2.5"or 3.5" internal drive bays(已使用1)◆光碟機：HP 9.5mm Slim DVD Writer◆儲存控制卡：6 x 6Gb/s SATA ports◆彈性磁碟機：2 PCIe G3 x4 M.2 for SSDs◆擴充插槽：2 PCIe G3 x16， 2 PCIe G3 x4， 1 PCIe G3 x8◆內部音效：Realtek HD ALC221 Audio◆網路介面：2x 1GbE ports◆傳輸介面：Audio in/out;Keyboard/Mouse PS/2;USB: 6 USB 3.1 G1 Type-A;前置 4 USB 3.1 G1 Type-A;SD Card Reader◆電源：1000W 90% efficient with up to 4 graphics power Adapters◆尺寸：H: 15.2" (386mm)/W: 6.65" (169mm)/D: 17.5" (445mm)◆重量：Standard: 11.3 kg◆其它：已安裝前置風,../../Resource/SetComputer/0.jpg
+HP EliteDesk 800 G4,套裝電腦,65900,◆作業系統 Windows 10 Pro 64◆處理器 Intel Core i7-8700 3.2 6C 65W◆晶片組 Intel Q370 PCH-H- vPro◆主機外觀 直立式◆繪圖卡 RTX2080 8GB顯卡◆記憶體 8GB DDR4-2666 (1x8GB) nECC RAM◆硬碟機/轉速 256GB M.2 2280 PCIe NVMe SSD◆外接硬碟支架 5.25*1◆內建硬碟托架 3.5*2/2.5*1◆光碟機 9.5 DVDWR◆網路介面 RJ45 *1◆傳輸介面 HP VGA Port*1◆電源 500W active PFC / 80 PLUS Gold◆尺寸 10*33.8*30.8cm◆重量 9.86 kg◆其它 HP USB Keyboard /HP USB Mouse /SD Card Reader/ 3-3-3保固,../../Resource/SetComputer/1.jpg
