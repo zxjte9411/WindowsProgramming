@@ -76,7 +76,6 @@ namespace Homework
             _orderFormPresentationModel.IsHavePreviousPage = false;
             UpdateProductButtonInformation();
             _productTabControl.SelectedTab.Controls.Add(_tableLayoutPanelProductButton);
-            
             ClearLabelText();
         }
         
@@ -92,6 +91,7 @@ namespace Homework
                 _productButtons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 _productButtons[i].Visible = _orderFormPresentationModel.IsProductButtonVisible(i, _productTabControl.SelectedTab.Name);
             }
+            UpdateButtonsState();
         }
 
         // 產品按鈕被按下要執行的動作
@@ -116,15 +116,18 @@ namespace Homework
         {
             _orderFormPresentationModel.GoPreviousPage();
             UpdateProductButtonInformation();
-            _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
-            _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
-            _buttonAdd.Enabled = false;
+            UpdateButtonsState();
         }
 
         private void ClickNextButton(Object sender, EventArgs e)
         {
             _orderFormPresentationModel.GoNextPage();
             UpdateProductButtonInformation();
+            UpdateButtonsState();
+        }
+
+        private void UpdateButtonsState()
+        {
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
             _buttonAdd.Enabled = false;

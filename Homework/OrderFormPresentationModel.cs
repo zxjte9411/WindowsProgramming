@@ -52,6 +52,7 @@ namespace Homework
             List<Product> allProductOfThisCategory = _orderFormModel.GetProductsOfThisCategory(categoryName);
             Dictionary<string, string> products = new Dictionary<string, string>(); // key 為產品名稱 value 為圖片路徑
             UpdatePages(allProductOfThisCategory.Count);
+            UpdateButtonState();
             int index = Constant.BUTTON_COUNT * (_currentPageNumber - 1);
             for (int i = 0; i < Constant.BUTTON_COUNT; i++)
             {
