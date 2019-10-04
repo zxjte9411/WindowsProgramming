@@ -11,7 +11,7 @@ namespace Homework
         private OrderFormModel _orderFormModel;
         private int _currentPageNumber;
         private int _pages;
-        private bool _isSelectedProduxt;
+        private bool _isSelectedProduct;
         private bool _isHavePreviousPage;
         private bool _isHaveNextPage;
 
@@ -21,7 +21,7 @@ namespace Homework
             _currentPageNumber = 1;
             _isHavePreviousPage = false;
             _isHaveNextPage = true;
-            _isSelectedProduxt = false;
+            _isSelectedProduct = false;
             UpdatePages(_orderFormModel.ProductCategory[0].Count);
             UpdateButtonState();
         }
@@ -44,6 +44,7 @@ namespace Homework
                 _isHaveNextPage = false;
             else
                 _isHaveNextPage = true;
+                            
         }
 
         // 取得當前頁面產品資訊
@@ -67,7 +68,7 @@ namespace Homework
         // 取得產品
         public Product GetProduct(string productName)
         {
-            _isSelectedProduxt = true;
+            _isSelectedProduct = true;
             return _orderFormModel.GetProduct(productName);
         }
 
@@ -81,7 +82,7 @@ namespace Homework
         public void AddProduct()
         {
             _orderFormModel.AddProduct();
-            _isSelectedProduxt = false;
+            _isSelectedProduct = false;
             UpdateButtonState();
         }
 
@@ -149,18 +150,19 @@ namespace Homework
             }
         }
 
-
+        // go next page
         public void GoNextPage()
         {
             _currentPageNumber++;
-            _isSelectedProduxt = false;
+            _isSelectedProduct = false;
             UpdateButtonState();
         }
 
+        // go previous page
         public void GoPreviousPage()
         {
             _currentPageNumber--;
-            _isSelectedProduxt = false;
+            _isSelectedProduct = false;
             UpdateButtonState();
         }
     }

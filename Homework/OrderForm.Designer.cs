@@ -35,7 +35,7 @@
             this._tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this._groupBoxProducts = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this._groupDescriptionBox = new System.Windows.Forms.GroupBox();
             this._tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this._labelPrice = new System.Windows.Forms.Label();
@@ -49,8 +49,8 @@
             this._button3 = new System.Windows.Forms.Button();
             this._button4 = new System.Windows.Forms.Button();
             this._button5 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this._tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this._pagesLabel = new System.Windows.Forms.Label();
             this._previousButton = new System.Windows.Forms.Button();
             this._buttonAdd = new System.Windows.Forms.Button();
             this._nextButton = new System.Windows.Forms.Button();
@@ -60,22 +60,22 @@
             this._productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._productCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this._tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this._labelTotalPrice = new System.Windows.Forms.Label();
             this._orderButton = new System.Windows.Forms.Button();
             this._tableLayoutPanel1.SuspendLayout();
             this._tableLayoutPanel2.SuspendLayout();
             this._groupBoxProducts.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this._tableLayoutPanel5.SuspendLayout();
             this._groupDescriptionBox.SuspendLayout();
             this._tableLayoutPanel3.SuspendLayout();
             this._productTabControl.SuspendLayout();
             this._tabPage1.SuspendLayout();
             this._tableLayoutPanelProductButton.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this._tableLayoutPanel6.SuspendLayout();
             this._tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
+            this._tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // _tableLayoutPanel1
@@ -111,7 +111,7 @@
             // 
             // _groupBoxProducts
             // 
-            this._groupBoxProducts.Controls.Add(this.tableLayoutPanel1);
+            this._groupBoxProducts.Controls.Add(this._tableLayoutPanel5);
             this._groupBoxProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this._groupBoxProducts.Font = new System.Drawing.Font("微軟正黑體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this._groupBoxProducts.Location = new System.Drawing.Point(3, 3);
@@ -121,22 +121,22 @@
             this._groupBoxProducts.TabStop = false;
             this._groupBoxProducts.Text = "商品";
             // 
-            // tableLayoutPanel1
+            // _tableLayoutPanel5
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this._groupDescriptionBox, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this._productTabControl, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 28);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(442, 472);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this._tableLayoutPanel5.ColumnCount = 1;
+            this._tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel5.Controls.Add(this._groupDescriptionBox, 0, 1);
+            this._tableLayoutPanel5.Controls.Add(this._productTabControl, 0, 0);
+            this._tableLayoutPanel5.Controls.Add(this._tableLayoutPanel6, 0, 2);
+            this._tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel5.Location = new System.Drawing.Point(3, 28);
+            this._tableLayoutPanel5.Name = "_tableLayoutPanel5";
+            this._tableLayoutPanel5.RowCount = 3;
+            this._tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this._tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this._tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tableLayoutPanel5.Size = new System.Drawing.Size(442, 472);
+            this._tableLayoutPanel5.TabIndex = 0;
             // 
             // _groupDescriptionBox
             // 
@@ -290,35 +290,35 @@
             this._button5.TabIndex = 5;
             this._button5.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel2
+            // _tableLayoutPanel6
             // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this._previousButton, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this._buttonAdd, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this._nextButton, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 403);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(436, 66);
-            this.tableLayoutPanel2.TabIndex = 15;
+            this._tableLayoutPanel6.ColumnCount = 4;
+            this._tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this._tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this._tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this._tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this._tableLayoutPanel6.Controls.Add(this._pagesLabel, 0, 0);
+            this._tableLayoutPanel6.Controls.Add(this._previousButton, 1, 0);
+            this._tableLayoutPanel6.Controls.Add(this._buttonAdd, 3, 0);
+            this._tableLayoutPanel6.Controls.Add(this._nextButton, 2, 0);
+            this._tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel6.Location = new System.Drawing.Point(3, 403);
+            this._tableLayoutPanel6.Name = "_tableLayoutPanel6";
+            this._tableLayoutPanel6.RowCount = 1;
+            this._tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel6.Size = new System.Drawing.Size(436, 66);
+            this._tableLayoutPanel6.TabIndex = 15;
             // 
-            // label1
+            // _pagesLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(3, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 31);
-            this.label1.TabIndex = 19;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._pagesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this._pagesLabel.AutoSize = true;
+            this._pagesLabel.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._pagesLabel.Location = new System.Drawing.Point(3, 17);
+            this._pagesLabel.Name = "_pagesLabel";
+            this._pagesLabel.Size = new System.Drawing.Size(0, 31);
+            this._pagesLabel.TabIndex = 19;
+            this._pagesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _previousButton
             // 
@@ -357,7 +357,7 @@
             this._tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95F));
             this._tableLayoutPanel4.Controls.Add(this._labelOrder, 1, 0);
             this._tableLayoutPanel4.Controls.Add(this._recordDataGridView, 1, 1);
-            this._tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 1, 2);
+            this._tableLayoutPanel4.Controls.Add(this._tableLayoutPanel7, 1, 2);
             this._tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tableLayoutPanel4.Location = new System.Drawing.Point(463, 3);
             this._tableLayoutPanel4.Name = "_tableLayoutPanel4";
@@ -431,20 +431,20 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.88263F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.31455F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Controls.Add(this._labelTotalPrice, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this._orderButton, 2, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(25, 434);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(426, 72);
-            this.tableLayoutPanel3.TabIndex = 1;
+            this._tableLayoutPanel7.ColumnCount = 3;
+            this._tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.88263F));
+            this._tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.31455F));
+            this._tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this._tableLayoutPanel7.Controls.Add(this._labelTotalPrice, 1, 0);
+            this._tableLayoutPanel7.Controls.Add(this._orderButton, 2, 0);
+            this._tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel7.Location = new System.Drawing.Point(25, 434);
+            this._tableLayoutPanel7.Name = "tableLayoutPanel3";
+            this._tableLayoutPanel7.RowCount = 1;
+            this._tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this._tableLayoutPanel7.Size = new System.Drawing.Size(426, 72);
+            this._tableLayoutPanel7.TabIndex = 1;
             // 
             // _labelTotalPrice
             // 
@@ -478,20 +478,20 @@
             this._tableLayoutPanel1.ResumeLayout(false);
             this._tableLayoutPanel2.ResumeLayout(false);
             this._groupBoxProducts.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this._tableLayoutPanel5.ResumeLayout(false);
             this._groupDescriptionBox.ResumeLayout(false);
             this._tableLayoutPanel3.ResumeLayout(false);
             this._tableLayoutPanel3.PerformLayout();
             this._productTabControl.ResumeLayout(false);
             this._tabPage1.ResumeLayout(false);
             this._tableLayoutPanelProductButton.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this._tableLayoutPanel6.ResumeLayout(false);
+            this._tableLayoutPanel6.PerformLayout();
             this._tableLayoutPanel4.ResumeLayout(false);
             this._tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this._tableLayoutPanel7.ResumeLayout(false);
+            this._tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -507,7 +507,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn _productCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn _price;
         private System.Windows.Forms.GroupBox _groupBoxProducts;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel5;
         private System.Windows.Forms.TabControl _productTabControl;
         private System.Windows.Forms.TabPage _tabPage1;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanelProductButton;
@@ -521,12 +521,12 @@
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel3;
         private System.Windows.Forms.Label _labelPrice;
         private System.Windows.Forms.RichTextBox _productDescriptionRichTextBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel6;
         private System.Windows.Forms.Button _buttonAdd;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label _pagesLabel;
         private System.Windows.Forms.Button _previousButton;
         private System.Windows.Forms.Button _nextButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel7;
         private System.Windows.Forms.Label _labelTotalPrice;
         private System.Windows.Forms.Button _orderButton;
     }

@@ -111,7 +111,7 @@ namespace Homework
             _labelPrice.Text = string.Empty;
         }
 
-
+        // go previous page
         private void ClickPreviousButton(Object sender, EventArgs e)
         {
             _orderFormPresentationModel.GoPreviousPage();
@@ -119,6 +119,7 @@ namespace Homework
             UpdateButtonsState();
         }
 
+        // go next page
         private void ClickNextButton(Object sender, EventArgs e)
         {
             _orderFormPresentationModel.GoNextPage();
@@ -126,6 +127,7 @@ namespace Homework
             UpdateButtonsState();
         }
 
+        // 更新按鈕狀態
         private void UpdateButtonsState()
         {
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
