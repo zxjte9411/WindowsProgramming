@@ -11,12 +11,13 @@ namespace Homework
         private List<Product> _userSelectedProduct;
         private List<int> _userSelectedProductQuantity;
         private List<int> _userSelectedProductSubtotal;
-
+        private CreditCardPayment _creditCardPayment;
         public Order()
         {
             _userSelectedProduct = new List<Product>();
             _userSelectedProductQuantity = new List<int>();
             _userSelectedProductSubtotal = new List<int>();
+            _creditCardPayment = new CreditCardPayment();
         }
 
         public List<Product> UserSelectProduct

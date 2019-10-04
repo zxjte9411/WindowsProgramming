@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace Homework
 {
-    public partial class ClientSideForm : Form
+    public partial class OrderForm : Form
     {
-        private ClientSideFormPresentationModel _clientSideFormPresentationModel;
+        private OrderFormPresentationModel _clientSideFormPresentationModel;
         Button[] _productButtons;
-        public ClientSideForm(ClientSideFormPresentationModel clientSideViewPresentationModel)
+        public OrderForm(OrderFormPresentationModel clientSideViewPresentationModel)
         {
             InitializeComponent();
             _clientSideFormPresentationModel = clientSideViewPresentationModel;
@@ -106,5 +106,6 @@ namespace Homework
             _productDescriptionRichTextBox1.Text = string.Empty;
             _labelPrice.Text = string.Empty;
         }
+
     }
 }

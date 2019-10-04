@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    public class ClientSideFormModel
+    public class OrderFormModel
     {
         private Order _order;
         private List<Product> _productList;
         private List<Category> _productCategory;
         private Product _currentUserSelectProduct;
 
-        public ClientSideFormModel()
+        public OrderFormModel()
         {
             _order = new Order();
             _productList = new List<Product>();
