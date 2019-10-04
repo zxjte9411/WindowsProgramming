@@ -51,9 +51,9 @@
             this._button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this._previousButton = new System.Windows.Forms.Button();
             this._buttonAdd = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this._nextButton = new System.Windows.Forms.Button();
             this._tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this._labelOrder = new System.Windows.Forms.Label();
             this._recordDataGridView = new System.Windows.Forms.DataGridView();
@@ -298,9 +298,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this._previousButton, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this._buttonAdd, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this._nextButton, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 403);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -320,14 +320,15 @@
             this.label1.TabIndex = 19;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // _previousButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(133, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 40);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
+            this._previousButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._previousButton.Image = ((System.Drawing.Image)(resources.GetObject("_previousButton.Image")));
+            this._previousButton.Location = new System.Drawing.Point(133, 23);
+            this._previousButton.Name = "_previousButton";
+            this._previousButton.Size = new System.Drawing.Size(80, 40);
+            this._previousButton.TabIndex = 20;
+            this._previousButton.UseVisualStyleBackColor = true;
             // 
             // _buttonAdd
             // 
@@ -339,14 +340,15 @@
             this._buttonAdd.TabIndex = 18;
             this._buttonAdd.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // _nextButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(220, 23);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 40);
-            this.button3.TabIndex = 21;
-            this.button3.UseVisualStyleBackColor = true;
+            this._nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._nextButton.Image = ((System.Drawing.Image)(resources.GetObject("_nextButton.Image")));
+            this._nextButton.Location = new System.Drawing.Point(220, 23);
+            this._nextButton.Name = "_nextButton";
+            this._nextButton.Size = new System.Drawing.Size(80, 40);
+            this._nextButton.TabIndex = 21;
+            this._nextButton.UseVisualStyleBackColor = true;
             // 
             // _tableLayoutPanel4
             // 
@@ -440,7 +442,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(426, 72);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -522,8 +524,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button _buttonAdd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button _previousButton;
+        private System.Windows.Forms.Button _nextButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label _labelTotalPrice;
         private System.Windows.Forms.Button _orderButton;

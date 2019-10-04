@@ -185,7 +185,296 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.OrderForm.cs.2.        }.        private void ClickPreviousButton(Object sender, EventArgs e)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>113</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.OrderForm.ClickPreviousButton.2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>115</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.OrderForm.tableLayoutPanel1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.Designer.cs</File>
+              <Line>510</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.OrderForm.tableLayoutPanel2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.Designer.cs</File>
+              <Line>524</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.OrderForm.label1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.Designer.cs</File>
+              <Line>526</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.OrderForm.tableLayoutPanel3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.Designer.cs</File>
+              <Line>529</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>ICS(空白與空行-17)</SmellType>
+              <HashCode>SpacingAndNewLine17.OrderFormPresentationModel.cs.2.        }.        public void GoNextPage()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>154</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-17) 一次不加多個空行(若發生時，則指定在多個空行的第一行即可)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>ICS(空白與空行-16)</SmellType>
+              <HashCode>SpacingAndNewLine16.OrderFormPresentationModel.GoNextPage.2</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>156</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-16) 每個函式之間加一個空行</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Unsuitable naming(名不符實)-_isSelectedProduxt(produxt)</SmellType>
+              <HashCode>UnsuitableNaming.OrderFormPresentationModel._isSelectedProduxt._isSelectedProduxt</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>14</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduxt'，但從未使用過其值。</SmellType>
+              <HashCode>Homework\Homework.OrderFormPresentationModel.cs.Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduxt'，但從未使用過其值。.14</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>14</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 ClickPreviousButton 缺乏註解</SmellType>
+              <HashCode>Homework\Homework.OrderForm.cs.Unresolved warnings(忽視警告)-函式 ClickPreviousButton 缺乏註解.115</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>115</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 ClickNextButton 缺乏註解</SmellType>
+              <HashCode>Homework\Homework.OrderForm.cs.Unresolved warnings(忽視警告)-函式 ClickNextButton 缺乏註解.123</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>123</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 GoNextPage 缺乏註解</SmellType>
+              <HashCode>Homework\Homework.OrderFormPresentationModel.cs.Unresolved warnings(忽視警告)-函式 GoNextPage 缺乏註解.156</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>156</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>Unresolved warnings(忽視警告)-函式 GoPreviousPage 缺乏註解</SmellType>
+              <HashCode>Homework\Homework.OrderFormPresentationModel.cs.Unresolved warnings(忽視警告)-函式 GoPreviousPage 缺乏註解.163</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>163</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>156 Homework.OrderFormPresentationModel.GoNextPage()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>156</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>Homework.OrderFormPresentationModel.GoNextPage()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>163 Homework.OrderFormPresentationModel.GoPreviousPage()</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderFormPresentationModel.cs</File>
+              <Line>163</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>Homework.OrderFormPresentationModel.GoPreviousPage()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>17</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>115 Homework.OrderForm.ClickPreviousButton(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>115</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>Homework.OrderForm.ClickPreviousButton(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>18</Id>
+              <SmellType>Lack of comments(缺乏註解)</SmellType>
+              <HashCode>123 Homework.OrderForm.ClickNextButton(object, System.EventArgs)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>123</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>Homework.OrderForm.ClickNextButton(object, System.EventArgs)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -197,6 +486,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Constant.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>CreditCardPayment.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -270,14 +564,9 @@
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>StartUpPresentationModel.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1436</ProductionLoc>
+          <ProductionLoc>1593</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

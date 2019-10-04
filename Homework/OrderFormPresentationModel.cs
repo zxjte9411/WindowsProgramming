@@ -11,6 +11,7 @@ namespace Homework
         private OrderFormModel _orderFormModel;
         private int _currentPageNumber;
         private int _pages;
+        private bool _isSelectedProduxt;
         private bool _isHavePreviousPage;
         private bool _isHaveNextPage;
 
@@ -20,6 +21,9 @@ namespace Homework
             _currentPageNumber = 1;
             _isHavePreviousPage = false;
             _isHaveNextPage = true;
+            _isSelectedProduxt = false;
+            UpdatePages(_orderFormModel.ProductCategory[0].Count);
+            UpdateButtonState();
         }
 
         // 更新頁面數，強大公式
@@ -37,9 +41,9 @@ namespace Homework
                 _isHavePreviousPage = true;
 
             if (_currentPageNumber >= _pages)
-                _isHavePreviousPage = false;
+                _isHaveNextPage = false;
             else
-                _isHavePreviousPage = true;
+                _isHaveNextPage = true;
         }
 
         // 取得當前頁面產品資訊
@@ -54,7 +58,7 @@ namespace Homework
                 if (allProductOfThisCategory.Count <= index + i)
                     products.Add(string.Empty + i.ToString(), Constant.IMAGE_PATH);
                 else
-                    products.Add(allProductOfThisCategory[i].Name, allProductOfThisCategory[i].ImagePath);
+                    products.Add(allProductOfThisCategory[index + i].Name, allProductOfThisCategory[index + i].ImagePath);
             }
             return products;
         }
@@ -62,6 +66,7 @@ namespace Homework
         // 取得產品
         public Product GetProduct(string productName)
         {
+            _isSelectedProduxt = true;
             return _orderFormModel.GetProduct(productName);
         }
 
@@ -75,6 +80,8 @@ namespace Homework
         public void AddProduct()
         {
             _orderFormModel.AddProduct();
+            _isSelectedProduxt = false;
+            UpdateButtonState();
         }
 
         // 回傳餐點的價格總和
@@ -83,14 +90,14 @@ namespace Homework
             return Constant.TOTAL + _orderFormModel.Order.GetTotalPrice().ToString();
         }
 
-        // 13
+        // GetCategoryCount
         private int GetCategoryCount(string categoryName)
         {
             return _orderFormModel.GetProductCategoryCount(categoryName);
         }
 
         // 按鈕是否可顯示
-        public bool IsMealButtonVisible(int productButtonIndex, string categoryName)
+        public bool IsProductButtonVisible(int productButtonIndex, string categoryName)
         {
             if (_orderFormModel.ProductCategory.Count > 0)
                 return ((_currentPageNumber - 1) * Constant.BUTTON_COUNT + productButtonIndex) < GetCategoryCount(categoryName);
@@ -141,5 +148,19 @@ namespace Homework
             }
         }
 
+
+        public void GoNextPage()
+        {
+            _currentPageNumber++;
+            _isSelectedProduxt = false;
+            UpdateButtonState();
+        }
+
+        public void GoPreviousPage()
+        {
+            _currentPageNumber--;
+            _isSelectedProduxt = false;
+            UpdateButtonState();
+        }
     }
 }
