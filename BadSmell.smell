@@ -188,8 +188,8 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduxt'，但從未使用過其值。</SmellType>
-              <HashCode>Homework\Homework.OrderFormPresentationModel.cs.Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduxt'，但從未使用過其值。.14</HashCode>
+              <SmellType>Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduct'，但從未使用過其值。</SmellType>
+              <HashCode>Homework\Homework.OrderFormPresentationModel.cs.Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduct'，但從未使用過其值。.14</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Homework\Homework</Project>
@@ -294,7 +294,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1598</ProductionLoc>
+          <ProductionLoc>1617</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

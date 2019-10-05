@@ -14,6 +14,7 @@ namespace Homework
         private bool _isSelectedProduct;
         private bool _isHavePreviousPage;
         private bool _isHaveNextPage;
+        private bool _isButtonAddEnable;
 
         public OrderFormPresentationModel(OrderFormModel orderFormModel)
         {
@@ -22,6 +23,7 @@ namespace Homework
             _isHavePreviousPage = false;
             _isHaveNextPage = true;
             _isSelectedProduct = false;
+            _isButtonAddEnable = false;
             UpdatePages(_orderFormModel.ProductCategory[0].Count);
             UpdateButtonState();
         }
@@ -30,21 +32,6 @@ namespace Homework
         private void UpdatePages(int productCount)
         {
             _pages = (productCount - 1) / Constant.BUTTON_COUNT + 1;
-        }
-
-        // //更新上一頁、下一頁及新增按鈕的狀態
-        private void UpdateButtonState()
-        {
-            if (_currentPageNumber == 1)
-                _isHavePreviousPage = false;
-            else
-                _isHavePreviousPage = true;
-
-            if (_currentPageNumber >= _pages)
-                _isHaveNextPage = false;
-            else
-                _isHaveNextPage = true;
-                            
         }
 
         // 取得當前頁面產品資訊
@@ -98,6 +85,14 @@ namespace Homework
             return _orderFormModel.GetProductCategoryCount(categoryName);
         }
 
+        public string[] ProductCategorysName
+        {
+            get
+            {
+                return _orderFormModel.ProductCategorysName;
+            }
+        }
+
         // 按鈕是否可顯示
         public bool IsProductButtonVisible(int productButtonIndex, string categoryName)
         {
@@ -116,7 +111,7 @@ namespace Homework
             {
                 _currentPageNumber = value;
             }
-        }
+        }        
 
         public bool IsHavePreviousPage
         {
@@ -136,18 +131,32 @@ namespace Homework
             {
                 return _isHaveNextPage;
             }
-            set
-            {
-                _isHaveNextPage = value;
-            }
         }
 
-        public string[] ProductCategorysName
+        public bool IsButtonAddEnable
         {
             get
             {
-                return _orderFormModel.ProductCategorysName;
+                return _isButtonAddEnable;
             }
+        }
+
+        // //更新上一頁、下一頁及新增按鈕的狀態
+        private void UpdateButtonState()
+        {
+            if (_currentPageNumber == 1)
+                _isHavePreviousPage = false;
+            else
+                _isHavePreviousPage = true;
+
+            if (_currentPageNumber >= _pages)
+                _isHaveNextPage = false;
+            else
+                _isHaveNextPage = true;
+            if (_isSelectedProduct)
+                _isButtonAddEnable = true;
+            else
+                _isButtonAddEnable = false;
         }
 
         // go next page
@@ -164,6 +173,12 @@ namespace Homework
             _currentPageNumber--;
             _isSelectedProduct = false;
             UpdateButtonState();
+        }
+
+        // 取得頁碼文字
+        public string GetPageNumberText()
+        {
+            return _currentPageNumber + Constant.SLASH + _pages;
         }
     }
 }

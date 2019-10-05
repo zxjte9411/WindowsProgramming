@@ -37,7 +37,7 @@ namespace Homework
             string[] row = _orderFormPresentationModel.GetRowData();
             _recordDataGridView.Rows.Add(row);
             ClearLabelText();
-            _buttonAdd.Enabled = false;
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
         }
 
@@ -70,7 +70,7 @@ namespace Homework
         // 更新所選的 Page 資訊
         private void UpdateSelectTabPage(Object sender, EventArgs e)
         {
-            _buttonAdd.Enabled = false;
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
             TabControl tabPage = (TabControl)sender;
             _orderFormPresentationModel.CurrentPageNumber = 1;
             _orderFormPresentationModel.IsHavePreviousPage = false;
@@ -92,6 +92,7 @@ namespace Homework
                 _productButtons[i].Visible = _orderFormPresentationModel.IsProductButtonVisible(i, _productTabControl.SelectedTab.Name);
             }
             UpdateButtonsState();
+            UpdatePageNumberDisplay();
         }
 
         // 產品按鈕被按下要執行的動作
@@ -117,6 +118,7 @@ namespace Homework
             _orderFormPresentationModel.GoPreviousPage();
             UpdateProductButtonInformation();
             UpdateButtonsState();
+            UpdatePageNumberDisplay();
         }
 
         // go next page
@@ -125,6 +127,7 @@ namespace Homework
             _orderFormPresentationModel.GoNextPage();
             UpdateProductButtonInformation();
             UpdateButtonsState();
+            UpdatePageNumberDisplay();
         }
 
         // 更新按鈕狀態
@@ -132,7 +135,13 @@ namespace Homework
         {
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
-            _buttonAdd.Enabled = false;
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
+        }
+
+        // 更新顯示的頁碼狀態
+        private void UpdatePageNumberDisplay()
+        {
+            _pagesLabel.Text = Constant.PAGE + _orderFormPresentationModel.GetPageNumberText();
         }
     }
 }

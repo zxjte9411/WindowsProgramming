@@ -20,5 +20,7 @@ namespace Homework
         public const string PRICE = "單價：";
         public const string TOTAL = "總金額：";
         public const char CHAR_SPACE = ',';
+        public const string PAGE = "Page ：";
+        public const string SLASH = "/";
     }
 }
