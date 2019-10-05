@@ -51,7 +51,7 @@ namespace Homework
         public List<string> GetCurrentPageProducts(string categoryName)
         {
             List<Product> allProductOfThisCategory = _orderFormModel.GetProductsOfThisCategory(categoryName);
-            List<string> productsImagePath = new List<string>(); // key 為產品名稱 value 為圖片路徑
+            List<string> productsImagePath = new List<string>();
             UpdatePages(allProductOfThisCategory.Count);
             UpdateButtonState();
             int index = Constant.BUTTON_COUNT * (_currentPageNumber - 1);
@@ -66,11 +66,11 @@ namespace Homework
         }
 
         // 取得產品 (代表已按下新增按鈕)
-        public Product GetProduct(int buttonIndex)
+        public Product GetProduct(string categoryName, int buttonIndex)
         {
             _isSelectedProduct = false;
             int productIndex = buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1);
-            return _orderFormModel.GetProduct(productIndex);
+            return _orderFormModel.GetProduct(categoryName, productIndex);
         }
 
         // 取得資料列

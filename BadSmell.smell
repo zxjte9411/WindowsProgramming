@@ -185,7 +185,40 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>Unresolved warnings(忽視警告)-物件初始化可以簡化</SmellType>
+              <HashCode>Homework\Homework.OrderForm.cs.Unresolved warnings(忽視警告)-物件初始化可以簡化.88</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>88</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>Unresolved warnings(忽視警告)-物件初始化可以簡化</SmellType>
+              <HashCode>Homework\Homework.OrderForm.cs.Unresolved warnings(忽視警告)-物件初始化可以簡化.175</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Homework\Homework</Project>
+              <File>OrderForm.cs</File>
+              <Line>175</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>

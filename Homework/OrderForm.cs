@@ -19,7 +19,7 @@ namespace Homework
             InitializeDataGridView();
             _productButtons = new Button[Constant.BUTTON_COUNT];
             InitializeAllProductButton();
-            UpdateTabControl();
+            InitializeTabControl();
             UpdateProductButtonInformation();
             _productTabControl.Selected += UpdateSelectTabPage;
             _buttonAdd.Click += ClickButtonAdd;
@@ -55,7 +55,7 @@ namespace Homework
             _orderFormPresentationModel.RemoveProduct(e.RowIndex, e.ColumnIndex);
         }
         
-        // 加入產品到我的商品
+        // 加入產品到"我的商品"
         private void ClickButtonAdd(Object sender, EventArgs e)
         {
             _orderFormPresentationModel.AddProduct();
@@ -78,7 +78,7 @@ namespace Homework
         }
 
         // update tab control
-        private void UpdateTabControl()
+        private void InitializeTabControl()
         {
             _productTabControl.TabPages.Clear();
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
@@ -108,10 +108,9 @@ namespace Homework
         private void UpdateProductButtonInformation()
         {
             List<string> products = _orderFormPresentationModel.GetCurrentPageProducts(_productTabControl.SelectedTab.Name);
-            var productsList = products.ToList();
             for (int i = 0; i < Constant.BUTTON_COUNT; i++)
             { 
-                _productButtons[i].BackgroundImage = Image.FromFile(productsList[i]);
+                _productButtons[i].BackgroundImage = Image.FromFile(products[i]);
                 _productButtons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 _productButtons[i].Visible = _orderFormPresentationModel.IsProductButtonVisible(i, _productTabControl.SelectedTab.Name);
             }
@@ -122,8 +121,7 @@ namespace Homework
         // 產品按鈕被按下要執行的動作
         private void ClickProductButton(Object sender, EventArgs e)
         {
-            Button productButton = (Button)sender;
-            Product product = _orderFormPresentationModel.GetProduct(productButton.TabIndex);
+            Product product = _orderFormPresentationModel.GetProduct(_productTabControl.SelectedTab.Name, ((Button)sender).TabIndex);
             _productDescriptionRichTextBox1.Text = product.Description;            
             _labelPrice.Text = Constant.PRICE + product.Price;
             _buttonAdd.Enabled = true;
@@ -196,7 +194,7 @@ namespace Homework
                 var y = e.CellBounds.Top + (e.CellBounds.Height - height) / Constant.TWO;
                 e.Graphics.DrawImage(image, new Rectangle(x, y, width, height));
                 e.Handled = true;
-                _recordDataGridView.Columns[0].Width = width;
+                _recordDataGridView.Columns[0].Width = image.Width * Constant.TWO;
             }
         }
     }

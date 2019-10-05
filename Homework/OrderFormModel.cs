@@ -79,6 +79,7 @@ namespace Homework
         // 取得當前類別的產品 
         public List<Product> GetProductsOfThisCategory(string categoryName)
         {
+            Console.WriteLine(categoryName);
             List<Product> currentPageProducts = new List<Product>();
             for (int i = 0; i < _productList.Count; i++)
                 if (_productList[i].Category.Name == categoryName)
@@ -87,9 +88,10 @@ namespace Homework
         }
         
         // 取得產品描述
-        public Product GetProduct(int productIndex)
+        public Product GetProduct(string categoryName, int productIndex)
         {
-            return _currentUserSelectProduct = _productList[productIndex];
+            List<Product> currentPageProducts = GetProductsOfThisCategory(categoryName);
+            return _currentUserSelectProduct = currentPageProducts[productIndex];
         }
 
         // 取得資料列
