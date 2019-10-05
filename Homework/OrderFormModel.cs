@@ -87,17 +87,9 @@ namespace Homework
         }
         
         // 取得產品描述
-        public Product GetProduct(string productName)
+        public Product GetProduct(int productIndex)
         {
-            for (int i = 0; i < _productList.Count; i++)
-            {
-                if (_productList[i].Name.Equals(productName))
-                {
-                    _currentUserSelectProduct = _productList[i];
-                    return _currentUserSelectProduct;
-                }
-            }   
-            return null;
+            return _currentUserSelectProduct = _productList[productIndex];
         }
 
         // 取得資料列
@@ -106,10 +98,11 @@ namespace Homework
             string result1 = _currentUserSelectProduct.Name;
             string result2 = _currentUserSelectProduct.Category.Name;
             string result3 = _currentUserSelectProduct.Price;
-            string[] rowData = new string[Constant.THREE];
-            rowData[0] = result1;
-            rowData[1] = result2;
-            rowData[Constant.TWO] = result3;
+            string[] rowData = new string[Constant.FOUR];
+            rowData[0] = String.Empty;
+            rowData[1] = result1;
+            rowData[Constant.TWO] = result2;
+            rowData[Constant.THREE] = result3;
             return rowData;
         }
 

@@ -16,6 +16,7 @@ namespace Homework
         {
             InitializeComponent();
             _orderFormPresentationModel = clientSideViewPresentationModel;
+            InitializeDataGridView();
             _productButtons = new Button[Constant.BUTTON_COUNT];
             InitializeAllProductButton();
             UpdateTabControl();
@@ -26,13 +27,37 @@ namespace Homework
             _nextButton.Click += ClickNextButton;
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
+            _recordDataGridView.CellPainting += HandleCellPainting;
+            _recordDataGridView.CellContentClick += HandleCellClick;
+            _orderFormPresentationModel._deleteEvent += HandleRemoveProduct;
+            AddDataGridViewDeleteColumn();
         }
 
+        // DataGridView初始化
+        private void InitializeDataGridView()
+        {
+            List<Product> userSelectedProduct = _orderFormPresentationModel.OrderFormModel.Order.UserSelectProduct;
+            for (int i = 0; i < userSelectedProduct.Count(); i++)
+                this._recordDataGridView.Rows.Add(string.Empty, userSelectedProduct[i].Name, userSelectedProduct[i].Category.Name ,userSelectedProduct[i].Price);
+            _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
+        }
+
+        //處理刪除餐點的動作
+        private void HandleRemoveProduct(int rowIndex, string total)
+        {
+            _recordDataGridView.Rows.RemoveAt(rowIndex);
+            _labelTotalPrice.Text = total;
+        }
+
+        // 處理刪除按鈕被按下的事件
+        private void HandleCellClick(Object sender, DataGridViewCellEventArgs e)
+        {
+            _orderFormPresentationModel.RemoveProduct(e.RowIndex, e.ColumnIndex);
+        }
+        
         // 加入產品到我的商品
         private void ClickButtonAdd(Object sender, EventArgs e)
         {
-            _productTabControl.SelectedTab.Controls.Clear();
-            _productTabControl.SelectedTab.Controls.Add(_tableLayoutPanelProductButton);
             _orderFormPresentationModel.AddProduct();
             string[] row = _orderFormPresentationModel.GetRowData();
             _recordDataGridView.Rows.Add(row);
@@ -52,11 +77,11 @@ namespace Homework
             }
         }
 
-        // update tabpage
+        // update tab control
         private void UpdateTabControl()
         {
             _productTabControl.TabPages.Clear();
-            _buttonAdd.Enabled = false;
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
             string[] productCategoriesName = _orderFormPresentationModel.ProductCategorysName;
             foreach (var productCategoryName in productCategoriesName)
             {
@@ -82,12 +107,11 @@ namespace Homework
         // 更新產品按鈕的資訊
         private void UpdateProductButtonInformation()
         {
-            Dictionary<string, string> products = _orderFormPresentationModel.GetCurrentPageProducts(_productTabControl.SelectedTab.Name);
+            List<string> products = _orderFormPresentationModel.GetCurrentPageProducts(_productTabControl.SelectedTab.Name);
             var productsList = products.ToList();
             for (int i = 0; i < Constant.BUTTON_COUNT; i++)
-            {
-                _productButtons[i].Name = productsList[i].Key;
-                _productButtons[i].BackgroundImage = Image.FromFile(productsList[i].Value);
+            { 
+                _productButtons[i].BackgroundImage = Image.FromFile(productsList[i]);
                 _productButtons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 _productButtons[i].Visible = _orderFormPresentationModel.IsProductButtonVisible(i, _productTabControl.SelectedTab.Name);
             }
@@ -99,7 +123,7 @@ namespace Homework
         private void ClickProductButton(Object sender, EventArgs e)
         {
             Button productButton = (Button)sender;
-            Product product = _orderFormPresentationModel.GetProduct(productButton.Name);
+            Product product = _orderFormPresentationModel.GetProduct(productButton.TabIndex);
             _productDescriptionRichTextBox1.Text = product.Description;            
             _labelPrice.Text = Constant.PRICE + product.Price;
             _buttonAdd.Enabled = true;
@@ -130,18 +154,50 @@ namespace Homework
             UpdatePageNumberDisplay();
         }
 
-        // 更新按鈕狀態
+        // 更新按鈕狀態 並清除價格及描述文字
         private void UpdateButtonsState()
         {
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
+            ClearLabelText();
         }
 
         // 更新顯示的頁碼狀態
         private void UpdatePageNumberDisplay()
         {
             _pagesLabel.Text = Constant.PAGE + _orderFormPresentationModel.GetPageNumberText();
+        }
+
+        //add delete column
+        private void AddDataGridViewDeleteColumn()
+        {
+            const string DELETE_TEXT = "刪除";
+            const string DELETE_NAME = "deleteColumn";
+            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+            deleteColumn.HeaderText = DELETE_TEXT;
+            deleteColumn.Name = DELETE_NAME;
+            deleteColumn.UseColumnTextForButtonValue = true;
+            _recordDataGridView.Columns.Insert(0, deleteColumn);
+        }
+
+        // 畫 DataGridViewButtonColumn 的圖片
+        private void HandleCellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+            if (e.ColumnIndex == 0)
+            {
+                Image image = Image.FromFile(Constant.DELETE_BUTTON_ICON_IMAGE_PATH);
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                var width = image.Width / Constant.TWO;
+                var height = image.Height / Constant.TWO;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - width) / Constant.TWO;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - height) / Constant.TWO;
+                e.Graphics.DrawImage(image, new Rectangle(x, y, width, height));
+                e.Handled = true;
+                _recordDataGridView.Columns[0].Width = width;
+            }
         }
     }
 }

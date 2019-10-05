@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this._tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this._groupBoxProducts = new System.Windows.Forms.GroupBox();
@@ -402,8 +402,8 @@
             // _productName
             // 
             this._productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this._productName.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this._productName.DefaultCellStyle = dataGridViewCellStyle4;
             this._productName.HeaderText = "商品名稱";
             this._productName.Name = "_productName";
             this._productName.ReadOnly = true;
@@ -412,8 +412,8 @@
             // _productCategory
             // 
             this._productCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this._productCategory.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this._productCategory.DefaultCellStyle = dataGridViewCellStyle5;
             this._productCategory.HeaderText = "商品類別";
             this._productCategory.Name = "_productCategory";
             this._productCategory.ReadOnly = true;
@@ -422,8 +422,8 @@
             // _price
             // 
             this._price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this._price.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this._price.DefaultCellStyle = dataGridViewCellStyle6;
             this._price.HeaderText = "單價";
             this._price.Name = "_price";
             this._price.ReadOnly = true;

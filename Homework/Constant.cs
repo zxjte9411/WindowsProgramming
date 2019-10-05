@@ -10,7 +10,8 @@ namespace Homework
     {
         public const string PRODUCT_INFORMATION_FILE_NAME = "/Resource/ProductInformation.txt";
         public const string PRODUCT_CATEGORY_FILE_NAME = "/Resource/ProductCategory.txt";
-        public const string IMAGE_PATH = "../../Resource/button_add_icon.png";
+        public const string BUTTON_ADD_ICON_IMAGE_PATH = "../../Resource/button_add_icon.png";
+        public const string DELETE_BUTTON_ICON_IMAGE_PATH = "../../Resource/delete.png";
         public const int BUTTON_COUNT = 6;
         public const int TWO = 2;
         public const int THREE = 3;
@@ -22,5 +23,6 @@ namespace Homework
         public const char CHAR_SPACE = ',';
         public const string PAGE = "Page ：";
         public const string SLASH = "/";
+        public const string DOLLAR = "元";
     }
 }

@@ -185,24 +185,7 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews>
-            <Smell>
-              <Id>1</Id>
-              <SmellType>Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduct'，但從未使用過其值。</SmellType>
-              <HashCode>Homework\Homework.OrderFormPresentationModel.cs.Unresolved warnings(忽視警告)-已指派欄位 'OrderFormPresentationModel._isSelectedProduct'，但從未使用過其值。.14</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Homework\Homework</Project>
-              <File>OrderFormPresentationModel.cs</File>
-              <Line>14</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-          </Reviews>
+          <Reviews />
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -294,7 +277,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1617</ProductionLoc>
+          <ProductionLoc>1693</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
