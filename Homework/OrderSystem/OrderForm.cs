@@ -12,11 +12,11 @@ namespace Homework
     {
         private OrderFormPresentationModel _orderFormPresentationModel;
         Button[] _productButtons;
-        public OrderForm(OrderFormPresentationModel clientSideViewPresentationModel)
+        public OrderForm(OrderFormPresentationModel orderFormPresentationModel)
         {
             InitializeComponent();
-            _orderFormPresentationModel = clientSideViewPresentationModel;
-            InitializeDataGridView();
+            _orderFormPresentationModel = orderFormPresentationModel;
+            RefreshDataGridView();
             _productButtons = new Button[Constant.BUTTON_COUNT];
             InitializeAllProductButton();
             InitializeTabControl();
@@ -31,15 +31,43 @@ namespace Homework
             _recordDataGridView.CellContentClick += HandleCellClick;
             _orderFormPresentationModel._deleteEvent += HandleRemoveProduct;
             AddDataGridViewDeleteColumn();
+            _orderButton.Click += HandleOrderButton;
         }
 
-        // DataGridView初始化
-        private void InitializeDataGridView()
+        // 初始化 DataGridView
+        private void RefreshDataGridView()
         {
+            _recordDataGridView.Rows.Clear();
             List<Product> userSelectedProduct = _orderFormPresentationModel.OrderFormModel.Order.UserSelectProduct;
             for (int i = 0; i < userSelectedProduct.Count(); i++)
-                this._recordDataGridView.Rows.Add(string.Empty, userSelectedProduct[i].Name, userSelectedProduct[i].Category.Name ,userSelectedProduct[i].Price);
+                _recordDataGridView.Rows.Add(string.Empty, userSelectedProduct[i].Name, userSelectedProduct[i].Category.Name ,userSelectedProduct[i].Price);
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
+        }
+
+        // 初始化產品按鈕
+        private void InitializeAllProductButton()
+        {
+            const string BUTTON_NAME = "_button";
+            for (int i = 0; i < Constant.BUTTON_COUNT; i++)
+            {
+                _productButtons[i] = _tableLayoutPanelProductButton.Controls.Find(BUTTON_NAME + i.ToString(), true).FirstOrDefault() as Button;
+                _productButtons[i].Click += ClickProductButton;
+            }
+        }
+
+        // initialize tab control
+        private void InitializeTabControl()
+        {
+            _productTabControl.TabPages.Clear();
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
+            string[] productCategoriesName = _orderFormPresentationModel.ProductCategorysName;
+            foreach (var productCategoryName in productCategoriesName)
+            {
+                TabPage tabPage = new TabPage(productCategoryName);
+                tabPage.Name = productCategoryName;
+                _productTabControl.Controls.Add(tabPage);
+            }
+            _productTabControl.SelectedTab.Controls.Add(_tableLayoutPanelProductButton);
         }
 
         //處理刪除餐點的動作
@@ -58,59 +86,31 @@ namespace Homework
         // 加入產品到"我的商品"
         private void ClickButtonAdd(Object sender, EventArgs e)
         {
+            ClearLabelText();
             _orderFormPresentationModel.AddProduct();
             string[] row = _orderFormPresentationModel.GetRowData();
             _recordDataGridView.Rows.Add(row);
-            ClearLabelText();
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
-        }
-
-        // 初始化產品按鈕
-        private void InitializeAllProductButton()
-        {
-            const string BUTTON_NAME = "_button";
-            for (int i = 0; i < Constant.BUTTON_COUNT; i++)
-            {
-                _productButtons[i] = _tableLayoutPanelProductButton.Controls.Find(BUTTON_NAME + i.ToString(), true).FirstOrDefault() as Button;
-                _productButtons[i].Click += ClickProductButton;
-            }
-        }
-
-        // update tab control
-        private void InitializeTabControl()
-        {
-            _productTabControl.TabPages.Clear();
-            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
-            string[] productCategoriesName = _orderFormPresentationModel.ProductCategorysName;
-            foreach (var productCategoryName in productCategoriesName)
-            {
-                TabPage tabPage = new TabPage(productCategoryName);
-                tabPage.Name = productCategoryName;
-                _productTabControl.Controls.Add(tabPage);
-            }
-            _productTabControl.SelectedTab.Controls.Add(_tableLayoutPanelProductButton);
         }
 
         // 更新所選的 Page 資訊
         private void UpdateSelectTabPage(Object sender, EventArgs e)
         {
+            ClearLabelText();
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
-            TabControl tabPage = (TabControl)sender;
             _orderFormPresentationModel.CurrentPageNumber = 1;
-            _orderFormPresentationModel.IsHavePreviousPage = false;
+            _orderFormPresentationModel.IsHavePreviousPage = _orderFormPresentationModel.IsHavePreviousPage;
             UpdateProductButtonInformation();
             _productTabControl.SelectedTab.Controls.Add(_tableLayoutPanelProductButton);
-            ClearLabelText();
         }
         
         // 更新產品按鈕的資訊
         private void UpdateProductButtonInformation()
         {
-            List<string> products = _orderFormPresentationModel.GetCurrentPageProducts(_productTabControl.SelectedTab.Name);
             for (int i = 0; i < Constant.BUTTON_COUNT; i++)
             { 
-                _productButtons[i].BackgroundImage = Image.FromFile(products[i]);
+                _productButtons[i].BackgroundImage = Image.FromFile(_orderFormPresentationModel.GetCurrentPageProductsImagePath(_productTabControl.SelectedTab.Name)[i]);
                 _productButtons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 _productButtons[i].Visible = _orderFormPresentationModel.IsProductButtonVisible(i, _productTabControl.SelectedTab.Name);
             }
@@ -124,7 +124,7 @@ namespace Homework
             Product product = _orderFormPresentationModel.GetProduct(_productTabControl.SelectedTab.Name, ((Button)sender).TabIndex);
             _productDescriptionRichTextBox1.Text = product.Description;            
             _labelPrice.Text = Constant.PRICE + product.Price;
-            _buttonAdd.Enabled = true;
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
         }
 
         // 清除顯示文字
@@ -196,6 +196,14 @@ namespace Homework
                 e.Handled = true;
                 _recordDataGridView.Columns[0].Width = image.Width * Constant.TWO;
             }
+        }
+
+        // 處理訂購事件
+        private void HandleOrderButton(Object sender, EventArgs e)
+        {
+            (new CreditCardPaymentForm(new CreditCardPaymentPresentationModel(_orderFormPresentationModel.OrderFormModel))).ShowDialog();
+            RefreshDataGridView();
+            _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
         }
     }
 }

@@ -24,5 +24,11 @@ namespace Homework
         public const string PAGE = "Page ：";
         public const string SLASH = "/";
         public const string DOLLAR = "元";
+        public const string CREDIT_CARD_TEXT_BOX_NAME = "_creditCardNumberTextBox";
+        public const string REGEX = @"^[a-zA-Z]*[\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$";
+        public const string ERROR = "error!";
+        public const int MONTH = 12;
+        public const int START_YEAR = 2021;
+        public const int END_YEAR = 2028;
     }
 }

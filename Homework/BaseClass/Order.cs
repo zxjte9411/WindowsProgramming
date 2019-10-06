@@ -8,25 +8,25 @@ namespace Homework
 {
     public class Order
     {
-        private List<Product> _userSelectedProduct;
+        private List<Product> _userSelectedProducts;
         private List<int> _userSelectedProductQuantity;
         private CreditCardPayment _creditCardPayment;
         public Order()
         {
-            _userSelectedProduct = new List<Product>();
+            _userSelectedProducts = new List<Product>();
             _userSelectedProductQuantity = new List<int>();
-            _creditCardPayment = new CreditCardPayment();
+            _creditCardPayment = null;
         }
 
         public List<Product> UserSelectProduct
         {
             get
             {
-                return _userSelectedProduct;
+                return _userSelectedProducts;
             }
             set
             {
-                _userSelectedProduct = value;
+                _userSelectedProducts = value;
             }
         }
 
@@ -45,15 +45,15 @@ namespace Homework
         // 把所選的產品加入清單中
         public void AddSelectProductToList(Product selectProduct)
         {
-            for (int i = 0; i < _userSelectedProduct.Count; i++)
+            for (int i = 0; i < _userSelectedProducts.Count; i++)
             {
-                if (_userSelectedProduct[i].Name == selectProduct.Name)
+                if (_userSelectedProducts[i].Name == selectProduct.Name)
                 {
                     _userSelectedProductQuantity[i]++;
                     return;
                 }
             }
-            _userSelectedProduct.Add(selectProduct);
+            _userSelectedProducts.Add(selectProduct);
             _userSelectedProductQuantity.Add(1);
         }
 
@@ -61,15 +61,32 @@ namespace Homework
         public int GetTotalPrice()
         {
             int totalPrice = 0;
-            foreach (var product in _userSelectedProduct)
+            foreach (var product in _userSelectedProducts)
                 totalPrice += int.Parse(product.Price);
             return totalPrice;
         }
-        
+
         //刪除商品
         public void DeleteMeal(int productIndex)
         {
-            _userSelectedProduct.RemoveAt(productIndex);
+            _userSelectedProducts.RemoveAt(productIndex);
         }
+
+        public CreditCardPayment CreditCardPayment
+        {
+            get
+            {
+                return _creditCardPayment;
+            }
+            set
+            {
+                _creditCardPayment = value;
+            }
+        }
+
+        //public void ClearUserSelectedProducts()
+        //{
+        //    _userSelectedProducts.Clear();
+        //}
     }
 }

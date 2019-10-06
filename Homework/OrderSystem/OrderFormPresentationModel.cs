@@ -18,17 +18,7 @@ namespace Homework
         private bool _isHavePreviousPage;
         private bool _isHaveNextPage;
         private bool _isButtonAddEnable;
-
-        // 刪除商品
-        public void RemoveProduct(int rowIndex, int columnIndex)
-        {
-            if (columnIndex == 0 && rowIndex >= 0)
-            {
-                _orderFormModel.Order.DeleteMeal(rowIndex);
-                _deleteEvent(rowIndex, GetTotalPriceText());
-            }
-        }
-
+        
         public OrderFormPresentationModel(OrderFormModel orderFormModel)
         {
             _orderFormModel = orderFormModel;
@@ -41,6 +31,16 @@ namespace Homework
             UpdateButtonState();
         }
 
+        // 刪除商品
+        public void RemoveProduct(int rowIndex, int columnIndex)
+        {
+            if (columnIndex == 0 && rowIndex >= 0)
+            {
+                _orderFormModel.Order.DeleteMeal(rowIndex);
+                _deleteEvent(rowIndex, GetTotalPriceText());
+            }
+        }
+
         // 更新頁面數，強大公式
         private void UpdatePages(int productCount)
         {
@@ -48,7 +48,7 @@ namespace Homework
         }
 
         // 取得當前頁面產品資訊
-        public List<string> GetCurrentPageProducts(string categoryName)
+        public List<string> GetCurrentPageProductsImagePath(string categoryName)
         {
             List<Product> allProductOfThisCategory = _orderFormModel.GetProductsOfThisCategory(categoryName);
             List<string> productsImagePath = new List<string>();
@@ -65,12 +65,12 @@ namespace Homework
             return productsImagePath;
         }
 
-        // 取得產品 (代表已按下新增按鈕)
+        // 取得產品 
         public Product GetProduct(string categoryName, int buttonIndex)
         {
-            _isSelectedProduct = false;
-            int productIndex = buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1);
-            return _orderFormModel.GetProduct(categoryName, productIndex);
+            _isSelectedProduct = true;
+            UpdateButtonState();
+            return _orderFormModel.GetProduct(categoryName, buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1));
         }
 
         // 取得資料列
@@ -79,7 +79,7 @@ namespace Homework
             return _orderFormModel.GetRowData();
         }
 
-        // 加入我的商品清單
+        // 加入到"我的商品"清單 (代表已按下新增按鈕)
         public void AddProduct()
         {
             _orderFormModel.AddProduct();
@@ -87,7 +87,7 @@ namespace Homework
             UpdateButtonState();
         }
 
-        // 回傳餐點的價格總和
+        // 取得餐點的價格總和
         public string GetTotalPriceText()
         {
             const string NO = "N0"; // 千分位轉換參數
@@ -100,20 +100,20 @@ namespace Homework
             return _orderFormModel.GetProductCategoryCount(categoryName);
         }
 
-        public string[] ProductCategorysName
-        {
-            get
-            {
-                return _orderFormModel.ProductCategorysName;
-            }
-        }
-
         // 按鈕是否可顯示
         public bool IsProductButtonVisible(int productButtonIndex, string categoryName)
         {
             if (_orderFormModel.ProductCategory.Count > 0)
                 return ((_currentPageNumber - 1) * Constant.BUTTON_COUNT + productButtonIndex) < GetCategoryCount(categoryName);
             return false;
+        }
+
+        public string[] ProductCategorysName
+        {
+            get
+            {
+                return _orderFormModel.ProductCategorysName;
+            }
         }
 
         public int CurrentPageNumber

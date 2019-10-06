@@ -46,25 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
-    <Compile Include="CreditCardPayment.cs" />
-    <Compile Include="InventoryForm.cs">
+    <Compile Include="BaseClass\Category.cs" />
+    <Compile Include="BaseClass\CreditCardPayment.cs" />
+    <Compile Include="CreditCardPayment\CreditCardPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryForm.Designer.cs">
+    <Compile Include="CreditCardPayment\CreditCardPaymentForm.Designer.cs">
+      <DependentUpon>CreditCardPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreditCardPayment\CreditCardPaymentPresentationModel.cs" />
+    <Compile Include="InventorySystem\InventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventorySystem\InventoryForm.Designer.cs">
       <DependentUpon>InventoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderForm.cs">
+    <Compile Include="OrderSystem\OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderForm.Designer.cs">
+    <Compile Include="OrderSystem\OrderForm.Designer.cs">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderFormModel.cs" />
-    <Compile Include="OrderFormPresentationModel.cs" />
-    <Compile Include="Constant.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="OrderSystem\OrderFormModel.cs" />
+    <Compile Include="OrderSystem\OrderFormPresentationModel.cs" />
+    <Compile Include="BaseClass\Constant.cs" />
+    <Compile Include="BaseClass\Order.cs" />
+    <Compile Include="BaseClass\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartUp.cs">
@@ -73,10 +80,13 @@
     <Compile Include="StartUp.Designer.cs">
       <DependentUpon>StartUp.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="InventoryForm.resx">
+    <EmbeddedResource Include="CreditCardPayment\CreditCardPaymentForm.resx">
+      <DependentUpon>CreditCardPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventorySystem\InventoryForm.resx">
       <DependentUpon>InventoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderForm.resx">
+    <EmbeddedResource Include="OrderSystem\OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
