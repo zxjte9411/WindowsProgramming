@@ -111,8 +111,8 @@
             this._userNameTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.07843F));
             this._userNameTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.843137F));
             this._userNameTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.07843F));
-            this._userNameTableLayoutPanel.Controls.Add(this._firstNameTextBox, 2, 0);
             this._userNameTableLayoutPanel.Controls.Add(this._lastNameTextBox, 0, 0);
+            this._userNameTableLayoutPanel.Controls.Add(this._firstNameTextBox, 2, 0);
             this._userNameTableLayoutPanel.Controls.Add(this._dashLabel1, 1, 0);
             this._userNameTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._userNameTableLayoutPanel.Location = new System.Drawing.Point(23, 77);

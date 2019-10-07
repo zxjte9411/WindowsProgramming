@@ -32,6 +32,7 @@ namespace Homework
         public const int END_YEAR = 2028;
         public const string REGEX_TRADITIONAL_CHINESE = "^[\u4E00-\u9FFF]+$";
         public const string REGEX_ONLY_NUMBER = "^[0-9]+$";
+        public const string REGEX_SYMBOLS = @"[^\\\+()\^/!#*%&',;=?$\x22]+";
         public const string ORDER_IS_COMPLETE = "訂購完成";
     }
 }

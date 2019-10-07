@@ -67,7 +67,7 @@ namespace Homework
         // 處理 _mailTextBox 輸入限制
         private void HandleMailTextBoxKeyPress(Object sender, KeyPressEventArgs e)
         {
-            if (!(new Regex("[^*%&',;=?$\x22]+").IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back))
+            if (!(new Regex(Constant.REGEX_SYMBOLS).IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back))
                 e.Handled = true;
             else
                 e.Handled = false;
@@ -219,8 +219,7 @@ namespace Homework
         // 檢查地址
         private void CheckAddress()
         {
-            string address = _addressTextBox.Text;
-            _creditCardPaymentPresentationModel.CheckAndSetAddress(address);
+            _creditCardPaymentPresentationModel.CheckAndSetAddress(_addressTextBox.Text);
         }
 
         // 檢查全部
