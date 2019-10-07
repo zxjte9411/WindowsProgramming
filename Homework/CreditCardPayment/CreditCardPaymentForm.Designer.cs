@@ -30,8 +30,8 @@
         {
             this._secondTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this._userNameTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this._firstNameTextBox = new System.Windows.Forms.TextBox();
             this._lastNameTextBox = new System.Windows.Forms.TextBox();
+            this._firstNameTextBox = new System.Windows.Forms.TextBox();
             this._dashLabel1 = new System.Windows.Forms.Label();
             this._titleLabel = new System.Windows.Forms.Label();
             this._addressTextBox = new System.Windows.Forms.TextBox();
@@ -122,14 +122,6 @@
             this._userNameTableLayoutPanel.Size = new System.Drawing.Size(385, 29);
             this._userNameTableLayoutPanel.TabIndex = 14;
             // 
-            // _firstNameTextBox
-            // 
-            this._firstNameTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this._firstNameTextBox.Location = new System.Drawing.Point(210, 3);
-            this._firstNameTextBox.Name = "_firstNameTextBox";
-            this._firstNameTextBox.Size = new System.Drawing.Size(153, 22);
-            this._firstNameTextBox.TabIndex = 9;
-            // 
             // _lastNameTextBox
             // 
             this._lastNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,6 +129,14 @@
             this._lastNameTextBox.Name = "_lastNameTextBox";
             this._lastNameTextBox.Size = new System.Drawing.Size(171, 22);
             this._lastNameTextBox.TabIndex = 9;
+            // 
+            // _firstNameTextBox
+            // 
+            this._firstNameTextBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this._firstNameTextBox.Location = new System.Drawing.Point(210, 3);
+            this._firstNameTextBox.Name = "_firstNameTextBox";
+            this._firstNameTextBox.Size = new System.Drawing.Size(153, 22);
+            this._firstNameTextBox.TabIndex = 9;
             // 
             // _dashLabel1
             // 

@@ -45,16 +45,16 @@ namespace Homework
         // 把所選的產品加入清單中
         public void AddSelectProductToList(Product selectProduct)
         {
-            for (int i = 0; i < _userSelectedProducts.Count; i++)
-            {
-                if (_userSelectedProducts[i].Name == selectProduct.Name)
-                {
-                    _userSelectedProductQuantity[i]++;
-                    return;
-                }
-            }
+            //for (int i = 0; i < _userSelectedProducts.Count; i++)
+            //{
+            //    if (_userSelectedProducts[i].Name == selectProduct.Name)
+            //    {
+            //        _userSelectedProductQuantity[i]++;
+            //        return;
+            //    }
+            //}
             _userSelectedProducts.Add(selectProduct);
-            _userSelectedProductQuantity.Add(1);
+            //_userSelectedProductQuantity.Add(1);
         }
 
         // 回傳餐點的價格總和
@@ -84,9 +84,20 @@ namespace Homework
             }
         }
 
-        //public void ClearUserSelectedProducts()
-        //{
-        //    _userSelectedProducts.Clear();
-        //}
+        // 取得訂單中的資料
+        public List<string[]> GetUserSelectProductInList()
+        {
+            List<string[]> userSelectedProductInStringList = new List<string[]>();
+            for (int i = 0; i < _userSelectedProducts.Count; i++)
+            {
+                string[] userSelectedProductInStringArray = new string[Constant.FOUR];
+                userSelectedProductInStringArray[0] = string.Empty;
+                userSelectedProductInStringArray[1] = _userSelectedProducts[i].Name;
+                userSelectedProductInStringArray[Constant.TWO] = _userSelectedProducts[i].Category.Name;
+                userSelectedProductInStringArray[Constant.THREE] = _userSelectedProducts[i].Price;
+                userSelectedProductInStringList.Add(userSelectedProductInStringArray);
+            }
+            return userSelectedProductInStringList;
+        }
     }
 }

@@ -17,7 +17,6 @@ namespace Homework
             InitializeComponent();
             _orderFormPresentationModel = orderFormPresentationModel;
             _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
-            RefreshDataGridView();
             _productButtons = new Button[Constant.BUTTON_COUNT];
             InitializeAllProductButton();
             InitializeTabControl();
@@ -33,15 +32,16 @@ namespace Homework
             _orderFormPresentationModel._deleteEvent += HandleRemoveProduct;
             AddDataGridViewDeleteColumn();
             _orderButton.Click += HandleOrderButton;
+            RefreshDataGridView();
         }
 
         // 初始化 DataGridView
         private void RefreshDataGridView()
         {
             _recordDataGridView.Rows.Clear();
-            List<Product> userSelectedProduct = _orderFormPresentationModel.OrderFormModel.Order.UserSelectProduct;
+            List<string[]> userSelectedProduct = _orderFormPresentationModel.OrderFormModel.Order.GetUserSelectProductInList();
             for (int i = 0; i < userSelectedProduct.Count(); i++)
-                _recordDataGridView.Rows.Add(string.Empty, userSelectedProduct[i].Name, userSelectedProduct[i].Category.Name ,userSelectedProduct[i].Price);
+                _recordDataGridView.Rows.Add(userSelectedProduct[i]);
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
         }
 
@@ -74,7 +74,8 @@ namespace Homework
         //處理刪除餐點的動作
         private void HandleRemoveProduct(int rowIndex, string total)
         {
-            _recordDataGridView.Rows.RemoveAt(rowIndex);
+            if (_recordDataGridView.Rows.Count > 0)
+                _recordDataGridView.Rows.RemoveAt(rowIndex);
             _labelTotalPrice.Text = total;
         }
 

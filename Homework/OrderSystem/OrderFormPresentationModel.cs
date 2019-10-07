@@ -221,5 +221,11 @@ namespace Homework
         {
             return _currentPageNumber + Constant.SLASH + _pages;
         }
+
+        // 取得訂單中的資料
+        public List<string[]> GetUserSelectProductInList()
+        {
+            return _orderFormModel.Order.GetUserSelectProductInList();
+        }
     }
 }
