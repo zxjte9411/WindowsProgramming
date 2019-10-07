@@ -18,6 +18,7 @@ namespace Homework
         private bool _isHavePreviousPage;
         private bool _isHaveNextPage;
         private bool _isButtonAddEnable;
+        private bool _isOrderButtonEnable;
         
         public OrderFormPresentationModel(OrderFormModel orderFormModel)
         {
@@ -27,6 +28,7 @@ namespace Homework
             _isHaveNextPage = true;
             _isSelectedProduct = false;
             _isButtonAddEnable = false;
+            _isOrderButtonEnable = false;
             UpdatePages(_orderFormModel.ProductCategory[0].Count);
             UpdateButtonState();
         }
@@ -153,6 +155,18 @@ namespace Homework
             get
             {
                 return _isButtonAddEnable;
+            }
+        }
+
+        public bool IsOrderButtonEnable
+        {
+            get
+            {
+                if (_orderFormModel.Order.UserSelectProduct.Count == 0)
+                    _isOrderButtonEnable = false;
+                else
+                    _isOrderButtonEnable = true;
+                return _isOrderButtonEnable;
             }
         }
 

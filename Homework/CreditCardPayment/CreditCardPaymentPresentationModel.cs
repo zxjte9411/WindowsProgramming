@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 
 namespace Homework
 {
-
     public class CreditCardPaymentPresentationModel
     {
         OrderFormModel _orderFormModel;

@@ -19,6 +19,14 @@ namespace Homework
 
         public CreditCardPayment()
         {
+            _lastName = string.Empty;
+            _firstName = string.Empty;
+            _creditCardNumber = new string[Constant.FOUR];
+            _effectiveDateYear = Constant.START_YEAR.ToString();
+            _effectiveDateMonth = (1).ToString();
+            _securityCode = string.Empty;
+            _mail = string.Empty;
+            _address = string.Empty;
         }
 
         public CreditCardPayment(string lastName, string firstName, string[] creditCardNumber, string effectiveDateYear, string effectiveDateMonth, string securityCode, string mail, string address)

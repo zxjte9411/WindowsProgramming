@@ -107,6 +107,7 @@
             // _userNameTableLayoutPanel
             // 
             this._userNameTableLayoutPanel.ColumnCount = 3;
+            this._secondTableLayoutPanel.SetColumnSpan(this._userNameTableLayoutPanel, 2);
             this._userNameTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.07843F));
             this._userNameTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.843137F));
             this._userNameTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.07843F));
@@ -118,15 +119,15 @@
             this._userNameTableLayoutPanel.Name = "_userNameTableLayoutPanel";
             this._userNameTableLayoutPanel.RowCount = 1;
             this._userNameTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this._userNameTableLayoutPanel.Size = new System.Drawing.Size(363, 29);
+            this._userNameTableLayoutPanel.Size = new System.Drawing.Size(385, 29);
             this._userNameTableLayoutPanel.TabIndex = 14;
             // 
             // _firstNameTextBox
             // 
-            this._firstNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._firstNameTextBox.Location = new System.Drawing.Point(198, 3);
+            this._firstNameTextBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this._firstNameTextBox.Location = new System.Drawing.Point(210, 3);
             this._firstNameTextBox.Name = "_firstNameTextBox";
-            this._firstNameTextBox.Size = new System.Drawing.Size(162, 22);
+            this._firstNameTextBox.Size = new System.Drawing.Size(153, 22);
             this._firstNameTextBox.TabIndex = 9;
             // 
             // _lastNameTextBox
@@ -134,7 +135,7 @@
             this._lastNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._lastNameTextBox.Location = new System.Drawing.Point(3, 3);
             this._lastNameTextBox.Name = "_lastNameTextBox";
-            this._lastNameTextBox.Size = new System.Drawing.Size(161, 22);
+            this._lastNameTextBox.Size = new System.Drawing.Size(171, 22);
             this._lastNameTextBox.TabIndex = 9;
             // 
             // _dashLabel1
@@ -142,9 +143,9 @@
             this._dashLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._dashLabel1.AutoSize = true;
             this._dashLabel1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._dashLabel1.Location = new System.Drawing.Point(170, 4);
+            this._dashLabel1.Location = new System.Drawing.Point(180, 4);
             this._dashLabel1.Name = "_dashLabel1";
-            this._dashLabel1.Size = new System.Drawing.Size(22, 21);
+            this._dashLabel1.Size = new System.Drawing.Size(24, 21);
             this._dashLabel1.TabIndex = 10;
             this._dashLabel1.Text = "－";
             this._dashLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -254,6 +255,7 @@
             // _creditCardNumberTableLayoutPanel
             // 
             this._creditCardNumberTableLayoutPanel.ColumnCount = 7;
+            this._secondTableLayoutPanel.SetColumnSpan(this._creditCardNumberTableLayoutPanel, 2);
             this._creditCardNumberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
             this._creditCardNumberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4F));
             this._creditCardNumberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
@@ -273,7 +275,7 @@
             this._creditCardNumberTableLayoutPanel.Name = "_creditCardNumberTableLayoutPanel";
             this._creditCardNumberTableLayoutPanel.RowCount = 1;
             this._creditCardNumberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this._creditCardNumberTableLayoutPanel.Size = new System.Drawing.Size(363, 29);
+            this._creditCardNumberTableLayoutPanel.Size = new System.Drawing.Size(385, 29);
             this._creditCardNumberTableLayoutPanel.TabIndex = 15;
             // 
             // _creditCardNumberTextBox0
@@ -282,34 +284,34 @@
             this._creditCardNumberTextBox0.Location = new System.Drawing.Point(3, 3);
             this._creditCardNumberTextBox0.MaxLength = 4;
             this._creditCardNumberTextBox0.Name = "_creditCardNumberTextBox0";
-            this._creditCardNumberTextBox0.Size = new System.Drawing.Size(73, 22);
+            this._creditCardNumberTextBox0.Size = new System.Drawing.Size(78, 22);
             this._creditCardNumberTextBox0.TabIndex = 10;
             // 
             // _creditCardNumberTextBox1
             // 
             this._creditCardNumberTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._creditCardNumberTextBox1.Location = new System.Drawing.Point(96, 3);
+            this._creditCardNumberTextBox1.Location = new System.Drawing.Point(102, 3);
             this._creditCardNumberTextBox1.MaxLength = 4;
             this._creditCardNumberTextBox1.Name = "_creditCardNumberTextBox1";
-            this._creditCardNumberTextBox1.Size = new System.Drawing.Size(73, 22);
+            this._creditCardNumberTextBox1.Size = new System.Drawing.Size(78, 22);
             this._creditCardNumberTextBox1.TabIndex = 11;
             // 
             // _creditCardNumberTextBox2
             // 
             this._creditCardNumberTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._creditCardNumberTextBox2.Location = new System.Drawing.Point(189, 3);
+            this._creditCardNumberTextBox2.Location = new System.Drawing.Point(201, 3);
             this._creditCardNumberTextBox2.MaxLength = 4;
             this._creditCardNumberTextBox2.Name = "_creditCardNumberTextBox2";
-            this._creditCardNumberTextBox2.Size = new System.Drawing.Size(73, 22);
+            this._creditCardNumberTextBox2.Size = new System.Drawing.Size(78, 22);
             this._creditCardNumberTextBox2.TabIndex = 12;
             // 
             // _creditCardNumberTextBox3
             // 
-            this._creditCardNumberTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._creditCardNumberTextBox3.Location = new System.Drawing.Point(282, 3);
+            this._creditCardNumberTextBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this._creditCardNumberTextBox3.Location = new System.Drawing.Point(300, 3);
             this._creditCardNumberTextBox3.MaxLength = 4;
             this._creditCardNumberTextBox3.Name = "_creditCardNumberTextBox3";
-            this._creditCardNumberTextBox3.Size = new System.Drawing.Size(78, 22);
+            this._creditCardNumberTextBox3.Size = new System.Drawing.Size(63, 22);
             this._creditCardNumberTextBox3.TabIndex = 13;
             // 
             // _dashLabel4
@@ -317,9 +319,9 @@
             this._dashLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._dashLabel4.AutoSize = true;
             this._dashLabel4.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._dashLabel4.Location = new System.Drawing.Point(268, 8);
+            this._dashLabel4.Location = new System.Drawing.Point(285, 8);
             this._dashLabel4.Name = "_dashLabel4";
-            this._dashLabel4.Size = new System.Drawing.Size(8, 12);
+            this._dashLabel4.Size = new System.Drawing.Size(9, 12);
             this._dashLabel4.TabIndex = 16;
             this._dashLabel4.Text = "-";
             this._dashLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -329,9 +331,9 @@
             this._dashLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._dashLabel3.AutoSize = true;
             this._dashLabel3.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._dashLabel3.Location = new System.Drawing.Point(175, 8);
+            this._dashLabel3.Location = new System.Drawing.Point(186, 8);
             this._dashLabel3.Name = "_dashLabel3";
-            this._dashLabel3.Size = new System.Drawing.Size(8, 12);
+            this._dashLabel3.Size = new System.Drawing.Size(9, 12);
             this._dashLabel3.TabIndex = 15;
             this._dashLabel3.Text = "-";
             this._dashLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -341,9 +343,9 @@
             this._dashLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._dashLabel2.AutoSize = true;
             this._dashLabel2.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._dashLabel2.Location = new System.Drawing.Point(82, 8);
+            this._dashLabel2.Location = new System.Drawing.Point(87, 8);
             this._dashLabel2.Name = "_dashLabel2";
-            this._dashLabel2.Size = new System.Drawing.Size(8, 12);
+            this._dashLabel2.Size = new System.Drawing.Size(9, 12);
             this._dashLabel2.TabIndex = 14;
             this._dashLabel2.Text = "-";
             this._dashLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

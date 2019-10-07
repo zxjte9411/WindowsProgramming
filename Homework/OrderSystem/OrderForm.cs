@@ -16,6 +16,7 @@ namespace Homework
         {
             InitializeComponent();
             _orderFormPresentationModel = orderFormPresentationModel;
+            _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
             RefreshDataGridView();
             _productButtons = new Button[Constant.BUTTON_COUNT];
             InitializeAllProductButton();
@@ -81,6 +82,7 @@ namespace Homework
         private void HandleCellClick(Object sender, DataGridViewCellEventArgs e)
         {
             _orderFormPresentationModel.RemoveProduct(e.RowIndex, e.ColumnIndex);
+            _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
         }
         
         // 加入產品到"我的商品"
@@ -92,6 +94,7 @@ namespace Homework
             _recordDataGridView.Rows.Add(row);
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
+            _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
         }
 
         // 更新所選的 Page 資訊
@@ -204,6 +207,7 @@ namespace Homework
             (new CreditCardPaymentForm(new CreditCardPaymentPresentationModel(_orderFormPresentationModel.OrderFormModel))).ShowDialog();
             RefreshDataGridView();
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
+            _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Homework
         {
             _userSelectedProducts = new List<Product>();
             _userSelectedProductQuantity = new List<int>();
-            _creditCardPayment = null;
+            _creditCardPayment = new CreditCardPayment();
         }
 
         public List<Product> UserSelectProduct

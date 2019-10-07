@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Homework
 {
@@ -19,28 +20,57 @@ namespace Homework
         {
             InitializeComponent();
             _creditCardPaymentPresentationModel = creditCardPaymentPresentationModel;
+            _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
             InitializeComboBox();
-            if (_creditCardPaymentPresentationModel.IsHaveCreditCard())
-                RefreshCreditCardInformation();
-            else
-                _creditCardPaymentPresentationModel.Order.CreditCardPayment = new CreditCardPayment();
+            RefreshCreditCardInformation();
             _errorProvider = new ErrorProvider();
             _confirmButton.Click += HandleConfirmButton;
+            _lastNameTextBox.TextChanged += HandleUserNameTextBoxChange;
+            _firstNameTextBox.TextChanged += HandleUserNameTextBoxChange;
             _creditCardNumberTextBox0.TextChanged += HandleTextBox0Change;
             _creditCardNumberTextBox1.TextChanged += HandleTextBox1Change;
             _creditCardNumberTextBox2.TextChanged += HandleTextBox2Change;
-            _creditCardNumberTextBox0.TextChanged += HandleAllTextBoxChange;
-            _creditCardNumberTextBox1.TextChanged += HandleAllTextBoxChange;
-            _creditCardNumberTextBox2.TextChanged += HandleAllTextBoxChange;
-            _creditCardNumberTextBox3.TextChanged += HandleAllTextBoxChange;
-            _lastNameTextBox.TextChanged += HandleAllTextBoxChange;
-            _firstNameTextBox.TextChanged += HandleAllTextBoxChange;
-            _securityCodeTextBox.TextChanged += HandleAllTextBoxChange;
-            _mailTextBox.TextChanged += HandleAllTextBoxChange;
-            _addressTextBox.TextChanged += HandleAllTextBoxChange;
             _creditCardNumberTextBoxes = new List<TextBox>();
             for (int i = 0; i < Constant.FOUR; i++)
+            {
                 _creditCardNumberTextBoxes.Add(_creditCardNumberTableLayoutPanel.Controls.Find(Constant.CREDIT_CARD_TEXT_BOX_NAME + i.ToString(), true).FirstOrDefault() as TextBox);
+                _creditCardNumberTextBoxes[i].KeyPress += HandleCreditCardNumberAndSecurityCodeTextBoxKeyPress;
+                _creditCardNumberTextBoxes[i].TextChanged += HandleCreditCardNumberTextBoxChange;
+            }
+            _securityCodeTextBox.TextChanged += HandleSecurityCodeTextBoxChange;
+            _mailTextBox.TextChanged += HandleMailFormatTextBoxChange;
+            _addressTextBox.TextChanged += HandleAddressTextBoxChange;
+            _lastNameTextBox.KeyPress += HandleNameTextBoxKeyPress;
+            _firstNameTextBox.KeyPress += HandleNameTextBoxKeyPress;
+            _securityCodeTextBox.KeyPress += HandleCreditCardNumberAndSecurityCodeTextBoxKeyPress;
+            _mailTextBox.KeyPress += HandleMailTextBoxKeyPress;
+        }
+
+        //  處理 NameTextBox 輸入限制
+        private void HandleNameTextBoxKeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (new Regex(Constant.REGEX_TRADITIONAL_CHINESE).IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        // 處理只能輸入純數字的 TextBox 輸入限制
+        private void HandleCreditCardNumberAndSecurityCodeTextBoxKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (new Regex(Constant.REGEX_ONLY_NUMBER).IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        // 處理 _mailTextBox 輸入限制
+        private void HandleMailTextBoxKeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (!(new Regex("[^*%&',;=?$\x22]+").IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back))
+                e.Handled = true;
+            else
+                e.Handled = false;
         }
 
         // 初始化 ComBox
@@ -58,15 +88,10 @@ namespace Homework
             _errorProvider.Clear();
             _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateYear = _effectiveDateYearComboBox.Text;
             _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateMonth = _effectiveDateMonthComboBox.Text;
-            CheckUserName();
-            CheckCreditCardNumber();
-            CheckSecurityCode();
-            CheckMail();
-            CheckAddress();
             CheckAll();
             if (_creditCardPaymentPresentationModel.IsAllCorrect)
             {
-                MessageBox.Show("訂購完成!");
+                MessageBox.Show(Constant.ORDER_IS_COMPLETE);
                 Close();
                 ClearOrder();
             }
@@ -93,16 +118,54 @@ namespace Homework
                 _creditCardNumberTextBox3.Focus();
         }
 
-        // 處理所有 TextBoxChange 
-        private void HandleAllTextBoxChange(Object sender, EventArgs e)
+        // 處理名字輸入
+        private void HandleUserNameTextBoxChange(Object sender, EventArgs e)
         {
-            CheckUserName();
-            CheckCreditCardNumber();
-            CheckSecurityCode();
-            CheckMail();
-            CheckAddress();
             CheckAll();
             _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
+            if (!_creditCardPaymentPresentationModel.IsUserNameCorrect)
+                _errorProvider.SetError(_firstNameTextBox, Constant.ERROR);
+        }
+
+        // 處理卡號輸入
+        private void HandleCreditCardNumberTextBoxChange(Object sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            CheckCreditCardNumber();
+            _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
+            if (!_creditCardPaymentPresentationModel.IsCreditCardNumberCorrect)
+                _errorProvider.SetError(_creditCardNumberTextBox3, Constant.ERROR);
+        }
+
+        // 處理安全碼輸入
+        private void HandleSecurityCodeTextBoxChange(Object sender, EventArgs e)
+        {
+            CheckAll();
+            _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
+            if (!_creditCardPaymentPresentationModel.IsSecurityCodeCorrect)
+                _errorProvider.SetError(_securityCodeTextBox, Constant.ERROR);
+        }
+
+        // 處理 mail 輸入
+        private void HandleMailFormatTextBoxChange(Object sender, EventArgs e)
+        {
+            //_errorProvider.Clear();
+            //CheckMail();
+            CheckAll();
+            _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
+            if (!_creditCardPaymentPresentationModel.IsMailFormatCorrect)
+                _errorProvider.SetError(_mailTextBox, Constant.ERROR);
+        }
+
+        // 處理地址輸入
+        private void HandleAddressTextBoxChange(Object sender, EventArgs e)
+        {
+            //_errorProvider.Clear();
+            //CheckMail();
+            CheckAll();
+            _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
+            if (!_creditCardPaymentPresentationModel.IsAddressCorrect)
+                _errorProvider.SetError(_addressTextBox, Constant.ERROR);
         }
 
         // 填入資訊
@@ -119,7 +182,6 @@ namespace Homework
             {
                 _creditCardPaymentPresentationModel.Order.CreditCardPayment = new CreditCardPayment();
             }
-            
             _effectiveDateYearComboBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateYear;
             _effectiveDateMonthComboBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateMonth;
             _mailTextBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.Mail;
@@ -129,9 +191,7 @@ namespace Homework
         // 檢查持卡人姓名
         private void CheckUserName()
         {
-            string lastName = _lastNameTextBox.Text;
-            string firstName = _firstNameTextBox.Text;
-            _creditCardPaymentPresentationModel.CheckAndSetUserName(lastName, firstName);
+            _creditCardPaymentPresentationModel.CheckAndSetUserName(_lastNameTextBox.Text, _firstNameTextBox.Text);
         }
 
         // 檢查信用卡卡號
@@ -153,8 +213,7 @@ namespace Homework
         // 檢查郵件格式
         private void CheckMail()
         {
-            string mail = _mailTextBox.Text;
-            _creditCardPaymentPresentationModel.CheckAndSetMail(mail);
+            _creditCardPaymentPresentationModel.CheckAndSetMail(_mailTextBox.Text);
         }
 
         // 檢查地址
@@ -168,18 +227,13 @@ namespace Homework
         private void CheckAll()
         {
             _errorProvider.Clear();
+            CheckUserName();
+            CheckCreditCardNumber();
+            CheckSecurityCode();
+            CheckMail();
+            CheckAddress();
             _creditCardPaymentPresentationModel.CheckAll();
             _confirmButton.Enabled = _creditCardPaymentPresentationModel.IsConfirmButtonEnable;
-            if (!_creditCardPaymentPresentationModel.IsUserNameCorrect)
-                _errorProvider.SetError(_firstNameTextBox, Constant.ERROR);
-            if (!_creditCardPaymentPresentationModel.IsCreditCardNumberCorrect)
-                _errorProvider.SetError(_creditCardNumberTextBox3, Constant.ERROR);
-            if (!_creditCardPaymentPresentationModel.IsSecurityCodeCorrect)
-                _errorProvider.SetError(_securityCodeTextBox, Constant.ERROR);
-            if (!_creditCardPaymentPresentationModel.IsMailFormatCorrect)
-                _errorProvider.SetError(_mailTextBox, Constant.ERROR);
-            if (!_creditCardPaymentPresentationModel.IsAddressCorrect)
-                _errorProvider.SetError(_addressTextBox, Constant.ERROR);
         }
 
         // 清空"我的訂單"
