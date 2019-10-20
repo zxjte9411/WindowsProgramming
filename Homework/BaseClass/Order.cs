@@ -9,12 +9,10 @@ namespace Homework
     public class Order
     {
         private List<Product> _userSelectedProducts;
-        private List<int> _userSelectedProductQuantity;
         private CreditCardPayment _creditCardPayment;
         public Order()
         {
             _userSelectedProducts = new List<Product>();
-            _userSelectedProductQuantity = new List<int>();
             _creditCardPayment = new CreditCardPayment();
         }
 
@@ -30,31 +28,10 @@ namespace Homework
             }
         }
 
-        public List<int> UserSelectProductQuantity
-        {
-            get
-            {
-                return _userSelectedProductQuantity;
-            }
-            set
-            {
-                _userSelectedProductQuantity = value;
-            }
-        }
-
         // 把所選的產品加入清單中
         public void AddSelectProductToList(Product selectProduct)
         {
-            //for (int i = 0; i < _userSelectedProducts.Count; i++)
-            //{
-            //    if (_userSelectedProducts[i].Name == selectProduct.Name)
-            //    {
-            //        _userSelectedProductQuantity[i]++;
-            //        return;
-            //    }
-            //}
-            _userSelectedProducts.Add(selectProduct);
-            //_userSelectedProductQuantity.Add(1);
+            _userSelectedProducts.Add(new Product(selectProduct.Name, selectProduct.Category, selectProduct.Price, selectProduct.Description, selectProduct.ImagePath, (1).ToString()));
         }
 
         // 回傳餐點的價格總和
@@ -62,7 +39,7 @@ namespace Homework
         {
             int totalPrice = 0;
             foreach (var product in _userSelectedProducts)
-                totalPrice += int.Parse(product.Price);
+                totalPrice += int.Parse(product.Price) * int.Parse(product.Quantity);
             return totalPrice;
         }
 
@@ -90,14 +67,22 @@ namespace Homework
             List<string[]> userSelectedProductInStringList = new List<string[]>();
             for (int i = 0; i < _userSelectedProducts.Count; i++)
             {
-                string[] userSelectedProductInStringArray = new string[Constant.FOUR];
+                string[] userSelectedProductInStringArray = new string[Constant.FIVE + 1];
                 userSelectedProductInStringArray[0] = string.Empty;
                 userSelectedProductInStringArray[1] = _userSelectedProducts[i].Name;
                 userSelectedProductInStringArray[Constant.TWO] = _userSelectedProducts[i].Category.Name;
-                userSelectedProductInStringArray[Constant.THREE] = _userSelectedProducts[i].Price;
+                userSelectedProductInStringArray[Constant.THREE] = int.Parse(_userSelectedProducts[i].Price).ToString(Constant.NO);
+                userSelectedProductInStringArray[Constant.FOUR] = _userSelectedProducts[i].Quantity;
+                userSelectedProductInStringArray[Constant.FIVE] = (int.Parse(_userSelectedProducts[i].Price) * int.Parse(_userSelectedProducts[i].Quantity)).ToString(Constant.NO);
                 userSelectedProductInStringList.Add(userSelectedProductInStringArray);
             }
             return userSelectedProductInStringList;
+        }
+
+        // 取得單個產品的總價
+        public int GetCustomerSelectedProductSubtotal(int rowIndex)
+        {
+            return int.Parse(_userSelectedProducts[rowIndex].Price) * int.Parse(_userSelectedProducts[rowIndex].Quantity);
         }
     }
 }

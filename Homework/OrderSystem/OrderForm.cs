@@ -16,6 +16,7 @@ namespace Homework
         {
             InitializeComponent();
             _orderFormPresentationModel = orderFormPresentationModel;
+            _orderFormPresentationModel.CurrentPageNumber = 1;
             _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
             _productButtons = new Button[Constant.BUTTON_COUNT];
             InitializeAllProductButton();
@@ -28,8 +29,10 @@ namespace Homework
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
             _recordDataGridView.CellPainting += HandleCellPainting;
-            _recordDataGridView.CellContentClick += HandleCellClick;
+            _recordDataGridView.CellContentClick += HandleCellContentClickEvent;
+            _recordDataGridView.CellValueChanged += HandleCellValueChangedEvent;
             _orderFormPresentationModel._deleteEvent += HandleRemoveProduct;
+            _orderFormPresentationModel._changeQuantityEvent += HandleCellValueChanged;
             AddDataGridViewDeleteColumn();
             _orderButton.Click += HandleOrderButton;
             RefreshDataGridView();
@@ -39,7 +42,7 @@ namespace Homework
         private void RefreshDataGridView()
         {
             _recordDataGridView.Rows.Clear();
-            List<string[]> userSelectedProduct = _orderFormPresentationModel.OrderFormModel.Order.GetUserSelectProductInList();
+            List<string[]> userSelectedProduct = _orderFormPresentationModel.Model.Order.GetUserSelectProductInList();
             for (int i = 0; i < userSelectedProduct.Count(); i++)
                 _recordDataGridView.Rows.Add(userSelectedProduct[i]);
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
@@ -77,15 +80,31 @@ namespace Homework
             if (_recordDataGridView.Rows.Count > 0)
                 _recordDataGridView.Rows.RemoveAt(rowIndex);
             _labelTotalPrice.Text = total;
+            ClearLabelText();
         }
 
         // 處理刪除按鈕被按下的事件
-        private void HandleCellClick(Object sender, DataGridViewCellEventArgs e)
+        private void HandleCellContentClickEvent(Object sender, DataGridViewCellEventArgs e)
         {
-            _orderFormPresentationModel.RemoveProduct(e.RowIndex, e.ColumnIndex);
+            _orderFormPresentationModel.HandleDataGridViewPerformance(e.RowIndex, e.ColumnIndex, null);
             _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;
         }
-        
+
+        //處理 DataGridView 修改 CellValue 的事件
+        private void HandleCellValueChangedEvent(Object sender, DataGridViewCellEventArgs e)
+        {
+            object valueObject = (object)_recordDataGridView[e.ColumnIndex, e.RowIndex].Value;
+            _orderFormPresentationModel.HandleDataGridViewPerformance(e.RowIndex, e.ColumnIndex, valueObject);
+        }
+
+        //處理 DataGridView 修改 CellValue 的動作
+        private void HandleCellValueChanged(int rowIndex, string total)
+        {
+            if (_recordDataGridView.Rows.Count > 0)
+                _recordDataGridView.Rows[rowIndex].Cells[Constant.FIVE].Value = _orderFormPresentationModel.Model.Order.GetCustomerSelectedProductSubtotal(rowIndex).ToString(Constant.NO);
+            _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
+        }
+
         // 加入產品到"我的商品"
         private void ClickButtonAdd(Object sender, EventArgs e)
         {
@@ -127,7 +146,9 @@ namespace Homework
         {
             Product product = _orderFormPresentationModel.GetProduct(_productTabControl.SelectedTab.Name, ((Button)sender).TabIndex);
             _productDescriptionRichTextBox1.Text = product.Description;            
-            _labelPrice.Text = Constant.PRICE + product.Price;
+            _labelPrice.Text = Constant.PRICE + int.Parse(product.Price).ToString(Constant.NO);
+            _labelQuantity.Text = Constant.STOCK_QUANTITY + product.Quantity;
+            _orderFormPresentationModel.CheckIsHaveThisProduct(product);
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
         }
 
@@ -136,6 +157,7 @@ namespace Homework
         {
             _productDescriptionRichTextBox1.Text = string.Empty;
             _labelPrice.Text = string.Empty;
+            _labelQuantity.Text = string.Empty;
         }
 
         // go previous page
@@ -177,6 +199,7 @@ namespace Homework
             const string DELETE_TEXT = "刪除";
             const string DELETE_NAME = "deleteColumn";
             DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+            deleteColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             deleteColumn.HeaderText = DELETE_TEXT;
             deleteColumn.Name = DELETE_NAME;
             deleteColumn.UseColumnTextForButtonValue = true;
@@ -205,7 +228,7 @@ namespace Homework
         // 處理訂購事件
         private void HandleOrderButton(Object sender, EventArgs e)
         {
-            (new CreditCardPaymentForm(new CreditCardPaymentPresentationModel(_orderFormPresentationModel.OrderFormModel))).ShowDialog();
+            (new CreditCardPaymentForm(new CreditCardPaymentPresentationModel(_orderFormPresentationModel.Model))).ShowDialog();
             RefreshDataGridView();
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
             _orderButton.Enabled = _orderFormPresentationModel.IsOrderButtonEnable;

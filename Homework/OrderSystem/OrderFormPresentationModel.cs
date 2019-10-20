@@ -8,10 +8,11 @@ namespace Homework
 {
     public class OrderFormPresentationModel
     {
-        public delegate void DataGridViewEventHandler(int rowIndex, string total);
         public event DataGridViewEventHandler _deleteEvent;
+        public event DataGridViewEventHandler _changeQuantityEvent;
+        public delegate void DataGridViewEventHandler(int rowIndex, string total);
 
-        private OrderFormModel _orderFormModel;
+        private Model _model;
         private int _currentPageNumber;
         private int _pages;
         private bool _isSelectedProduct;
@@ -20,26 +21,34 @@ namespace Homework
         private bool _isButtonAddEnable;
         private bool _isOrderButtonEnable;
         
-        public OrderFormPresentationModel(OrderFormModel orderFormModel)
+        public OrderFormPresentationModel(Model orderFormModel)
         {
-            _orderFormModel = orderFormModel;
+            _model = orderFormModel;
             _currentPageNumber = 1;
             _isHavePreviousPage = false;
             _isHaveNextPage = true;
             _isSelectedProduct = false;
             _isButtonAddEnable = false;
             _isOrderButtonEnable = false;
-            UpdatePages(_orderFormModel.ProductCategory[0].Count);
+            UpdatePages(_model.ProductCategory[0].Count);
             UpdateButtonState();
         }
 
-        // 刪除商品
-        public void RemoveProduct(int rowIndex, int columnIndex)
+        // 處理DataGridView的程序
+        public void HandleDataGridViewPerformance(int rowIndex, int columnIndex, object objectValue)
         {
             if (columnIndex == 0 && rowIndex >= 0)
             {
-                _orderFormModel.Order.DeleteMeal(rowIndex);
-                _deleteEvent(rowIndex, GetTotalPriceText());
+                _model.Order.DeleteMeal(rowIndex);
+                if (_deleteEvent != null)
+                    _deleteEvent(rowIndex, GetTotalPriceText());
+            }
+            else if (columnIndex == Constant.FOUR && rowIndex >= 0 && objectValue != null)
+            {
+                int value = Convert.ToInt32(objectValue);
+                _model.UpdateOrderQuantitySubtotal(rowIndex, value);
+                if (_changeQuantityEvent != null)
+                    _changeQuantityEvent(rowIndex, GetTotalPriceText());
             }
         }
 
@@ -52,7 +61,7 @@ namespace Homework
         // 取得當前頁面產品資訊
         public List<string> GetCurrentPageProductsImagePath(string categoryName)
         {
-            List<Product> allProductOfThisCategory = _orderFormModel.GetProductsOfThisCategory(categoryName);
+            List<Product> allProductOfThisCategory = _model.GetProductsOfThisCategory(categoryName);
             List<string> productsImagePath = new List<string>();
             UpdatePages(allProductOfThisCategory.Count);
             UpdateButtonState();
@@ -67,24 +76,24 @@ namespace Homework
             return productsImagePath;
         }
 
-        // 取得產品 
+        // 取得指定產品 
         public Product GetProduct(string categoryName, int buttonIndex)
         {
             _isSelectedProduct = true;
             UpdateButtonState();
-            return _orderFormModel.GetProduct(categoryName, buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1));
+            return _model.GetProduct(categoryName, buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1));
         }
 
         // 取得資料列
         public string[] GetRowData()
         {
-            return _orderFormModel.GetRowData();
+            return _model.GetRowData();
         }
 
         // 加入到"我的商品"清單 (代表已按下新增按鈕)
         public void AddProduct()
         {
-            _orderFormModel.AddProduct();
+            _model.AddProduct();
             _isSelectedProduct = false;
             UpdateButtonState();
         }
@@ -92,20 +101,19 @@ namespace Homework
         // 取得餐點的價格總和
         public string GetTotalPriceText()
         {
-            const string NO = "N0"; // 千分位轉換參數
-            return Constant.TOTAL + _orderFormModel.Order.GetTotalPrice().ToString(NO) + Constant.DOLLAR;
+            return Constant.TOTAL + _model.Order.GetTotalPrice().ToString(Constant.NO) + Constant.DOLLAR;
         }
 
         // GetCategoryCount
         private int GetCategoryCount(string categoryName)
         {
-            return _orderFormModel.GetProductCategoryCount(categoryName);
+            return _model.GetProductCategoryCount(categoryName);
         }
 
         // 按鈕是否可顯示
         public bool IsProductButtonVisible(int productButtonIndex, string categoryName)
         {
-            if (_orderFormModel.ProductCategory.Count > 0)
+            if (_model.ProductCategory.Count > 0)
                 return ((_currentPageNumber - 1) * Constant.BUTTON_COUNT + productButtonIndex) < GetCategoryCount(categoryName);
             return false;
         }
@@ -114,7 +122,7 @@ namespace Homework
         {
             get
             {
-                return _orderFormModel.ProductCategorysName;
+                return _model.ProductCategorysName;
             }
         }
 
@@ -162,7 +170,7 @@ namespace Homework
         {
             get
             {
-                if (_orderFormModel.Order.UserSelectProduct.Count == 0)
+                if (_model.Order.UserSelectProduct.Count == 0)
                     _isOrderButtonEnable = false;
                 else
                     _isOrderButtonEnable = true;
@@ -170,15 +178,15 @@ namespace Homework
             }
         }
 
-        public OrderFormModel OrderFormModel
+        public Model Model
         {
             get
             {
-                return _orderFormModel;
+                return _model;
             }
             set
             {
-                _orderFormModel = value;
+                _model = value;
             }
         }
 
@@ -222,10 +230,17 @@ namespace Homework
             return _currentPageNumber + Constant.SLASH + _pages;
         }
 
-        // 取得訂單中的資料
-        public List<string[]> GetUserSelectProductInList()
-        {
-            return _orderFormModel.Order.GetUserSelectProductInList();
+        // 檢查指定的產品是否在我的清單中
+        public void CheckIsHaveThisProduct(Product product)
+        { 
+            foreach(var userSelect in _model.Order.UserSelectProduct)
+            {
+                if (product.Name.Equals(userSelect.Name))
+                {
+                    _isButtonAddEnable = false;
+                    break;
+                }
+            }
         }
     }
 }

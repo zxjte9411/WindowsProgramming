@@ -13,14 +13,16 @@ namespace Homework
         private Category _category;
         private string _description;
         private string _imagePath;
+        private string _quantity;
 
-        public Product(string name, Category category, string price, string description, string imagePath)
+        public Product(string name, Category category, string price, string description, string imagePath, string quantity)
         {
-            Name = name;
-            Category = category;
-            Price = price;
-            Description = description;
-            ImagePath = imagePath;
+            _name = name;
+            _category = category;
+            _price = price;
+            _description = description;
+            _imagePath = imagePath;
+            _quantity = quantity;
         }
 
         public string Name
@@ -76,6 +78,17 @@ namespace Homework
             set
             {
                 _category = value;
+            }
+        }
+        public string Quantity
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
             }
         }
     }

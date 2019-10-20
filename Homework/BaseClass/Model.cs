@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    public class OrderFormModel
+    public class Model
     {
         private Order _order;
-        private List<Product> _productList;
+        private List<Product> _productList;//存著庫存的商品
         private List<Category> _productCategory;
         private Product _currentUserSelectProduct;
 
-        public OrderFormModel()
+        public Model()
         {
             _order = new Order();
             _productList = new List<Product>();
@@ -31,7 +31,7 @@ namespace Homework
             while ((line = productInformationFile.ReadLine()) != null)
             {
                 string[] productInformation = line.Split(Constant.CHAR_SPACE);
-                _productList.Add(new Product(productInformation[0], AddProductCategoryAndQuantity(productInformation[1], 1), productInformation[Constant.TWO], productInformation[Constant.THREE], productInformation[Constant.FOUR]));
+                _productList.Add(new Product(productInformation[0], AddProductCategoryAndQuantity(productInformation[1], 1), productInformation[Constant.TWO], productInformation[Constant.THREE], productInformation[Constant.FOUR], productInformation[Constant.FIVE]));
             }
             productInformationFile.Close();
         }
@@ -95,14 +95,13 @@ namespace Homework
         // 取得資料列
         public string[] GetRowData()
         {
-            string result1 = _currentUserSelectProduct.Name;
-            string result2 = _currentUserSelectProduct.Category.Name;
-            string result3 = _currentUserSelectProduct.Price;
-            string[] rowData = new string[Constant.FOUR];
+            string[] rowData = new string[Constant.FIVE + 1];
             rowData[0] = String.Empty;
-            rowData[1] = result1;
-            rowData[Constant.TWO] = result2;
-            rowData[Constant.THREE] = result3;
+            rowData[1] = _currentUserSelectProduct.Name;
+            rowData[Constant.TWO] = _currentUserSelectProduct.Category.Name;
+            rowData[Constant.THREE] = int.Parse(_currentUserSelectProduct.Price).ToString(Constant.NO);
+            rowData[Constant.FOUR] = (1).ToString(); // Quantity
+            rowData[Constant.FIVE] = int.Parse(_currentUserSelectProduct.Price).ToString(Constant.NO);
             return rowData;
         }
 
@@ -167,6 +166,12 @@ namespace Homework
                 if (_productCategory[i].Name.Equals(categoryName))
                     return _productCategory[i].Count;
             return 0;
+        }
+
+        //修改Order的數量及subtotal
+        public void UpdateOrderQuantitySubtotal(int index, int value)
+        {
+            _order.UserSelectProduct[index].Quantity = value.ToString();
         }
     }
 }

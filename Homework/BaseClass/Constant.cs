@@ -16,6 +16,7 @@ namespace Homework
         public const int TWO = 2;
         public const int THREE = 3;
         public const int FOUR = 4;
+        public const int FIVE = 5;
         public const string PROUD_NAME = "商品名稱";
         public const string PROUD_CATEGORY = "商品類別";
         public const string PRICE = "單價：";
@@ -34,5 +35,7 @@ namespace Homework
         public const string REGEX_ONLY_NUMBER = "^[0-9]+$";
         public const string REGEX_SYMBOLS = @"[^\\\+()\^/!#*%&',;=?$\x22]+";
         public const string ORDER_IS_COMPLETE = "訂購完成";
+        public const string NO = "N0"; // 千分位轉換參數
+        public const string STOCK_QUANTITY = "庫存數量：";
     }
 }

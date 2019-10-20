@@ -9,7 +9,7 @@ namespace Homework
 {
     public class CreditCardPaymentPresentationModel
     {
-        OrderFormModel _orderFormModel;
+        Model _orderFormModel;
         private bool _isUserNameCorrect;
         private bool _isCreditCardNumberCorrect;
         private bool _isSecurityCodeCorrect;
@@ -17,7 +17,7 @@ namespace Homework
         private bool _isAddressCorrect;
         private bool _isAllCorrect;
         private bool _isConfirmButtonEnable;
-        public CreditCardPaymentPresentationModel(OrderFormModel orderFormModel)
+        public CreditCardPaymentPresentationModel(Model orderFormModel)
         {
             _orderFormModel = orderFormModel;
             _isUserNameCorrect = false;

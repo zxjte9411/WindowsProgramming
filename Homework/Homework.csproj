@@ -61,24 +61,32 @@
     <Compile Include="InventorySystem\InventoryForm.Designer.cs">
       <DependentUpon>InventoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventorySystem\InventoryFormPresentationModel.cs" />
     <Compile Include="OrderSystem\OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderSystem\OrderForm.Designer.cs">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderSystem\OrderFormModel.cs" />
+    <Compile Include="BaseClass\Model.cs" />
     <Compile Include="OrderSystem\OrderFormPresentationModel.cs" />
     <Compile Include="BaseClass\Constant.cs" />
     <Compile Include="BaseClass\Order.cs" />
     <Compile Include="BaseClass\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartUp.cs">
+    <Compile Include="Replacement\ReplenishmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartUp.Designer.cs">
-      <DependentUpon>StartUp.cs</DependentUpon>
+    <Compile Include="Replacement\ReplenishmentForm.Designer.cs">
+      <DependentUpon>ReplenishmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Replacement\ReplenishmentFormPresentationModel.cs" />
+    <Compile Include="Menu\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CreditCardPayment\CreditCardPaymentForm.resx">
       <DependentUpon>CreditCardPaymentForm.cs</DependentUpon>
@@ -98,8 +106,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StartUp.resx">
-      <DependentUpon>StartUp.cs</DependentUpon>
+    <EmbeddedResource Include="Menu\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -113,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj">
+      <Project>{82b50731-be90-433f-bb6e-9b509c5f3b7c}</Project>
+      <Name>DataGridViewNumericUpDownElements</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this._tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this._groupBoxProducts = new System.Windows.Forms.GroupBox();
             this._tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this._groupDescriptionBox = new System.Windows.Forms.GroupBox();
             this._tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this._labelPrice = new System.Windows.Forms.Label();
             this._productDescriptionRichTextBox1 = new System.Windows.Forms.RichTextBox();
+            this._tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this._labelPrice = new System.Windows.Forms.Label();
+            this._labelQuantity = new System.Windows.Forms.Label();
             this._productTabControl = new System.Windows.Forms.TabControl();
             this._tabPage1 = new System.Windows.Forms.TabPage();
             this._tableLayoutPanelProductButton = new System.Windows.Forms.TableLayoutPanel();
@@ -60,6 +62,8 @@
             this._productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._productCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._quantity = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+            this._totalPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this._labelTotalPrice = new System.Windows.Forms.Label();
             this._orderButton = new System.Windows.Forms.Button();
@@ -69,6 +73,7 @@
             this._tableLayoutPanel5.SuspendLayout();
             this._groupDescriptionBox.SuspendLayout();
             this._tableLayoutPanel3.SuspendLayout();
+            this._tableLayoutPanel8.SuspendLayout();
             this._productTabControl.SuspendLayout();
             this._tabPage1.SuspendLayout();
             this._tableLayoutPanelProductButton.SuspendLayout();
@@ -155,8 +160,8 @@
             this._tableLayoutPanel3.ColumnCount = 2;
             this._tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this._tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._tableLayoutPanel3.Controls.Add(this._labelPrice, 0, 0);
             this._tableLayoutPanel3.Controls.Add(this._productDescriptionRichTextBox1, 0, 0);
+            this._tableLayoutPanel3.Controls.Add(this._tableLayoutPanel8, 1, 0);
             this._tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tableLayoutPanel3.Location = new System.Drawing.Point(3, 28);
             this._tableLayoutPanel3.Name = "_tableLayoutPanel3";
@@ -164,16 +169,6 @@
             this._tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this._tableLayoutPanel3.Size = new System.Drawing.Size(430, 104);
             this._tableLayoutPanel3.TabIndex = 12;
-            // 
-            // _labelPrice
-            // 
-            this._labelPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._labelPrice.AutoSize = true;
-            this._labelPrice.Font = new System.Drawing.Font("微軟正黑體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._labelPrice.Location = new System.Drawing.Point(427, 80);
-            this._labelPrice.Name = "_labelPrice";
-            this._labelPrice.Size = new System.Drawing.Size(0, 24);
-            this._labelPrice.TabIndex = 14;
             // 
             // _productDescriptionRichTextBox1
             // 
@@ -186,6 +181,42 @@
             this._productDescriptionRichTextBox1.Size = new System.Drawing.Size(280, 98);
             this._productDescriptionRichTextBox1.TabIndex = 13;
             this._productDescriptionRichTextBox1.Text = "";
+            // 
+            // _tableLayoutPanel8
+            // 
+            this._tableLayoutPanel8.ColumnCount = 1;
+            this._tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._tableLayoutPanel8.Controls.Add(this._labelPrice, 0, 1);
+            this._tableLayoutPanel8.Controls.Add(this._labelQuantity, 0, 0);
+            this._tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel8.Location = new System.Drawing.Point(289, 3);
+            this._tableLayoutPanel8.Name = "_tableLayoutPanel8";
+            this._tableLayoutPanel8.RowCount = 2;
+            this._tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tableLayoutPanel8.Size = new System.Drawing.Size(138, 98);
+            this._tableLayoutPanel8.TabIndex = 14;
+            // 
+            // _labelPrice
+            // 
+            this._labelPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._labelPrice.AutoSize = true;
+            this._labelPrice.Font = new System.Drawing.Font("微軟正黑體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._labelPrice.Location = new System.Drawing.Point(135, 74);
+            this._labelPrice.Name = "_labelPrice";
+            this._labelPrice.Size = new System.Drawing.Size(0, 24);
+            this._labelPrice.TabIndex = 15;
+            // 
+            // _labelQuantity
+            // 
+            this._labelQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._labelQuantity.AutoSize = true;
+            this._labelQuantity.Location = new System.Drawing.Point(3, 12);
+            this._labelQuantity.Name = "_labelQuantity";
+            this._labelQuantity.Size = new System.Drawing.Size(132, 24);
+            this._labelQuantity.TabIndex = 16;
+            this._labelQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _productTabControl
             // 
@@ -390,7 +421,9 @@
             this._recordDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._productName,
             this._productCategory,
-            this._price});
+            this._price,
+            this._quantity,
+            this._totalPriceColumn});
             this._recordDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._recordDataGridView.Location = new System.Drawing.Point(25, 53);
             this._recordDataGridView.Name = "_recordDataGridView";
@@ -402,8 +435,8 @@
             // _productName
             // 
             this._productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this._productName.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this._productName.DefaultCellStyle = dataGridViewCellStyle1;
             this._productName.HeaderText = "商品名稱";
             this._productName.Name = "_productName";
             this._productName.ReadOnly = true;
@@ -412,8 +445,8 @@
             // _productCategory
             // 
             this._productCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this._productCategory.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this._productCategory.DefaultCellStyle = dataGridViewCellStyle2;
             this._productCategory.HeaderText = "商品類別";
             this._productCategory.Name = "_productCategory";
             this._productCategory.ReadOnly = true;
@@ -422,12 +455,30 @@
             // _price
             // 
             this._price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this._price.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this._price.DefaultCellStyle = dataGridViewCellStyle3;
             this._price.HeaderText = "單價";
             this._price.Name = "_price";
             this._price.ReadOnly = true;
             this._price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // _quantity
+            // 
+            this._quantity.HeaderText = "數量";
+            this._quantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this._quantity.Name = "_quantity";
+            // 
+            // _totalPriceColumn
+            // 
+            this._totalPriceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this._totalPriceColumn.HeaderText = "總價";
+            this._totalPriceColumn.Name = "_totalPriceColumn";
+            this._totalPriceColumn.ReadOnly = true;
+            this._totalPriceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // _tableLayoutPanel7
             // 
@@ -480,7 +531,8 @@
             this._tableLayoutPanel5.ResumeLayout(false);
             this._groupDescriptionBox.ResumeLayout(false);
             this._tableLayoutPanel3.ResumeLayout(false);
-            this._tableLayoutPanel3.PerformLayout();
+            this._tableLayoutPanel8.ResumeLayout(false);
+            this._tableLayoutPanel8.PerformLayout();
             this._productTabControl.ResumeLayout(false);
             this._tabPage1.ResumeLayout(false);
             this._tableLayoutPanelProductButton.ResumeLayout(false);
@@ -502,9 +554,6 @@
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel4;
         private System.Windows.Forms.Label _labelOrder;
         private System.Windows.Forms.DataGridView _recordDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _productCategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _price;
         private System.Windows.Forms.GroupBox _groupBoxProducts;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel5;
         private System.Windows.Forms.TabControl _productTabControl;
@@ -518,7 +567,6 @@
         private System.Windows.Forms.Button _button5;
         private System.Windows.Forms.GroupBox _groupDescriptionBox;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel3;
-        private System.Windows.Forms.Label _labelPrice;
         private System.Windows.Forms.RichTextBox _productDescriptionRichTextBox1;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel6;
         private System.Windows.Forms.Button _buttonAdd;
@@ -528,6 +576,14 @@
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel7;
         private System.Windows.Forms.Label _labelTotalPrice;
         private System.Windows.Forms.Button _orderButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _productCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _price;
+        private DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn _quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _totalPriceColumn;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel8;
+        private System.Windows.Forms.Label _labelPrice;
+        private System.Windows.Forms.Label _labelQuantity;
     }
 }
 

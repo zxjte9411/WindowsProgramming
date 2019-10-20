@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Homework
 {
-    public partial class StartUp : Form
+    public partial class MenuForm : Form
     {
         private OrderForm _orderForm;
         private InventoryForm _inventoryForm;
         private OrderFormPresentationModel _orderFormPresentationModel;
-        public StartUp(OrderFormPresentationModel orderFormPresentationModel)
+        public MenuForm(OrderFormPresentationModel orderFormPresentationModel)
         {
             InitializeComponent();
             _orderSystemButton.Click += ClickOrderSystemButton;
