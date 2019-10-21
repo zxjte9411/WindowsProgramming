@@ -49,28 +49,19 @@ namespace Homework
         //  處理 NameTextBox 輸入限制
         private void HandleNameTextBoxKeyPress(Object sender, KeyPressEventArgs e)
         {
-            if (new Regex(Constant.REGEX_TRADITIONAL_CHINESE).IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back)
-                e.Handled = false;
-            else
-                e.Handled = true;
+            e.Handled = !((new Regex(Constant.REGEX_TRADITIONAL_CHINESE).IsMatch(e.KeyChar.ToString())) || (e.KeyChar == (char)Keys.Back));
         }
 
         // 處理只能輸入純數字的 TextBox 輸入限制
         private void HandleCreditCardNumberAndSecurityCodeTextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (new Regex(Constant.REGEX_ONLY_NUMBER).IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back)
-                e.Handled = false;
-            else
-                e.Handled = true;
+            e.Handled = !((new Regex(Constant.REGEX_ONLY_NUMBER).IsMatch(e.KeyChar.ToString())) || (e.KeyChar == (char)Keys.Back));
         }
 
         // 處理 _mailTextBox 輸入限制
         private void HandleMailTextBoxKeyPress(Object sender, KeyPressEventArgs e)
         {
-            if (!(new Regex(Constant.REGEX_SYMBOLS).IsMatch(e.KeyChar.ToString()) || e.KeyChar == (char)Keys.Back))
-                e.Handled = true;
-            else
-                e.Handled = false;
+            e.Handled = !((new Regex(Constant.REGEX_SYMBOLS).IsMatch(e.KeyChar.ToString())) || (e.KeyChar == (char)Keys.Back));
         }
 
         // 初始化 ComBox
@@ -86,12 +77,13 @@ namespace Homework
         private void HandleConfirmButton(Object sender, EventArgs e)
         {
             _errorProvider.Clear();
-            _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateYear = _effectiveDateYearComboBox.Text;
-            _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateMonth = _effectiveDateMonthComboBox.Text;
+            _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.EffectiveDateYear = _effectiveDateYearComboBox.Text;
+            _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.EffectiveDateMonth = _effectiveDateMonthComboBox.Text;
             CheckAll();
             if (_creditCardPaymentPresentationModel.IsAllCorrect)
             {
                 MessageBox.Show(Constant.ORDER_IS_COMPLETE);
+                DialogResult = DialogResult.OK;
                 Close();
                 ClearOrder();
             }
@@ -171,21 +163,21 @@ namespace Homework
         // 填入資訊
         private void RefreshCreditCardInformation()
         {
-            _lastNameTextBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.LastName;
-            _firstNameTextBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.FirstName;
+            _lastNameTextBox.Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.LastName;
+            _firstNameTextBox.Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.FirstName;
             try
             {
                 for (int i = 0; i < Constant.FOUR; i++)
-                    (_creditCardNumberTableLayoutPanel.Controls.Find(Constant.CREDIT_CARD_TEXT_BOX_NAME + i.ToString(), true).FirstOrDefault() as TextBox).Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.CreditCardNumber[i];
+                    (_creditCardNumberTableLayoutPanel.Controls.Find(Constant.CREDIT_CARD_TEXT_BOX_NAME + i.ToString(), true).FirstOrDefault() as TextBox).Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.CreditCardNumber[i];
             }
             catch(Exception)
             {
-                _creditCardPaymentPresentationModel.Order.CreditCardPayment = new CreditCardPayment();
+                _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment = new CreditCardPayment();
             }
-            _effectiveDateYearComboBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateYear;
-            _effectiveDateMonthComboBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.EffectiveDateMonth;
-            _mailTextBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.Mail;
-            _addressTextBox.Text = _creditCardPaymentPresentationModel.Order.CreditCardPayment.Address;
+            _effectiveDateYearComboBox.Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.EffectiveDateYear;
+            _effectiveDateMonthComboBox.Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.EffectiveDateMonth;
+            _mailTextBox.Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.Mail;
+            _addressTextBox.Text = _creditCardPaymentPresentationModel.Model.Order.CreditCardPayment.Address;
         }
 
         // 檢查持卡人姓名
@@ -238,7 +230,7 @@ namespace Homework
         // 清空"我的訂單"
         private void ClearOrder()
         {
-            _creditCardPaymentPresentationModel.Order.UserSelectProduct.Clear();
+            _creditCardPaymentPresentationModel.Model.ClearUserSelectProduct();
         }
     }
 }

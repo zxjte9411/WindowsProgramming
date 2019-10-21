@@ -21,17 +21,25 @@ namespace Homework
         private bool _isButtonAddEnable;
         private bool _isOrderButtonEnable;
         
-        public OrderFormPresentationModel(Model orderFormModel)
+        public OrderFormPresentationModel(Model model)
         {
-            _model = orderFormModel;
+            _model = model;
             _currentPageNumber = 1;
             _isHavePreviousPage = false;
             _isHaveNextPage = true;
             _isSelectedProduct = false;
             _isButtonAddEnable = false;
             _isOrderButtonEnable = false;
+            _model._stockQuantityProductChangeEvent += HandleStockQuantityProductChangeEvent;
             UpdatePages(_model.ProductCategory[0].Count);
             UpdateButtonState();
+        }
+
+        // 處理庫存變更，新增按鈕的 enable
+        private void HandleStockQuantityProductChangeEvent()
+        {
+            
+            _isButtonAddEnable = _model.CurrentUserSelectProduct != null && int.Parse(_model.CurrentUserSelectProduct.Quantity) > 0;
         }
 
         // 處理DataGridView的程序
@@ -46,6 +54,7 @@ namespace Homework
             else if (columnIndex == Constant.FOUR && rowIndex >= 0 && objectValue != null)
             {
                 int value = Convert.ToInt32(objectValue);
+                _model.CheckStockQuantityLimit(rowIndex, ref value);// value 會再檢查階段變更
                 _model.UpdateOrderQuantitySubtotal(rowIndex, value);
                 if (_changeQuantityEvent != null)
                     _changeQuantityEvent(rowIndex, GetTotalPriceText());
@@ -81,7 +90,9 @@ namespace Homework
         {
             _isSelectedProduct = true;
             UpdateButtonState();
-            return _model.GetProduct(categoryName, buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1));
+            Product product = _model.GetProduct(categoryName, buttonIndex + Constant.BUTTON_COUNT * (_currentPageNumber - 1));
+            _isButtonAddEnable = !_model.Order.IsHaveThisProduct(product.Name);
+            return product;
         }
 
         // 取得資料列
@@ -230,16 +241,13 @@ namespace Homework
             return _currentPageNumber + Constant.SLASH + _pages;
         }
 
-        // 檢查指定的產品是否在我的清單中
-        public void CheckIsHaveThisProduct(Product product)
-        { 
-            foreach(var userSelect in _model.Order.UserSelectProduct)
+        public string CurrentUserSelectProductQuantity
+        {
+            get
             {
-                if (product.Name.Equals(userSelect.Name))
-                {
-                    _isButtonAddEnable = false;
-                    break;
-                }
+                if (_model.CurrentUserSelectProduct != null)
+                    return Constant.STOCK_QUANTITY + _model.CurrentUserSelectProduct.Quantity;
+                return string.Empty;
             }
         }
     }

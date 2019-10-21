@@ -16,7 +16,8 @@ namespace Homework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuForm(new OrderFormPresentationModel(new Model())));
+            Model model = new Model();
+            Application.Run(new MenuForm(new OrderFormPresentationModel(model), new InventoryFormPresentationModel(model)));
         }
     }
 }

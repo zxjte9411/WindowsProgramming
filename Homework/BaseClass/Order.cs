@@ -84,5 +84,14 @@ namespace Homework
         {
             return int.Parse(_userSelectedProducts[rowIndex].Price) * int.Parse(_userSelectedProducts[rowIndex].Quantity);
         }
+
+        // 產品是否已加入到我的清單中
+        public bool IsHaveThisProduct(string productName)
+        {
+            foreach (var userSelect in UserSelectProduct)
+                if (productName.Equals(userSelect.Name))
+                    return true;
+            return false;
+        }
     }
 }

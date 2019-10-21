@@ -8,11 +8,14 @@ namespace Homework
 {
     public class Model
     {
+        public event StockQuantityChangeEventHandler _stockQuantityProductChangeEvent;
+        public delegate void StockQuantityChangeEventHandler();
+        public event OverStockLimitEventHandler _overStockLimitEvent;
+        public delegate void OverStockLimitEventHandler();
         private Order _order;
         private List<Product> _productList;//存著庫存的商品
         private List<Category> _productCategory;
         private Product _currentUserSelectProduct;
-
         public Model()
         {
             _order = new Order();
@@ -52,7 +55,7 @@ namespace Homework
         public Category AddProductCategoryAndQuantity(string categoryName, int count)
         {
             // 先檢查數量清單中市府已經有加入，有的話數量增加一，沒有就建立新的產品類別
-            
+
             for (int i = 0; i < _productCategory.Count; i++)
             {
                 if (_productCategory[i].Name == categoryName)
@@ -85,7 +88,7 @@ namespace Homework
                     currentPageProducts.Add(_productList[i]);
             return currentPageProducts;
         }
-        
+
         // 取得當前所選的產品
         public Product GetProduct(string categoryName, int productIndex)
         {
@@ -111,18 +114,6 @@ namespace Homework
             _order.AddSelectProductToList(_currentUserSelectProduct);
         }
 
-        public Product CurrentUserSelectProduct
-        {
-            get
-            {
-                return _currentUserSelectProduct;
-            }
-            set
-            {
-                _currentUserSelectProduct = value;
-            }
-        }
-
         public Order Order
         {
             get
@@ -132,6 +123,18 @@ namespace Homework
             set
             {
                 _order = value;
+            }
+        }
+
+        public Product CurrentUserSelectProduct
+        {
+            get
+            {
+                return _currentUserSelectProduct;
+            }
+            set
+            {
+                _currentUserSelectProduct = value;
             }
         }
 
@@ -172,6 +175,52 @@ namespace Homework
         public void UpdateOrderQuantitySubtotal(int index, int value)
         {
             _order.UserSelectProduct[index].Quantity = value.ToString();
+        }
+
+        // 找產品
+        public Product FindTheProduct(string name)
+        {
+            foreach (var stockProduct in ProductList)
+                if (name.Equals(stockProduct.Name))
+                    return stockProduct;
+            return null;
+        }
+
+        // 檢查庫存上限
+        public void CheckStockQuantityLimit(int rowIndex, ref int quantity)
+        {
+            Product product = FindTheProduct(_order.UserSelectProduct[rowIndex].Name);
+            if (product != null)
+            {
+                if (quantity > int.Parse(product.Quantity))
+                {
+                    if (_overStockLimitEvent != null)
+                        _overStockLimitEvent();
+                    quantity = int.Parse(product.Quantity);
+                }
+            }
+        }
+
+        // 清除我的訂單並更新庫存量(減少庫存量)
+        public void ClearUserSelectProduct()
+        {
+            foreach (var userProduct in _order.UserSelectProduct)
+                FindTheProduct(userProduct.Name).Quantity = (int.Parse(FindTheProduct(userProduct.Name).Quantity) - int.Parse(userProduct.Quantity)).ToString();
+            _order.UserSelectProduct.Clear();
+            _stockQuantityProductChangeEvent();
+        }
+
+        // 增加產品庫存
+        public void IncreaseStockProductQuantity(int index, string value)
+        {
+            _productList[index].Quantity = (int.Parse(_productList[index].Quantity) + int.Parse(value)).ToString();
+            _stockQuantityProductChangeEvent();
+        }
+
+        // 看看庫存量夠不夠
+        public bool IsStockProductQuantityEnough(string name)
+        {
+            return int.Parse(FindTheProduct(name).Quantity) > 0;
         }
     }
 }

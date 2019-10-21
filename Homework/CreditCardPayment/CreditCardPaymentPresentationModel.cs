@@ -9,7 +9,9 @@ namespace Homework
 {
     public class CreditCardPaymentPresentationModel
     {
-        Model _orderFormModel;
+        //public event StockQuantityChangeEventHandler _stockQuantityChangeEvent;
+        //public delegate void StockQuantityChangeEventHandler();
+        Model _model;
         private bool _isUserNameCorrect;
         private bool _isCreditCardNumberCorrect;
         private bool _isSecurityCodeCorrect;
@@ -17,9 +19,9 @@ namespace Homework
         private bool _isAddressCorrect;
         private bool _isAllCorrect;
         private bool _isConfirmButtonEnable;
-        public CreditCardPaymentPresentationModel(Model orderFormModel)
+        public CreditCardPaymentPresentationModel(Model model)
         {
-            _orderFormModel = orderFormModel;
+            _model = model;
             _isUserNameCorrect = false;
             _isCreditCardNumberCorrect = false;
             _isSecurityCodeCorrect = false;
@@ -27,12 +29,6 @@ namespace Homework
             _isAddressCorrect = false;
             _isAllCorrect = false;
             _isConfirmButtonEnable = false;
-        }
-
-        // 設定
-        public void SetCreditCard(CreditCardPayment creditCard)
-        {
-            _orderFormModel.Order.CreditCardPayment = creditCard;
         }
 
         // 取得 2021 ~ 2028 年
@@ -53,19 +49,11 @@ namespace Homework
             return month;
         }
 
-        // 檢查是否有 CreditCard 資訊
-        public bool IsHaveCreditCard()
-        {
-            if (_orderFormModel.Order.CreditCardPayment != null)
-                return true;
-            return false;
-        }
-
-        public Order Order
+        public Model Model
         {
             get
             {
-                return _orderFormModel.Order;
+                return _model;
             }
         }
 
@@ -153,8 +141,8 @@ namespace Homework
             else
             {
                 _isUserNameCorrect = true;
-                _orderFormModel.Order.CreditCardPayment.LastName = lastName;
-                _orderFormModel.Order.CreditCardPayment.FirstName = firstName;
+                _model.Order.CreditCardPayment.LastName = lastName;
+                _model.Order.CreditCardPayment.FirstName = firstName;
             }
         }
 
@@ -170,7 +158,7 @@ namespace Homework
                 }                    
             }
             _isCreditCardNumberCorrect = true;
-            _orderFormModel.Order.CreditCardPayment.CreditCardNumber = creditCardNumbers.ToArray();
+            _model.Order.CreditCardPayment.CreditCardNumber = creditCardNumbers.ToArray();
         }
 
         // 檢查信用卡安全碼，正確就存起來
@@ -179,7 +167,7 @@ namespace Homework
             if (securityCode.Length > Constant.TWO)
             {
                 _isSecurityCodeCorrect = true;
-                _orderFormModel.Order.CreditCardPayment.SecurityCode = securityCode;
+                _model.Order.CreditCardPayment.SecurityCode = securityCode;
             }                
             else
                 _isSecurityCodeCorrect = false;
@@ -194,7 +182,7 @@ namespace Homework
             else
             {
                 _isMailFormatCorrect = true;
-                _orderFormModel.Order.CreditCardPayment.Mail = mail;
+                _model.Order.CreditCardPayment.Mail = mail;
             }
         }
 
@@ -206,7 +194,7 @@ namespace Homework
             else
             {
                 _isAddressCorrect = true;
-                _orderFormModel.Order.CreditCardPayment.Address = address;
+                _model.Order.CreditCardPayment.Address = address;
             }
         }
 
@@ -225,8 +213,7 @@ namespace Homework
                 _isAllCorrect = false;
             if (!_isAddressCorrect)
                 _isAllCorrect = false;
-            if (!_isAllCorrect)
-                _isConfirmButtonEnable = false;
+            _isConfirmButtonEnable = _isAllCorrect;
         }
     }
 }

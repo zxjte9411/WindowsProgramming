@@ -38,7 +38,7 @@
             this._tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this._groupDescriptionBox = new System.Windows.Forms.GroupBox();
             this._tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this._productDescriptionRichTextBox1 = new System.Windows.Forms.RichTextBox();
+            this._productDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this._tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this._labelPrice = new System.Windows.Forms.Label();
             this._labelQuantity = new System.Windows.Forms.Label();
@@ -160,7 +160,7 @@
             this._tableLayoutPanel3.ColumnCount = 2;
             this._tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this._tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._tableLayoutPanel3.Controls.Add(this._productDescriptionRichTextBox1, 0, 0);
+            this._tableLayoutPanel3.Controls.Add(this._productDescriptionRichTextBox, 0, 0);
             this._tableLayoutPanel3.Controls.Add(this._tableLayoutPanel8, 1, 0);
             this._tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tableLayoutPanel3.Location = new System.Drawing.Point(3, 28);
@@ -170,17 +170,17 @@
             this._tableLayoutPanel3.Size = new System.Drawing.Size(430, 104);
             this._tableLayoutPanel3.TabIndex = 12;
             // 
-            // _productDescriptionRichTextBox1
+            // _productDescriptionRichTextBox
             // 
-            this._productDescriptionRichTextBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this._productDescriptionRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._productDescriptionRichTextBox1.Font = new System.Drawing.Font("微軟正黑體 Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._productDescriptionRichTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this._productDescriptionRichTextBox1.Location = new System.Drawing.Point(3, 3);
-            this._productDescriptionRichTextBox1.Name = "_productDescriptionRichTextBox1";
-            this._productDescriptionRichTextBox1.Size = new System.Drawing.Size(280, 98);
-            this._productDescriptionRichTextBox1.TabIndex = 13;
-            this._productDescriptionRichTextBox1.Text = "";
+            this._productDescriptionRichTextBox.BackColor = System.Drawing.SystemColors.Menu;
+            this._productDescriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._productDescriptionRichTextBox.Font = new System.Drawing.Font("微軟正黑體 Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._productDescriptionRichTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._productDescriptionRichTextBox.Location = new System.Drawing.Point(3, 3);
+            this._productDescriptionRichTextBox.Name = "_productDescriptionRichTextBox";
+            this._productDescriptionRichTextBox.Size = new System.Drawing.Size(280, 98);
+            this._productDescriptionRichTextBox.TabIndex = 13;
+            this._productDescriptionRichTextBox.Text = "";
             // 
             // _tableLayoutPanel8
             // 
@@ -567,7 +567,7 @@
         private System.Windows.Forms.Button _button5;
         private System.Windows.Forms.GroupBox _groupDescriptionBox;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel3;
-        private System.Windows.Forms.RichTextBox _productDescriptionRichTextBox1;
+        private System.Windows.Forms.RichTextBox _productDescriptionRichTextBox;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel6;
         private System.Windows.Forms.Button _buttonAdd;
         private System.Windows.Forms.Label _pagesLabel;

@@ -68,20 +68,20 @@
     <Compile Include="OrderSystem\OrderForm.Designer.cs">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseClass\Model.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="OrderSystem\OrderFormPresentationModel.cs" />
     <Compile Include="BaseClass\Constant.cs" />
     <Compile Include="BaseClass\Order.cs" />
     <Compile Include="BaseClass\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Replacement\ReplenishmentForm.cs">
+    <Compile Include="Replenishment\ReplenishmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Replacement\ReplenishmentForm.Designer.cs">
+    <Compile Include="Replenishment\ReplenishmentForm.Designer.cs">
       <DependentUpon>ReplenishmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Replacement\ReplenishmentFormPresentationModel.cs" />
+    <Compile Include="Replenishment\ReplenishmentFormPresentationModel.cs" />
     <Compile Include="Menu\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +108,9 @@
     </Compile>
     <EmbeddedResource Include="Menu\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Replenishment\ReplenishmentForm.resx">
+      <DependentUpon>ReplenishmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

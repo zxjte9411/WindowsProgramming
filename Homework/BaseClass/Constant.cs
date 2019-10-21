@@ -12,6 +12,7 @@ namespace Homework
         public const string PRODUCT_CATEGORY_FILE_NAME = "/Resource/ProductCategory.txt";
         public const string BUTTON_ADD_ICON_IMAGE_PATH = "../../Resource/button_add_icon.png";
         public const string DELETE_BUTTON_ICON_IMAGE_PATH = "../../Resource/delete.png";
+        public const string DELIVERY_TRUCK_ICON_IMAGE_PATH = "../../Resource/delivery_truck.bmp";
         public const int BUTTON_COUNT = 6;
         public const int TWO = 2;
         public const int THREE = 3;

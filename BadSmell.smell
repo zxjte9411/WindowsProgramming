@@ -206,11 +206,6 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>BaseClass\Model.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
                 <RelativePath>BaseClass\Order.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
@@ -261,6 +256,11 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>OrderSystem\OrderForm.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -296,17 +296,17 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Replacement\ReplenishmentForm.cs</RelativePath>
+                <RelativePath>Replenishment\ReplenishmentForm.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Replacement\ReplenishmentForm.Designer.cs</RelativePath>
+                <RelativePath>Replenishment\ReplenishmentForm.Designer.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Replacement\ReplenishmentFormPresentationModel.cs</RelativePath>
+                <RelativePath>Replenishment\ReplenishmentFormPresentationModel.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -332,7 +332,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2994</ProductionLoc>
+          <ProductionLoc>3659</ProductionLoc>
           <TestLoc>1503</TestLoc>
         </CodeReview>
       </Data>
