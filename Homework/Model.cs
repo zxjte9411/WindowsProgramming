@@ -34,7 +34,7 @@ namespace Homework
             while ((line = productInformationFile.ReadLine()) != null)
             {
                 string[] productInformation = line.Split(Constant.CHAR_SPACE);
-                _productList.Add(new Product(productInformation[0], AddProductCategoryAndQuantity(productInformation[1], 1), productInformation[Constant.TWO], productInformation[Constant.THREE], productInformation[Constant.FOUR], productInformation[Constant.FIVE]));
+                _productList.Add(new Product(productInformation[0], AddProductCategoryAndQuantity(productInformation[1]), productInformation[Constant.TWO], productInformation[Constant.THREE], productInformation[Constant.FOUR], productInformation[Constant.FIVE]));
             }
             productInformationFile.Close();
         }
@@ -52,9 +52,9 @@ namespace Homework
         }
 
         // 增加產品類別及數量
-        public Category AddProductCategoryAndQuantity(string categoryName, int count)
+        public Category AddProductCategoryAndQuantity(string categoryName)
         {
-            // 先檢查數量清單中市府已經有加入，有的話數量增加一，沒有就建立新的產品類別
+            // 先檢查數量清單中是否已經有加入，有的話數量增加一，沒有就建立新的產品類別
 
             for (int i = 0; i < _productCategory.Count; i++)
             {
@@ -64,7 +64,8 @@ namespace Homework
                     return _productCategory[i];
                 }
             }
-            return null;
+            _productCategory.Add(new Category(categoryName, 0));
+            return _productCategory.Last();
         }
 
         // 取得所有分類的名稱
