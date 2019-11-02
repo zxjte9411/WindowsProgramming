@@ -276,6 +276,21 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>ProductManagementSystem\ProductManagementForm.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ProductManagementSystem\ProductManagementForm.Designer.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ProductManagementSystem\ProductManagementPresentationModel.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Program.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -332,7 +347,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3659</ProductionLoc>
+          <ProductionLoc>4679</ProductionLoc>
           <TestLoc>1503</TestLoc>
         </CodeReview>
       </Data>

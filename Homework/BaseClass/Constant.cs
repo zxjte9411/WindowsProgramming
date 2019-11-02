@@ -8,6 +8,12 @@ namespace Homework
 {
     public class Constant
     {
+        public enum Mode
+        {
+            InitialMode,
+            EditMode,
+            AddMode
+        };
         public const string PRODUCT_INFORMATION_FILE_NAME = "/Resource/ProductInformation.txt";
         public const string PRODUCT_CATEGORY_FILE_NAME = "/Resource/ProductCategory.txt";
         public const string BUTTON_ADD_ICON_IMAGE_PATH = "../../Resource/button_add_icon.png";
@@ -38,5 +44,10 @@ namespace Homework
         public const string ORDER_IS_COMPLETE = "訂購完成";
         public const string NO = "N0"; // 千分位轉換參數
         public const string STOCK_QUANTITY = "庫存數量：";
+        public const string PRODUCT_MANAGER = "商品管理";
+        public const string CATEGORY_MANAGER = "類別管理";
+        public const string IMAGE_NOT_EXIST = "請選擇正確的圖片";
+        public const string ENABLED = "Enabled";
+        public const string TEXT = "Text";
     }
 }

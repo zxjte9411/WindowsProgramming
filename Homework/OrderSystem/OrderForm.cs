@@ -12,9 +12,11 @@ namespace Homework
     {
         private OrderFormPresentationModel _orderFormPresentationModel;
         Button[] _productButtons;
+        private int _buttonSelectedIndex;
         public OrderForm(OrderFormPresentationModel orderFormPresentationModel)
         {
             InitializeComponent();
+            _buttonSelectedIndex = -1;
             FormClosing += HandleOrderFormFormClosing;
             _orderFormPresentationModel = orderFormPresentationModel;
             _orderFormPresentationModel.CurrentPageNumber = 1;
@@ -34,13 +36,26 @@ namespace Homework
             _recordDataGridView.CellValueChanged += HandleCellValueChangedEvent;
             _orderFormPresentationModel._deleteEvent += HandleRemoveProduct;
             _orderFormPresentationModel._changeQuantityEvent += HandleCellValueChanged;
-            _orderFormPresentationModel._changeQuantityEvent += HandleCellValueChanged;
             _orderFormPresentationModel.Model._overStockLimitEvent += HandleOverStockLimit;
             _orderFormPresentationModel.Model._stockQuantityProductChangeEvent += HandleQuantityChange;
+            _orderFormPresentationModel.Model._backEndChangeEvent += HandleBackEndChangeEvent;
             AddDataGridViewDeleteColumn();
             _orderButton.Click += HandleOrderButton;
             RefreshDataGridView();
             _buttonAdd.Enabled = false;
+        }
+
+        // 處理後台更新事件
+        private void HandleBackEndChangeEvent()
+        {
+            RefreshDataGridView();
+            _orderFormPresentationModel.UpdatePages(_orderFormPresentationModel.Model.GetProductsOfThisCategory(_productTabControl.SelectedTab.Name).Count);
+            UpdateProductButtonInformation();
+            RefreshProductInformation();
+            _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
+            _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
+            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
+            RefreshProductInformation();
         }
 
         // 處理 form 關閉前的事件
@@ -114,7 +129,7 @@ namespace Homework
             if (_recordDataGridView.Rows.Count > 0)
             {
                 _recordDataGridView.Rows[rowIndex].Cells[Constant.FIVE].Value = _orderFormPresentationModel.Model.Order.GetCustomerSelectedProductSubtotal(rowIndex).ToString(Constant.NO);
-                _recordDataGridView.Rows[rowIndex].Cells[Constant.FOUR].Value = _orderFormPresentationModel.Model.Order.UserSelectProduct[rowIndex].Quantity;
+                _recordDataGridView.Rows[rowIndex].Cells[Constant.FOUR].Value = _orderFormPresentationModel.Model.Order.UserSelectedProductsQuantity[rowIndex];
             }
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
         }
@@ -144,28 +159,37 @@ namespace Homework
             _orderFormPresentationModel.CurrentPageNumber = 1;
             _orderFormPresentationModel.IsHavePreviousPage = _orderFormPresentationModel.IsHavePreviousPage;
             UpdateProductButtonInformation();
+            UpdateButtonsState();
             _buttonAdd.Enabled = false;
             _productTabControl.SelectedTab.Controls.Add(_tableLayoutPanelProductButton);
         }
-        
+
         // 更新產品按鈕的資訊
         private void UpdateProductButtonInformation()
         {
             for (int i = 0; i < Constant.BUTTON_COUNT; i++)
-            { 
+            {
                 _productButtons[i].BackgroundImage = Image.FromFile(_orderFormPresentationModel.GetCurrentPageProductsImagePath(_productTabControl.SelectedTab.Name)[i]);
                 _productButtons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 _productButtons[i].Visible = _orderFormPresentationModel.IsProductButtonVisible(i, _productTabControl.SelectedTab.Name);
             }
-            UpdateButtonsState();
             UpdatePageNumberDisplay();
         }
 
         // 產品按鈕被按下要執行的動作
         private void ClickProductButton(Object sender, EventArgs e)
         {
-            Product product = _orderFormPresentationModel.GetProduct(_productTabControl.SelectedTab.Name, ((Button)sender).TabIndex);
-            _productDescriptionRichTextBox.Text = product.Description;            
+            _buttonSelectedIndex = ((Button)sender).TabIndex;
+            RefreshProductInformation();
+        }
+
+        // 更新產品顯示資訊
+        private void RefreshProductInformation()
+        {
+            if (_buttonSelectedIndex == -1)
+                return;
+            Product product = _orderFormPresentationModel.GetProduct(_productTabControl.SelectedTab.Name, _buttonSelectedIndex);
+            _productDescriptionRichTextBox.Text = product.Description;
             _labelPrice.Text = Constant.PRICE + int.Parse(product.Price).ToString(Constant.NO);
             _labelQuantity.Text = Constant.STOCK_QUANTITY + product.Quantity;
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable && int.Parse(_orderFormPresentationModel.Model.CurrentUserSelectProduct.Quantity) > 0;
@@ -204,6 +228,7 @@ namespace Homework
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
+            _buttonSelectedIndex = -1;
             ClearLabelText();
         }
 

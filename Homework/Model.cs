@@ -8,6 +8,8 @@ namespace Homework
 {
     public class Model
     {
+        public event BackEndChangeEventHandler _backEndChangeEvent;
+        public delegate void BackEndChangeEventHandler();
         public event StockQuantityChangeEventHandler _stockQuantityProductChangeEvent;
         public delegate void StockQuantityChangeEventHandler();
         public event OverStockLimitEventHandler _overStockLimitEvent;
@@ -109,7 +111,7 @@ namespace Homework
             return rowData;
         }
 
-        // 加入商品
+        // 加入當前所選商品
         public void AddProduct()
         {
             _order.AddSelectProductToList(_currentUserSelectProduct);
@@ -175,7 +177,7 @@ namespace Homework
         //修改Order的數量及subtotal
         public void UpdateOrderQuantitySubtotal(int index, int value)
         {
-            _order.UserSelectProduct[index].Quantity = value.ToString();
+            _order.UserSelectedProductsQuantity[index] = value;
         }
 
         // 找產品
@@ -198,6 +200,7 @@ namespace Homework
                     if (_overStockLimitEvent != null)
                         _overStockLimitEvent();
                     quantity = int.Parse(product.Quantity);
+                    _order.UserSelectedProductsQuantity[rowIndex] = quantity;
                 }
             }
         }
@@ -205,9 +208,9 @@ namespace Homework
         // 清除我的訂單並更新庫存量(減少庫存量)
         public void ClearUserSelectProduct()
         {
-            foreach (var userProduct in _order.UserSelectProduct)
-                FindTheProduct(userProduct.Name).Quantity = (int.Parse(FindTheProduct(userProduct.Name).Quantity) - int.Parse(userProduct.Quantity)).ToString();
+            _order.CalculateRemainingStockQuantity();
             _order.UserSelectProduct.Clear();
+            _order.UserSelectedProductsQuantity.Clear();
             _stockQuantityProductChangeEvent();
         }
 
@@ -222,6 +225,60 @@ namespace Homework
         public bool IsStockProductQuantityEnough(string name)
         {
             return int.Parse(FindTheProduct(name).Quantity) > 0;
+        }
+
+        // 新增新商品到 Product List
+        public void AddNewProductToProductList(string[] stringText)
+        {
+            Category category = null;
+            foreach (var item in _productCategory)
+            {
+                if (stringText[Constant.TWO].Equals(item.Name))
+                {
+                    category = item;
+                    category.Count += 1;
+                    break;
+                }
+            }
+            Product product = new Product(stringText[0], category, stringText[1], stringText[Constant.FOUR], stringText[Constant.THREE], 1.ToString());
+            _productList.Add(product);
+            Console.WriteLine(category.Name);
+            _backEndChangeEvent();
+        }
+
+        // 存儲新的產品資訊
+        public void SaveChangedProductInformation(int index, string[] stringText)
+        {
+            Category category = null;
+            foreach (var item in _productCategory)
+            {
+                if (stringText[Constant.TWO].Equals(item.Name))
+                {
+                    category = item;
+                    break;
+                }
+            }
+            _productList[index].Name = stringText[0];
+            _productList[index].Price = stringText[1];
+            _productList[index].Category = category;
+            _productList[index].ImagePath = stringText[Constant.THREE];
+            _productList[index].Description = stringText[Constant.FOUR];
+            UpdateUserSelectProductList();
+            _backEndChangeEvent();
+        }
+
+        // 更新我的訂單中的資訊
+        private void UpdateUserSelectProductList()
+        {
+            foreach (var item in _order.UserSelectProduct)
+            {
+                Product product = FindTheProduct(item.Name);
+                item.Name = product.Name;
+                item.Price = product.Price;
+                item.Category = product.Category;
+                item.ImagePath = product.ImagePath;
+                item.Description = product.Description;
+            }
         }
     }
 }

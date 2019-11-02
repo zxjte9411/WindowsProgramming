@@ -38,7 +38,6 @@ namespace Homework
         // 處理庫存變更，新增按鈕的 enable
         private void HandleStockQuantityProductChangeEvent()
         {
-            
             _isButtonAddEnable = _model.CurrentUserSelectProduct != null && int.Parse(_model.CurrentUserSelectProduct.Quantity) > 0;
         }
 
@@ -62,7 +61,7 @@ namespace Homework
         }
 
         // 更新頁面數，強大公式
-        private void UpdatePages(int productCount)
+        public void UpdatePages(int productCount)
         {
             _pages = (productCount - 1) / Constant.BUTTON_COUNT + 1;
         }

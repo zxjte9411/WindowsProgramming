@@ -13,16 +13,18 @@ namespace Homework
     public partial class InventoryForm : Form
     {
         InventoryFormPresentationModel _inventoryFormPresentationModel;
+        private int _selectProductRowIndex;
         public InventoryForm(InventoryFormPresentationModel inventoryFormPresentationModel)
         {
             InitializeComponent();
             _inventoryFormPresentationModel = inventoryFormPresentationModel;
             RefreshStockDataGridView();
             _stockDataGridView.CellPainting += HandleCellPainting;
-            _stockDataGridView.CellClick += HandleCellClickEvent;
+            _stockDataGridView.CellClick += HandleCellClickEvent;            
             _inventoryFormPresentationModel._selectCellEvent += HandleCellClicked;
             _inventoryFormPresentationModel._replacementEvent += HandleCellContentClicked;
             _inventoryFormPresentationModel.Model._stockQuantityProductChangeEvent += RefreshStockDataGridView;
+            _inventoryFormPresentationModel.Model._backEndChangeEvent += HandleBackEndUpdate;
             FormClosing += HandleInventoryFormFormClosing;
         }
 
@@ -37,6 +39,7 @@ namespace Homework
         {
             _productDescriptionRichTextBox.Text = string.Empty;
             _productPictureBox.BackgroundImage = null;
+            _selectProductRowIndex = -1;
             _productPictureBox.Refresh();
         }
 
@@ -44,13 +47,23 @@ namespace Homework
         private void HandleCellClickEvent(Object sender, DataGridViewCellEventArgs e)
         {
             _inventoryFormPresentationModel.HandleDataGridViewPerformance(e.RowIndex, e.ColumnIndex);
+            _selectProductRowIndex = e.RowIndex;
         }
 
         // 處理 Cell 被點擊後的動作
         private void HandleCellClicked(int rowIndex)
         {
-            // 顯示被選取的產品資訊
-            Product product = _inventoryFormPresentationModel.Model.ProductList[rowIndex];
+            RefreshInformation(rowIndex);
+        }
+
+        // 更新產品資訊
+        private void RefreshInformation(int rowIndex = -1)
+        {
+            Product product = null;
+            if (rowIndex == -1)
+                product = _inventoryFormPresentationModel.Model.ProductList[_selectProductRowIndex];
+            else
+                product = _inventoryFormPresentationModel.Model.ProductList[rowIndex];
             _productDescriptionRichTextBox.Text = product.Description;
             _productPictureBox.BackgroundImage = Image.FromFile(product.ImagePath);
             _productPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
@@ -87,6 +100,13 @@ namespace Homework
                 e.Graphics.DrawImage(image, new Rectangle(x, y, width, height));
                 e.Handled = true;
             }
+        }
+
+        // 處理後台更新事件
+        private void HandleBackEndUpdate()
+        {
+            RefreshStockDataGridView();
+            RefreshInformation();
         }
     }
 }

@@ -9,11 +9,13 @@ namespace Homework
     public class Order
     {
         private List<Product> _userSelectedProducts;
+        private List<int> _userSelectedProductsQuantity;
         private CreditCardPayment _creditCardPayment;
         public Order()
         {
             _userSelectedProducts = new List<Product>();
             _creditCardPayment = new CreditCardPayment();
+            _userSelectedProductsQuantity = new List<int>();
         }
 
         public List<Product> UserSelectProduct
@@ -31,7 +33,8 @@ namespace Homework
         // 把所選的產品加入清單中
         public void AddSelectProductToList(Product selectProduct)
         {
-            _userSelectedProducts.Add(new Product(selectProduct.Name, selectProduct.Category, selectProduct.Price, selectProduct.Description, selectProduct.ImagePath, (1).ToString()));
+            _userSelectedProducts.Add(selectProduct);
+            _userSelectedProductsQuantity.Add(1);
         }
 
         // 回傳餐點的價格總和
@@ -39,7 +42,7 @@ namespace Homework
         {
             int totalPrice = 0;
             foreach (var product in _userSelectedProducts)
-                totalPrice += int.Parse(product.Price) * int.Parse(product.Quantity);
+                totalPrice += int.Parse(product.Price) * _userSelectedProductsQuantity[_userSelectedProducts.IndexOf(product)];
             return totalPrice;
         }
 
@@ -47,6 +50,7 @@ namespace Homework
         public void DeleteMeal(int productIndex)
         {
             _userSelectedProducts.RemoveAt(productIndex);
+            _userSelectedProductsQuantity.RemoveAt(productIndex);
         }
 
         public CreditCardPayment CreditCardPayment
@@ -61,6 +65,18 @@ namespace Homework
             }
         }
 
+        public List<int> UserSelectedProductsQuantity
+        {
+            get
+            {
+                return _userSelectedProductsQuantity;
+            }
+            set
+            {
+                _userSelectedProductsQuantity = value;
+            }
+        }
+
         // 取得訂單中的資料
         public List<string[]> GetUserSelectProductInList()
         {
@@ -72,7 +88,7 @@ namespace Homework
                 userSelectedProductInStringArray[1] = _userSelectedProducts[i].Name;
                 userSelectedProductInStringArray[Constant.TWO] = _userSelectedProducts[i].Category.Name;
                 userSelectedProductInStringArray[Constant.THREE] = int.Parse(_userSelectedProducts[i].Price).ToString(Constant.NO);
-                userSelectedProductInStringArray[Constant.FOUR] = _userSelectedProducts[i].Quantity;
+                userSelectedProductInStringArray[Constant.FOUR] = _userSelectedProductsQuantity[i].ToString();
                 userSelectedProductInStringArray[Constant.FIVE] = (int.Parse(_userSelectedProducts[i].Price) * int.Parse(_userSelectedProducts[i].Quantity)).ToString(Constant.NO);
                 userSelectedProductInStringList.Add(userSelectedProductInStringArray);
             }
@@ -82,7 +98,14 @@ namespace Homework
         // 取得單個產品的總價
         public int GetCustomerSelectedProductSubtotal(int rowIndex)
         {
-            return int.Parse(_userSelectedProducts[rowIndex].Price) * int.Parse(_userSelectedProducts[rowIndex].Quantity);
+            return int.Parse(_userSelectedProducts[rowIndex].Price) * _userSelectedProductsQuantity[rowIndex];
+        }
+
+        // 計算庫存數量
+        public void CalculateRemainingStockQuantity()
+        {
+            foreach (var userProduct in UserSelectProduct)
+                userProduct.Quantity = (int.Parse(userProduct.Quantity) - UserSelectedProductsQuantity[UserSelectProduct.IndexOf(userProduct)]).ToString();
         }
 
         // 產品是否已加入到我的清單中
