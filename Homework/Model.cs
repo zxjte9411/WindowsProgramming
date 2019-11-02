@@ -260,7 +260,7 @@ namespace Homework
             }
             _productList[index].Name = stringText[0];
             _productList[index].Price = stringText[1];
-            _productList[index].Category = category;
+            _productList[index].Category = _productList[index].Category.CompareCount(category);
             _productList[index].ImagePath = stringText[Constant.THREE];
             _productList[index].Description = stringText[Constant.FOUR];
             UpdateUserSelectProductList();

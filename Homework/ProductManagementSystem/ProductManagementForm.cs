@@ -34,7 +34,7 @@ namespace Homework
             _browseButton.Click += HandleBrowseButtonClick;
             _priceTextBox.KeyPress += HandleTextBoxKeyPress;
             FormClosing += HandleFormClosing;
-            _productManagementPresentationModel._clearAllAdtaEvent += CleanAllData;
+            _productManagementPresentationModel._clearAllDataEvent += CleanAllData;
             // databiding
             _button.DataBindings.Add(Constant.ENABLED, _productManagementPresentationModel, IS_BUTTON_PRODUCT_SAVE_ENABLE);
             _addNewProductButton.DataBindings.Add(Constant.ENABLED, _productManagementPresentationModel, IS_BUTTON_ADD_ENABLE);

@@ -11,8 +11,8 @@ namespace Homework
     public class ProductManagementPresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public event HandledCleanAllDataEvent _clearAllAdtaEvent;
-        public delegate void HandledCleanAllDataEvent(); 
+        public event CleanAllDataEventHandler _clearAllDataEvent;
+        public delegate void CleanAllDataEventHandler(); 
         private Model _model;
         private Constant.Mode _mode;
         private bool _isButtonSaveAddEnable;
@@ -115,7 +115,7 @@ namespace Homework
                 case Constant.Mode.AddMode:
                     AddNewProduct(stringText);
                     ChangeButtonEnableState(false, false);
-                    _clearAllAdtaEvent();
+                    _clearAllDataEvent();
                     break;
             }
             //Mode = Constant.Mode.InitialMode;

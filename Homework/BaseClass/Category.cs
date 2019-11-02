@@ -40,5 +40,17 @@ namespace Homework
                 _count = value;
             }
         }
+
+        // 比較兩者的類別是否相同
+        public Category CompareCount(Category category)
+        {
+            if (_name != category.Name)
+            {
+                _count -= 1;
+                category.Count += 1;
+                return category;
+            }
+            return this;
+        }
     } 
 }
