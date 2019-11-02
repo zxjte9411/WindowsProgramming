@@ -63,7 +63,7 @@ namespace Homework
         private void HandleButtonClick(object sender, EventArgs e)
         {
             _productManagementPresentationModel.HandleButtonClickEvent(_listBoxSelectedIndex, GetTextBoxText());
-            //CleanAllData();
+            RefreshListBox();
         }
 
         // 處理只能輸入純數字的 TextBox 輸入限制

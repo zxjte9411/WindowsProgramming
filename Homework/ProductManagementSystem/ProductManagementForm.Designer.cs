@@ -256,7 +256,7 @@
             this._categoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._categoryComboBox.FormattingEnabled = true;
-            this._categoryComboBox.Location = new System.Drawing.Point(449, 15);
+            this._categoryComboBox.Location = new System.Drawing.Point(449, 19);
             this._categoryComboBox.Name = "_categoryComboBox";
             this._categoryComboBox.Size = new System.Drawing.Size(265, 28);
             this._categoryComboBox.TabIndex = 6;
