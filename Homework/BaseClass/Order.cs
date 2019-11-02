@@ -89,7 +89,7 @@ namespace Homework
                 userSelectedProductInStringArray[Constant.TWO] = _userSelectedProducts[i].Category.Name;
                 userSelectedProductInStringArray[Constant.THREE] = int.Parse(_userSelectedProducts[i].Price).ToString(Constant.NO);
                 userSelectedProductInStringArray[Constant.FOUR] = _userSelectedProductsQuantity[i].ToString();
-                userSelectedProductInStringArray[Constant.FIVE] = (int.Parse(_userSelectedProducts[i].Price) * int.Parse(_userSelectedProducts[i].Quantity)).ToString(Constant.NO);
+                userSelectedProductInStringArray[Constant.FIVE] = (int.Parse(_userSelectedProducts[i].Price) * _userSelectedProductsQuantity[i]).ToString(Constant.NO);
                 userSelectedProductInStringList.Add(userSelectedProductInStringArray);
             }
             return userSelectedProductInStringList;
@@ -98,6 +98,8 @@ namespace Homework
         // 取得單個產品的總價
         public int GetCustomerSelectedProductSubtotal(int rowIndex)
         {
+            Console.WriteLine(_userSelectedProductsQuantity[rowIndex].ToString());
+            Console.WriteLine(_userSelectedProducts[rowIndex].Price);
             return int.Parse(_userSelectedProducts[rowIndex].Price) * _userSelectedProductsQuantity[rowIndex];
         }
 

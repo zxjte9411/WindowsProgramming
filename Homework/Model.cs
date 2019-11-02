@@ -200,8 +200,8 @@ namespace Homework
                     if (_overStockLimitEvent != null)
                         _overStockLimitEvent();
                     quantity = int.Parse(product.Quantity);
-                    _order.UserSelectedProductsQuantity[rowIndex] = quantity;
                 }
+                _order.UserSelectedProductsQuantity[rowIndex] = quantity;
             }
         }
 

@@ -51,7 +51,6 @@ namespace Homework
             RefreshDataGridView();
             _orderFormPresentationModel.UpdatePages(_orderFormPresentationModel.Model.GetProductsOfThisCategory(_productTabControl.SelectedTab.Name).Count);
             UpdateProductButtonInformation();
-            RefreshProductInformation();
             _nextButton.Enabled = _orderFormPresentationModel.IsHaveNextPage;
             _previousButton.Enabled = _orderFormPresentationModel.IsHavePreviousPage;
             _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
@@ -128,8 +127,8 @@ namespace Homework
         {
             if (_recordDataGridView.Rows.Count > 0)
             {
-                _recordDataGridView.Rows[rowIndex].Cells[Constant.FIVE].Value = _orderFormPresentationModel.Model.Order.GetCustomerSelectedProductSubtotal(rowIndex).ToString(Constant.NO);
                 _recordDataGridView.Rows[rowIndex].Cells[Constant.FOUR].Value = _orderFormPresentationModel.Model.Order.UserSelectedProductsQuantity[rowIndex];
+                _recordDataGridView.Rows[rowIndex].Cells[Constant.FIVE].Value = _orderFormPresentationModel.Model.Order.GetCustomerSelectedProductSubtotal(rowIndex).ToString(Constant.NO);
             }
             _labelTotalPrice.Text = _orderFormPresentationModel.GetTotalPriceText();
         }

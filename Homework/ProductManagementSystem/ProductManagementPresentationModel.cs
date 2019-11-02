@@ -120,7 +120,6 @@ namespace Homework
             }
             //Mode = Constant.Mode.InitialMode;
             UpdateModeChangedState();
-            Console.WriteLine(Mode);
         }
 
         // 加入新產品

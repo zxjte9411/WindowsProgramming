@@ -17,6 +17,7 @@ namespace Homework
         public InventoryForm(InventoryFormPresentationModel inventoryFormPresentationModel)
         {
             InitializeComponent();
+            _selectProductRowIndex = -1;
             _inventoryFormPresentationModel = inventoryFormPresentationModel;
             RefreshStockDataGridView();
             _stockDataGridView.CellPainting += HandleCellPainting;
@@ -53,6 +54,7 @@ namespace Homework
         // 處理 Cell 被點擊後的動作
         private void HandleCellClicked(int rowIndex)
         {
+            _selectProductRowIndex = rowIndex;
             RefreshInformation(rowIndex);
         }
 
@@ -60,13 +62,13 @@ namespace Homework
         private void RefreshInformation(int rowIndex = -1)
         {
             Product product = null;
-            if (rowIndex == -1)
+            if (_selectProductRowIndex != -1)
+            {
                 product = _inventoryFormPresentationModel.Model.ProductList[_selectProductRowIndex];
-            else
-                product = _inventoryFormPresentationModel.Model.ProductList[rowIndex];
-            _productDescriptionRichTextBox.Text = product.Description;
-            _productPictureBox.BackgroundImage = Image.FromFile(product.ImagePath);
-            _productPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+                _productDescriptionRichTextBox.Text = product.Description;
+                _productPictureBox.BackgroundImage = Image.FromFile(product.ImagePath);
+                _productPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+            }
         }
 
         // 處理補貨被點擊的動作
