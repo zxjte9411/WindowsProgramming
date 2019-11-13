@@ -351,6 +351,11 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>InventorySystem\InventoryFormPresentationModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>ModelTests.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -361,9 +366,19 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>ProductManagementSystem\ProductManagementPresentationModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
                 <ProjectName>HomeworkTests</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Replenishment\ReplacementFormPresentationModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>SuperClass\CategoryTests.cs</RelativePath>
@@ -387,8 +402,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>4708</ProductionLoc>
-          <TestLoc>2260</TestLoc>
+          <ProductionLoc>4993</ProductionLoc>
+          <TestLoc>2589</TestLoc>
         </CodeReview>
       </Data>
     </div>

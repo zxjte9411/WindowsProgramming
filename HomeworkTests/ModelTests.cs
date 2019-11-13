@@ -22,6 +22,12 @@ namespace Homework.Tests
             flagTest = true;
         }
 
+        // event test
+        private void ModelBackEndNewCategoryEventTest(string stringText)
+        {
+            flagTest = true;
+        }
+
         // test Initialize
         [TestInitialize]
         public void TestInitialize()
@@ -204,6 +210,16 @@ namespace Homework.Tests
             rowData[4] = "3900x_10c20t";
             model.SaveChangedProductInformation(0, rowData);
             Assert.AreEqual(model.ProductList[0].Name, "3900x");
+            Assert.AreEqual(flagTest, true);
+        }
+
+        // test AddNewCategoryToProductList
+        [TestMethod()]
+        public void TestAddNewCategoryToProductList()
+        {
+            model._backEndNewCategoryEvent += ModelBackEndNewCategoryEventTest;
+            model.AddNewCategoryToProductList("測試機殼");
+            Assert.AreEqual(model.ProductCategory.Last().Name, "測試機殼");
             Assert.AreEqual(flagTest, true);
         }
     }

@@ -53,6 +53,7 @@
     <Compile Include="InventorySystem\InventoryFormPresentationModelTests.cs" />
     <Compile Include="ModelTests.cs" />
     <Compile Include="OrderSystem\OrderFormPresentationModelTests.cs" />
+    <Compile Include="ProductManagementSystem\ProductManagementPresentationModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Replenishment\ReplacementFormPresentationModelTests.cs" />
     <Compile Include="SuperClass\CategoryTests.cs" />
