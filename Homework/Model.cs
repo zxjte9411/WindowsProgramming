@@ -20,9 +20,9 @@ namespace Homework
         private Product _currentUserSelectProduct;
         public Model()
         {
-            _order = new Order();
-            _productList = new List<Product>();
-            _productCategory = new List<Category>();
+            Order = new Order();
+            ProductList = new List<Product>();
+            ProductCategory = new List<Category>();
             InitializeCategoryList();
             InitializeProductList();
         }
@@ -95,14 +95,14 @@ namespace Homework
         // 取得當前所選的產品
         public Product GetProduct(string categoryName, int productIndex)
         {
-            return _currentUserSelectProduct = GetProductsOfThisCategory(categoryName)[productIndex];
+            return CurrentUserSelectProduct = GetProductsOfThisCategory(categoryName)[productIndex];
         }
 
         // 取得資料列
         public string[] GetRowData()
         {
             string[] rowData = new string[Constant.FIVE + 1];
-            rowData[0] = String.Empty;
+            rowData[0] = string.Empty;
             rowData[1] = _currentUserSelectProduct.Name;
             rowData[Constant.TWO] = _currentUserSelectProduct.Category.Name;
             rowData[Constant.THREE] = int.Parse(_currentUserSelectProduct.Price).ToString(Constant.NO);
