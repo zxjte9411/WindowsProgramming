@@ -25,7 +25,7 @@ namespace Homework
         {
             _model = model;
             _currentPageNumber = 1;
-            _isHavePreviousPage = false;
+            IsHavePreviousPage = false;
             _isHaveNextPage = true;
             _isSelectedProduct = false;
             _isButtonAddEnable = false;
@@ -46,7 +46,7 @@ namespace Homework
         {
             if (columnIndex == 0 && rowIndex >= 0)
             {
-                _model.Order.DeleteMeal(rowIndex);
+                _model.Order.DeleteProduct(rowIndex);
                 if (_deleteEvent != null)
                     _deleteEvent(rowIndex, GetTotalPriceText());
             }
@@ -64,6 +64,7 @@ namespace Homework
         public void UpdatePages(int productCount)
         {
             _pages = (productCount - 1) / Constant.BUTTON_COUNT + 1;
+            UpdateButtonState();
         }
 
         // 取得當前頁面產品資訊
@@ -194,19 +195,15 @@ namespace Homework
             {
                 return _model;
             }
-            set
-            {
-                _model = value;
-            }
         }
 
         // //更新上一頁、下一頁及新增按鈕的狀態
         private void UpdateButtonState()
         {
             if (_currentPageNumber == 1)
-                _isHavePreviousPage = false;
+                IsHavePreviousPage = false;
             else
-                _isHavePreviousPage = true;
+                IsHavePreviousPage = true;
 
             if (_currentPageNumber >= _pages)
                 _isHaveNextPage = false;
