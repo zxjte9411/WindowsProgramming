@@ -191,31 +191,6 @@
           <AnalysisFileManager>
             <AnalysisFiles>
               <AnalysisFile>
-                <RelativePath>BaseClass\Category.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>BaseClass\Constant.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>BaseClass\CreditCardPayment.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>BaseClass\Order.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>BaseClass\Product.cs</RelativePath>
-                <ProjectName>Homework</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
                 <RelativePath>CreditCardPayment\CreditCardPaymentForm.cs</RelativePath>
                 <ProjectName>Homework</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -326,6 +301,31 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>SuperClass\Category.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\Constant.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\CreditCardPayment.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\Order.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\Product.cs</RelativePath>
+                <ProjectName>Homework</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>DataGridViewNumericUpDownCell.cs</RelativePath>
                 <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -345,10 +345,50 @@
                 <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>CreditCardPayment\CreditCardPaymentPresentationModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>OrderSystem\OrderFormPresentationModelTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\CategoryTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\CreditCardPaymentTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\OrderTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>SuperClass\ProductTests.cs</RelativePath>
+                <ProjectName>HomeworkTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>4692</ProductionLoc>
-          <TestLoc>1503</TestLoc>
+          <ProductionLoc>4708</ProductionLoc>
+          <TestLoc>2260</TestLoc>
         </CodeReview>
       </Data>
     </div>

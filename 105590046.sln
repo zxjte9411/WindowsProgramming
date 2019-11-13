@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework", "Homework\Homewo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewNumericUpDownElements", "DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj", "{82B50731-BE90-433F-BB6E-9B509C5F3B7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeworkTests", "HomeworkTests\HomeworkTests.csproj", "{24C4B174-20CF-41F3-9386-EF6A2689304E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C4B174-20CF-41F3-9386-EF6A2689304E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C4B174-20CF-41F3-9386-EF6A2689304E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C4B174-20CF-41F3-9386-EF6A2689304E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C4B174-20CF-41F3-9386-EF6A2689304E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

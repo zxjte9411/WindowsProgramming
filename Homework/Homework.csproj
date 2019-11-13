@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClass\Category.cs" />
-    <Compile Include="BaseClass\CreditCardPayment.cs" />
+    <Compile Include="SuperClass\Category.cs" />
+    <Compile Include="SuperClass\CreditCardPayment.cs" />
     <Compile Include="CreditCardPayment\CreditCardPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,9 +70,9 @@
     </Compile>
     <Compile Include="Model.cs" />
     <Compile Include="OrderSystem\OrderFormPresentationModel.cs" />
-    <Compile Include="BaseClass\Constant.cs" />
-    <Compile Include="BaseClass\Order.cs" />
-    <Compile Include="BaseClass\Product.cs" />
+    <Compile Include="SuperClass\Constant.cs" />
+    <Compile Include="SuperClass\Order.cs" />
+    <Compile Include="SuperClass\Product.cs" />
     <Compile Include="ProductManagementSystem\ProductManagementPresentationModel.cs" />
     <Compile Include="ProductManagementSystem\ProductManagementForm.cs">
       <SubType>Form</SubType>
