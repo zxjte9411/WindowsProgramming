@@ -9,7 +9,9 @@ namespace Homework
     public class Model
     {
         public event BackEndChangeEventHandler _backEndChangeEvent;
+        public event BackEndNewCategoryEventHandler _backEndNewCategoryEvent;
         public delegate void BackEndChangeEventHandler();
+        public delegate void BackEndNewCategoryEventHandler(string stringText);
         public event StockQuantityChangeEventHandler _stockQuantityProductChangeEvent;
         public delegate void StockQuantityChangeEventHandler();
         public event OverStockLimitEventHandler _overStockLimitEvent;
@@ -242,8 +244,14 @@ namespace Homework
             }
             Product product = new Product(stringText[0], category, stringText[1], stringText[Constant.FOUR], stringText[Constant.THREE], 1.ToString());
             _productList.Add(product);
-            Console.WriteLine(category.Name);
             _backEndChangeEvent();
+        }
+
+        // 新增類別品到 Category List
+        public void AddNewCategoryToProductList(string stringText)
+        {
+            _productCategory.Add(new Category(stringText, 0));
+            _backEndNewCategoryEvent(stringText);
         }
 
         // 存儲新的產品資訊

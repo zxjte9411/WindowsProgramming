@@ -53,6 +53,17 @@
             this._addNewProductButton = new System.Windows.Forms.Button();
             this._button = new System.Windows.Forms.Button();
             this._tabPage2 = new System.Windows.Forms.TabPage();
+            this._tableLayoutPanelCategory = new System.Windows.Forms.TableLayoutPanel();
+            this._tableLayoutPanelCategoryRight = new System.Windows.Forms.TableLayoutPanel();
+            this._groupBoxCategory = new System.Windows.Forms.GroupBox();
+            this._tableLayoutPanelCategoryRightTop = new System.Windows.Forms.TableLayoutPanel();
+            this._labelCategoryName = new System.Windows.Forms.Label();
+            this._textBoxCategoryName = new System.Windows.Forms.TextBox();
+            this._labelProductsInCategory = new System.Windows.Forms.Label();
+            this._listBoxProductOfCategory = new System.Windows.Forms.ListBox();
+            this._listBoxCategory = new System.Windows.Forms.ListBox();
+            this._buttonNewCategory = new System.Windows.Forms.Button();
+            this._buttonNew = new System.Windows.Forms.Button();
             this._titleLabel = new System.Windows.Forms.Label();
             this._tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._tabControl.SuspendLayout();
@@ -64,6 +75,11 @@
             this._tableLayoutPanel5.SuspendLayout();
             this._tableLayoutPanel6.SuspendLayout();
             this._tableLayoutPanel7.SuspendLayout();
+            this._tabPage2.SuspendLayout();
+            this._tableLayoutPanelCategory.SuspendLayout();
+            this._tableLayoutPanelCategoryRight.SuspendLayout();
+            this._groupBoxCategory.SuspendLayout();
+            this._tableLayoutPanelCategoryRightTop.SuspendLayout();
             this._tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -359,6 +375,7 @@
             // 
             // _tabPage2
             // 
+            this._tabPage2.Controls.Add(this._tableLayoutPanelCategory);
             this._tabPage2.Location = new System.Drawing.Point(4, 26);
             this._tabPage2.Name = "_tabPage2";
             this._tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -366,6 +383,139 @@
             this._tabPage2.TabIndex = 1;
             this._tabPage2.Text = "類別管理";
             this._tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // _tableLayoutPanelCategory
+            // 
+            this._tableLayoutPanelCategory.ColumnCount = 2;
+            this._tableLayoutPanelCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this._tableLayoutPanelCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this._tableLayoutPanelCategory.Controls.Add(this._tableLayoutPanelCategoryRight, 1, 0);
+            this._tableLayoutPanelCategory.Controls.Add(this._listBoxCategory, 0, 0);
+            this._tableLayoutPanelCategory.Controls.Add(this._buttonNewCategory, 0, 1);
+            this._tableLayoutPanelCategory.Controls.Add(this._buttonNew, 1, 1);
+            this._tableLayoutPanelCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanelCategory.Location = new System.Drawing.Point(3, 3);
+            this._tableLayoutPanelCategory.Name = "_tableLayoutPanelCategory";
+            this._tableLayoutPanelCategory.RowCount = 2;
+            this._tableLayoutPanelCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this._tableLayoutPanelCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this._tableLayoutPanelCategory.Size = new System.Drawing.Size(1058, 513);
+            this._tableLayoutPanelCategory.TabIndex = 2;
+            // 
+            // _tableLayoutPanelCategoryRight
+            // 
+            this._tableLayoutPanelCategoryRight.ColumnCount = 1;
+            this._tableLayoutPanelCategoryRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanelCategoryRight.Controls.Add(this._groupBoxCategory, 0, 0);
+            this._tableLayoutPanelCategoryRight.Controls.Add(this._labelProductsInCategory, 0, 1);
+            this._tableLayoutPanelCategoryRight.Controls.Add(this._listBoxProductOfCategory, 0, 2);
+            this._tableLayoutPanelCategoryRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanelCategoryRight.Location = new System.Drawing.Point(320, 3);
+            this._tableLayoutPanelCategoryRight.Name = "_tableLayoutPanelCategoryRight";
+            this._tableLayoutPanelCategoryRight.RowCount = 3;
+            this._tableLayoutPanelCategoryRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tableLayoutPanelCategoryRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this._tableLayoutPanelCategoryRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this._tableLayoutPanelCategoryRight.Size = new System.Drawing.Size(735, 455);
+            this._tableLayoutPanelCategoryRight.TabIndex = 0;
+            // 
+            // _groupBoxCategory
+            // 
+            this._groupBoxCategory.Controls.Add(this._tableLayoutPanelCategoryRightTop);
+            this._groupBoxCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._groupBoxCategory.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._groupBoxCategory.Location = new System.Drawing.Point(3, 3);
+            this._groupBoxCategory.Name = "_groupBoxCategory";
+            this._groupBoxCategory.Size = new System.Drawing.Size(729, 221);
+            this._groupBoxCategory.TabIndex = 0;
+            this._groupBoxCategory.TabStop = false;
+            this._groupBoxCategory.Text = "類別";
+            // 
+            // _tableLayoutPanelCategoryRightTop
+            // 
+            this._tableLayoutPanelCategoryRightTop.ColumnCount = 2;
+            this._tableLayoutPanelCategoryRightTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this._tableLayoutPanelCategoryRightTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this._tableLayoutPanelCategoryRightTop.Controls.Add(this._labelCategoryName, 0, 0);
+            this._tableLayoutPanelCategoryRightTop.Controls.Add(this._textBoxCategoryName, 1, 0);
+            this._tableLayoutPanelCategoryRightTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanelCategoryRightTop.Location = new System.Drawing.Point(3, 25);
+            this._tableLayoutPanelCategoryRightTop.Name = "_tableLayoutPanelCategoryRightTop";
+            this._tableLayoutPanelCategoryRightTop.RowCount = 1;
+            this._tableLayoutPanelCategoryRightTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanelCategoryRightTop.Size = new System.Drawing.Size(723, 193);
+            this._tableLayoutPanelCategoryRightTop.TabIndex = 3;
+            // 
+            // _labelCategoryName
+            // 
+            this._labelCategoryName.AutoSize = true;
+            this._labelCategoryName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._labelCategoryName.Location = new System.Drawing.Point(3, 0);
+            this._labelCategoryName.Name = "_labelCategoryName";
+            this._labelCategoryName.Size = new System.Drawing.Size(102, 193);
+            this._labelCategoryName.TabIndex = 4;
+            this._labelCategoryName.Text = "類別名稱(*)";
+            this._labelCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // _textBoxCategoryName
+            // 
+            this._textBoxCategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxCategoryName.Location = new System.Drawing.Point(111, 82);
+            this._textBoxCategoryName.Name = "_textBoxCategoryName";
+            this._textBoxCategoryName.Size = new System.Drawing.Size(609, 29);
+            this._textBoxCategoryName.TabIndex = 5;
+            // 
+            // _labelProductsInCategory
+            // 
+            this._labelProductsInCategory.AutoSize = true;
+            this._labelProductsInCategory.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._labelProductsInCategory.Location = new System.Drawing.Point(3, 227);
+            this._labelProductsInCategory.Name = "_labelProductsInCategory";
+            this._labelProductsInCategory.Size = new System.Drawing.Size(89, 20);
+            this._labelProductsInCategory.TabIndex = 1;
+            this._labelProductsInCategory.Text = "類別內產品";
+            // 
+            // _listBoxProductOfCattegory
+            // 
+            this._listBoxProductOfCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._listBoxProductOfCategory.FormattingEnabled = true;
+            this._listBoxProductOfCategory.ItemHeight = 17;
+            this._listBoxProductOfCategory.Location = new System.Drawing.Point(3, 252);
+            this._listBoxProductOfCategory.Name = "_listBoxProductOfCattegory";
+            this._listBoxProductOfCategory.Size = new System.Drawing.Size(729, 200);
+            this._listBoxProductOfCategory.TabIndex = 2;
+            // 
+            // _listBoxCategory
+            // 
+            this._listBoxCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._listBoxCategory.FormattingEnabled = true;
+            this._listBoxCategory.ItemHeight = 17;
+            this._listBoxCategory.Location = new System.Drawing.Point(3, 3);
+            this._listBoxCategory.Name = "_listBoxCategory";
+            this._listBoxCategory.Size = new System.Drawing.Size(311, 455);
+            this._listBoxCategory.TabIndex = 1;
+            // 
+            // _buttonNewCategory
+            // 
+            this._buttonNewCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._buttonNewCategory.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._buttonNewCategory.Location = new System.Drawing.Point(3, 464);
+            this._buttonNewCategory.Name = "_buttonNewCategory";
+            this._buttonNewCategory.Size = new System.Drawing.Size(311, 46);
+            this._buttonNewCategory.TabIndex = 2;
+            this._buttonNewCategory.Text = "新增類別";
+            this._buttonNewCategory.UseVisualStyleBackColor = true;
+            // 
+            // _buttonNew
+            // 
+            this._buttonNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonNew.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._buttonNew.Location = new System.Drawing.Point(930, 467);
+            this._buttonNew.Name = "_buttonNew";
+            this._buttonNew.Size = new System.Drawing.Size(125, 43);
+            this._buttonNew.TabIndex = 3;
+            this._buttonNew.Text = "新增";
+            this._buttonNew.UseVisualStyleBackColor = true;
             // 
             // _titleLabel
             // 
@@ -415,6 +565,13 @@
             this._tableLayoutPanel6.PerformLayout();
             this._tableLayoutPanel7.ResumeLayout(false);
             this._tableLayoutPanel7.PerformLayout();
+            this._tabPage2.ResumeLayout(false);
+            this._tableLayoutPanelCategory.ResumeLayout(false);
+            this._tableLayoutPanelCategoryRight.ResumeLayout(false);
+            this._tableLayoutPanelCategoryRight.PerformLayout();
+            this._groupBoxCategory.ResumeLayout(false);
+            this._tableLayoutPanelCategoryRightTop.ResumeLayout(false);
+            this._tableLayoutPanelCategoryRightTop.PerformLayout();
             this._tableLayoutPanel1.ResumeLayout(false);
             this._tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -450,5 +607,16 @@
         private System.Windows.Forms.Label _titleLabel;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel1;
         private System.Windows.Forms.RichTextBox _descriptionRichTextBox;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanelCategory;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanelCategoryRight;
+        private System.Windows.Forms.GroupBox _groupBoxCategory;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanelCategoryRightTop;
+        private System.Windows.Forms.Label _labelCategoryName;
+        private System.Windows.Forms.TextBox _textBoxCategoryName;
+        private System.Windows.Forms.Label _labelProductsInCategory;
+        private System.Windows.Forms.ListBox _listBoxCategory;
+        private System.Windows.Forms.Button _buttonNewCategory;
+        private System.Windows.Forms.Button _buttonNew;
+        private System.Windows.Forms.ListBox _listBoxProductOfCategory;
     }
 }

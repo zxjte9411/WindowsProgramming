@@ -17,33 +17,50 @@ namespace Homework
         private const string IS_BUTTON_PRODUCT_SAVE_ENABLE = "IsButtonSaveAddEnable";
         private const string IS_BUTTON_ADD_ENABLE = "IsButtonAddEnable";
         private const string BUTTON_SAVE_ADD_TEXT = "ButtonSaveAddText";
-        private const string GROUP_BOX_MEAL_TEXT = "GroupBoxProductText";
+        private const string GROUP_BOX_PRODUCT_TEXT = "GroupBoxProductText";
+        private const string GROUP_BOX_CATEGORY_TEXT = "GroupBoxCategoryText";
         public ProductManagementForm(ProductManagementPresentationModel productManagementPresentationModel)
         {
             InitializeComponent();
             // every event
             _productManagementPresentationModel = productManagementPresentationModel;
-            _addNewProductButton.Click += HandleAddNewProductButtonClick;
+            _tabControl.Selected += HandleTabControlSelectedEvent;
+            _addNewProductButton.Click += HandleAddNewButtonClick;
+            _buttonNewCategory.Click += HandleAddNewButtonClick;
             _productListBox.SelectedIndexChanged += HandleProductListBoxSelectedIndexChanged;
+            _listBoxCategory.SelectedIndexChanged += HandleCategoryListBoxSelectedIndexChanged;
             _productNameTextBox.TextChanged += HandleProductInformationChangedEvent;
             _priceTextBox.TextChanged += HandleProductInformationChangedEvent;
             _picturePathTextBox.TextChanged += HandleProductInformationChangedEvent;
             _descriptionRichTextBox.TextChanged += HandleProductInformationChangedEvent;
             _categoryComboBox.SelectionChangeCommitted += HandleProductInformationChangedEvent;
+            _textBoxCategoryName.TextChanged += HandleCategoryInformationChangedEvent;
             _button.Click += HandleButtonClick;
+            _buttonNew.Click += HandleButtonNewClick;
             _browseButton.Click += HandleBrowseButtonClick;
             _priceTextBox.KeyPress += HandleTextBoxKeyPress;
             FormClosing += HandleFormClosing;
             _productManagementPresentationModel._clearAllDataEvent += CleanAllData;
-            // databiding
+            // databiding product management
             _button.DataBindings.Add(Constant.ENABLED, _productManagementPresentationModel, IS_BUTTON_PRODUCT_SAVE_ENABLE);
             _addNewProductButton.DataBindings.Add(Constant.ENABLED, _productManagementPresentationModel, IS_BUTTON_ADD_ENABLE);
             _button.DataBindings.Add(Constant.TEXT, _productManagementPresentationModel, BUTTON_SAVE_ADD_TEXT);
-            _groupBox.DataBindings.Add(Constant.TEXT, _productManagementPresentationModel, GROUP_BOX_MEAL_TEXT);
+            _groupBox.DataBindings.Add(Constant.TEXT, _productManagementPresentationModel, GROUP_BOX_PRODUCT_TEXT);
+            // databiding category management
+            _buttonNew.DataBindings.Add(Constant.ENABLED, _productManagementPresentationModel, IS_BUTTON_PRODUCT_SAVE_ENABLE);
+            _buttonNewCategory.DataBindings.Add(Constant.ENABLED, _productManagementPresentationModel, IS_BUTTON_ADD_ENABLE);
+            _groupBoxCategory.DataBindings.Add(Constant.TEXT, _productManagementPresentationModel, GROUP_BOX_CATEGORY_TEXT);
             // initialize function
             InitializeTabPage();
             RefreshListBox();
             RefreshCategoryInformation();
+        }
+
+        // 處理頁面切換事件
+        private void HandleTabControlSelectedEvent(object sender, TabControlEventArgs e)
+        {
+            CleanAllData();
+            _productManagementPresentationModel.InitializeAllStatus();
         }
 
         // handle Browse Button click ecent
@@ -66,9 +83,17 @@ namespace Homework
             RefreshListBox();
         }
 
+        // 處理 ButtonNew (category)
+        private void HandleButtonNewClick(object sender, EventArgs e)
+        {
+            _productManagementPresentationModel.HandleButtonNewClickEvent(_textBoxCategoryName.Text);
+            RefreshListBox();
+            RefreshCategoryInformation();
+        }
+
         // 處理只能輸入純數字的 TextBox 輸入限制
         private void HandleTextBoxKeyPress(object sender, KeyPressEventArgs e)
-        { 
+        {
             e.Handled = !_productManagementPresentationModel.HandleTextBoxKeyPress(e.KeyChar, (char)Keys.Back);
         }
 
@@ -82,11 +107,11 @@ namespace Homework
             _tabControl.Controls.Add(productManagementTabPage);
             TabPage categoryManagementTabPage = new TabPage();
             categoryManagementTabPage.Name = categoryManagementTabPage.Text = Constant.CATEGORY_MANAGER;
-            // 缺介面
+            categoryManagementTabPage.Controls.Add(_tableLayoutPanelCategory);
             _tabControl.Controls.Add(categoryManagementTabPage);
         }
 
-        // 刷新 TextBox 資訊
+        // 刷新 Product TextBox 資訊
         private void UpdateProductInformationText(int index)
         {
             _productNameTextBox.Text = _productManagementPresentationModel.Model.ProductList[_listBoxSelectedIndex].Name;
@@ -96,16 +121,29 @@ namespace Homework
             _descriptionRichTextBox.Text = _productManagementPresentationModel.Model.ProductList[_listBoxSelectedIndex].Description;
         }
 
+        // 刷新 Category TextBox 資訊
+        private void UpdateCategoryInformationText(int index)
+        {
+            const string NAME = "Name";
+            _listBoxProductOfCategory.Items.Clear();
+            _textBoxCategoryName.Text = _productManagementPresentationModel.Model.ProductCategory[index].Name;
+            _listBoxProductOfCategory.Items.AddRange(_productManagementPresentationModel.Model.GetProductsOfThisCategory(_textBoxCategoryName.Text).ToArray());
+            _listBoxProductOfCategory.DisplayMember = NAME;
+        }
+
         // 刷新 ListBox
         private void RefreshListBox()
         {
-            _productListBox.Items.Clear();
             const string NAME = "Name";
+            _productListBox.Items.Clear();
+            _listBoxCategory.Items.Clear();
             _productListBox.Items.AddRange(_productManagementPresentationModel.Model.ProductList.ToArray());
             _productListBox.DisplayMember = NAME;
+            _listBoxCategory.Items.AddRange(_productManagementPresentationModel.Model.ProductCategory.ToArray());
+            _listBoxCategory.DisplayMember = NAME;
         }
 
-        // 刷新 Category 相關資訊
+        // 刷新 Category ComboBox
         private void RefreshCategoryInformation()
         {
             List<Category> categorys = _productManagementPresentationModel.Model.ProductCategory;
@@ -126,6 +164,9 @@ namespace Homework
             _picturePathTextBox.Text = string.Empty;
             _categoryComboBox.SelectedIndex = -1;
             _productListBox.ClearSelected();
+            _listBoxProductOfCategory.Items.Clear();
+            _textBoxCategoryName.Text = string.Empty;
+            _listBoxCategory.ClearSelected();
         }
 
         // 取得 groupbox 中的各項文字
@@ -140,7 +181,7 @@ namespace Homework
             return stringText;
         }
 
-        // 處理 ListBox 東西被點擊
+        // 處理 Product ListBox 東西被點擊
         private void HandleProductListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_productListBox.SelectedItem != null)
@@ -151,18 +192,36 @@ namespace Homework
             }
         }
 
+        // 處理 Category ListBox 東西被點擊
+        private void HandleCategoryListBoxSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_listBoxCategory.SelectedItem != null)
+            {
+                _listBoxSelectedIndex = _listBoxCategory.SelectedIndex;
+                UpdateCategoryInformationText(_listBoxSelectedIndex);
+                _productManagementPresentationModel.HandleProductListBoxSelected();
+            }
+        }
+
         // 處理 "新增商品" 按鈕點擊
-        private void HandleAddNewProductButtonClick(object sender, EventArgs e)
+        private void HandleAddNewButtonClick(object sender, EventArgs e)
         {
             _productManagementPresentationModel.HandleNewProductAddButtonClickEvent();
             CleanAllData();
         }
 
-        //處理 texcbox change event
+        //處理 product textbox change event
         private void HandleProductInformationChangedEvent(object sender, EventArgs e)
         {
-            //GetTextBoxText();
             _productManagementPresentationModel.CheckButtonIsCanEnable(GetTextBoxText());
+        }
+
+        //處理 category textbox change event
+        private void HandleCategoryInformationChangedEvent(object sender, EventArgs e)
+        {
+            string[] stringText = new string[1];
+            stringText[0] = _textBoxCategoryName.Text;
+            _productManagementPresentationModel.CheckButtonIsCanEnable(stringText);
         }
 
         // 處理 form 關閉前的事件

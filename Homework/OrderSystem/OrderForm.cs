@@ -39,10 +39,19 @@ namespace Homework
             _orderFormPresentationModel.Model._overStockLimitEvent += HandleOverStockLimit;
             _orderFormPresentationModel.Model._stockQuantityProductChangeEvent += HandleQuantityChange;
             _orderFormPresentationModel.Model._backEndChangeEvent += HandleBackEndChangeEvent;
+            _orderFormPresentationModel.Model._backEndNewCategoryEvent += HandleBackEndNewCategoryEvent;
             AddDataGridViewDeleteColumn();
             _orderButton.Click += HandleOrderButton;
             RefreshDataGridView();
             _buttonAdd.Enabled = false;
+        }
+
+        // 處理後台新增類別後的事件
+        private void HandleBackEndNewCategoryEvent(string stringText)
+        {
+            TabPage tabPage = new TabPage(stringText);
+            tabPage.Name = stringText;
+            _productTabControl.Controls.Add(tabPage);
         }
 
         // 處理後台更新事件
@@ -88,7 +97,6 @@ namespace Homework
         private void InitializeTabControl()
         {
             _productTabControl.TabPages.Clear();
-            _buttonAdd.Enabled = _orderFormPresentationModel.IsButtonAddEnable;
             string[] productCategoriesName = _orderFormPresentationModel.ProductCategorysName;
             foreach (var productCategoryName in productCategoriesName)
             {

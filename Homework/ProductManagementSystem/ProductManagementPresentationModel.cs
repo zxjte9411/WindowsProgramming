@@ -19,10 +19,12 @@ namespace Homework
         private bool _isButtonAddEnable;
         private string _buttonSaveAddText;
         private string _groupBoxProductText;
+        private string _groupBoxCategoryText;
         private const string IS_BUTTON_SAVE_ADD_ENABLE = "IsButtonSaveAddEnable";
         private const string IS_BUTTON_ADD_ENABLE = "IsButtonAddEnable";
         private const string BUTTON_SAVE_ADD_TEXT = "ButtonSaveAddText";// 按鈕的文字顯示編輯或新增
-        private const string GROUP_BOX_MEAL_TEXT = "GroupBoxProductText";// group box 左上的文字
+        private const string GROUP_BOX_PRODUCT_TEXT = "GroupBoxProductText";// group box 左上的文字
+        private const string GROUP_BOX_CATEGORY_TEXT = "GroupBoxCategoryText";// group box 左上的文字
         public ProductManagementPresentationModel(Model model)
         {
             _model = model;
@@ -82,6 +84,14 @@ namespace Homework
             }
         }
 
+        public string GroupBoxCategoryText
+        {
+            get
+            {
+                return _groupBoxCategoryText;
+            }
+        }
+
         // 更新編輯或新增 product 時的狀態
         public void UpdateModeChangedState()
         {
@@ -104,7 +114,7 @@ namespace Homework
         }
 
         // 依照模式處理 button 按下事件
-        internal void HandleButtonClickEvent(int index, string[] stringText)
+        public void HandleButtonClickEvent(int index, string[] stringText)
         {
             switch (_mode)
             {
@@ -122,7 +132,27 @@ namespace Homework
             UpdateModeChangedState();
         }
 
-        // 加入新產品
+        // 依照模式處理 buttonNew 按下事件
+        public void HandleButtonNewClickEvent(string stringText)
+        {
+            switch (_mode)
+            {
+                case Constant.Mode.AddMode:
+                    AddNewCategory(stringText);
+                    ChangeButtonEnableState(false, false);
+                    _clearAllDataEvent();
+                    break;
+            }
+            UpdateModeChangedState();
+        }
+
+        // 新增類別
+        private void AddNewCategory(string stringText)
+        {
+            _model.AddNewCategoryToProductList(stringText);
+        }
+
+        // 新增產品
         private void AddNewProduct(string[] stringText)
         {
             _model.AddNewProductToProductList(stringText);
@@ -152,17 +182,21 @@ namespace Homework
         {
             const string BUTTON_SAVE_TEXT = "儲存";
             const string GROUP_BOX_EDIT_PRODUCT_TEXT = "編輯商品";
+            const string GROUP_BOX_ADD_CATEGORY_TEXT = "類別";
             _buttonSaveAddText = BUTTON_SAVE_TEXT;
             _groupBoxProductText = GROUP_BOX_EDIT_PRODUCT_TEXT;
+            _groupBoxCategoryText = GROUP_BOX_ADD_CATEGORY_TEXT;
         }
 
         //新增狀態
         private void AddModeText()
         {
             const string BUTTON_ADD_TEXT = "新增";
-            const string GROUP_BOX_ADD_MEAL_TEXT = "新增商品";
+            const string GROUP_BOX_ADD_PRODUCT_TEXT = "新增商品";
+            const string GROUP_BOX_ADD_CATEGORY_TEXT = "新增類別";
             _buttonSaveAddText = BUTTON_ADD_TEXT;
-            _groupBoxProductText = GROUP_BOX_ADD_MEAL_TEXT;
+            _groupBoxProductText = GROUP_BOX_ADD_PRODUCT_TEXT;
+            _groupBoxCategoryText = GROUP_BOX_ADD_CATEGORY_TEXT;
         }
 
         // 處理 "新增商品" 模式事件(新增模式)
@@ -200,12 +234,20 @@ namespace Homework
             return ((new Regex(Constant.REGEX_ONLY_NUMBER).IsMatch(keyChar.ToString())) || (keyChar == keysBack));
         }
 
+        // 初始化所有按鈕狀態
+        public void InitializeAllStatus()
+        {
+            Mode = Constant.Mode.InitialMode;
+            UpdateModeChangedState();
+        }
+
         //Notify
         private void NotifyPropertyChanged()
         {
             NotifyPropertyChanged(IS_BUTTON_SAVE_ADD_ENABLE);
             NotifyPropertyChanged(BUTTON_SAVE_ADD_TEXT);
-            NotifyPropertyChanged(GROUP_BOX_MEAL_TEXT);
+            NotifyPropertyChanged(GROUP_BOX_PRODUCT_TEXT);
+            NotifyPropertyChanged(GROUP_BOX_CATEGORY_TEXT);
         }
 
         //PropertyChanged
