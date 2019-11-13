@@ -13,9 +13,9 @@ namespace Homework
         private CreditCardPayment _creditCardPayment;
         public Order()
         {
-            _userSelectedProducts = new List<Product>();
-            _creditCardPayment = new CreditCardPayment();
-            _userSelectedProductsQuantity = new List<int>();
+            UserSelectProduct = new List<Product>();
+            CreditCardPayment = new CreditCardPayment();
+            UserSelectedProductsQuantity = new List<int>();
         }
 
         public List<Product> UserSelectProduct
@@ -47,7 +47,7 @@ namespace Homework
         }
 
         //刪除商品
-        public void DeleteMeal(int productIndex)
+        public void DeleteProduct(int productIndex)
         {
             _userSelectedProducts.RemoveAt(productIndex);
             _userSelectedProductsQuantity.RemoveAt(productIndex);
@@ -98,8 +98,6 @@ namespace Homework
         // 取得單個產品的總價
         public int GetCustomerSelectedProductSubtotal(int rowIndex)
         {
-            Console.WriteLine(_userSelectedProductsQuantity[rowIndex].ToString());
-            Console.WriteLine(_userSelectedProducts[rowIndex].Price);
             return int.Parse(_userSelectedProducts[rowIndex].Price) * _userSelectedProductsQuantity[rowIndex];
         }
 

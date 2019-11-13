@@ -17,12 +17,12 @@ namespace Homework
 
         public Product(string name, Category category, string price, string description, string imagePath, string quantity)
         {
-            _name = name;
-            _category = category;
-            _price = price;
-            _description = description;
-            _imagePath = imagePath;
-            _quantity = quantity;
+            Name = name;
+            Category = category;
+            Price = price;
+            Description = description;
+            ImagePath = imagePath;
+            Quantity = quantity;
         }
 
         public string Name
@@ -69,7 +69,7 @@ namespace Homework
                 _imagePath = value;
             }
         }
-        internal Category Category
+        public Category Category
         { 
             get
             {

@@ -19,17 +19,17 @@ namespace Homework
 
         public CreditCardPayment()
         {
-            _lastName = string.Empty;
-            _firstName = string.Empty;
-            _creditCardNumber = new string[Constant.FOUR];
-            _effectiveDateYear = Constant.START_YEAR.ToString();
-            _effectiveDateMonth = (1).ToString();
-            _securityCode = string.Empty;
-            _mail = string.Empty;
-            _address = string.Empty;
+            LastName = string.Empty;
+            FirstName = string.Empty;
+            CreditCardNumber = new string[Constant.FOUR];
+            EffectiveDateYear = Constant.START_YEAR.ToString();
+            EffectiveDateMonth = (1).ToString();
+            SecurityCode = string.Empty;
+            Mail = string.Empty;
+            Address = string.Empty;
         }
 
-        public CreditCardPayment(string lastName, string firstName, string[] creditCardNumber, string effectiveDateYear, string effectiveDateMonth, string securityCode, string mail, string address)
+        /*public CreditCardPayment(string lastName, string firstName, string[] creditCardNumber, string effectiveDateYear, string effectiveDateMonth, string securityCode, string mail, string address)
         {
             _lastName = lastName;
             _firstName = firstName;
@@ -39,7 +39,7 @@ namespace Homework
             _securityCode = securityCode;
             _mail = mail;
             _address = address;
-        }
+        }*/
 
         public string LastName
         {

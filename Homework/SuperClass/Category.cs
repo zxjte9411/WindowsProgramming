@@ -13,8 +13,8 @@ namespace Homework
 
         public Category(string name, int count)
         {
-            _name = name;
-            _count = count;
+            Name = name;
+            Count = count;
         }
 
         public string Name
