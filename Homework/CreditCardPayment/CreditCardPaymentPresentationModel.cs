@@ -22,11 +22,11 @@ namespace Homework
         public CreditCardPaymentPresentationModel(Model model)
         {
             _model = model;
-            _isUserNameCorrect = false;
-            _isCreditCardNumberCorrect = false;
-            _isSecurityCodeCorrect = false;
-            _isMailFormatCorrect = false;
-            _isAddressCorrect = false;
+            IsUserNameCorrect = false;
+            IsCreditCardNumberCorrect = false;
+            IsSecurityCodeCorrect = false;
+            IsMailFormatCorrect = false;
+            IsAddressCorrect = false;
             _isAllCorrect = false;
             _isConfirmButtonEnable = false;
         }
@@ -164,7 +164,7 @@ namespace Homework
         // 檢查信用卡安全碼，正確就存起來
         public void CheckAndSetSecurityCode(string securityCode)
         {
-            if (securityCode.Length > Constant.TWO)
+            if (securityCode.Length == Constant.THREE)
             {
                 _isSecurityCodeCorrect = true;
                 _model.Order.CreditCardPayment.SecurityCode = securityCode;
